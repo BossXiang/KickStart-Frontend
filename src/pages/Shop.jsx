@@ -1,7 +1,7 @@
-import React from 'react';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import { Container } from 'react-bootstrap';
+import React from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import { Container } from 'react-bootstrap'
 
 const Shop = () => {
   return (
@@ -13,7 +13,7 @@ const Shop = () => {
       </Container>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Shop;
+export default Shop
