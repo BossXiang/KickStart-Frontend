@@ -2,10 +2,11 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Container } from 'react-bootstrap'
+import '../styles/Home.scss'
 
 const Shop = () => {
   return (
-    <div>
+    <div className='homeContainer'>
       <Header />
       <Container className="my-5">
         <h1>Shop page</h1>

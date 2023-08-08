@@ -3,6 +3,7 @@ import { Container, Form, Button } from 'react-bootstrap'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../styles/Login.scss'
+import '../styles/Home.scss'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -14,7 +15,7 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <div className='homeContainer'>
       <Header />
       <Container className="mt-5">
         <h1>Login</h1>

@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/Header.scss'
+import './SearchModal'
 import { Navbar, Nav } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import SearchModal from './SearchModal'
 
 
 
 const Header = () => {
+  const [showModal, setShowModal] = useState(false)
+  const handleClose = () => setShowModal(false)
+  const handleShow = () => setShowModal(true)
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={Link} to="/">LOGO</Navbar.Brand>
@@ -29,7 +34,9 @@ const Header = () => {
             <FontAwesomeIcon icon={faUser} />
           </Nav.Link>
           <Nav.Link>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <FontAwesomeIcon icon={faMagnifyingGlass} onClick={handleShow}/>
+            {showModal && <div className="overlay" onClick={handleClose} />}
+            <SearchModal show={showModal} handleClose={handleClose} />
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
