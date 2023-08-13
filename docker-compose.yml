@@ -1,0 +1,7 @@
+version: '3'
+services:
+  react-app:
+    image: kickstart-frontend
+    container_name: kickstart-frontend
+    ports:
+      - "3000:3000"    # Expose port 3000 from the container
