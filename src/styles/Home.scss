@@ -1,6 +1,36 @@
-.homeContainer{
+@font-face {
+  font-family: 'FuturaLT-italics';
+  src: url('./fontStyle/Futura\ LT\ W01\ Light\ Oblique.ttf') format('truetype');
+}
+.homeContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 100vh;
+  .homePage {
+    display: flex;
+    flex-direction: column;
+    .mainImg {
+      height: 450px;
+      width: 100%;
+      background: linear-gradient(90deg, #66c6b3, #ffb6c1);
+    }
+    .homeTitle {
+      height: 100px;
+      font-family: 'FuturaLT-italics';
+      text-align: center;
+      font-size: 35px;
+      line-height: 100px;
+    }
+    .trendingContainer {
+      display: flex;
+      justify-content: space-around;
+      height: 300px;
+      gap: 20px;
+      .trendingProduct {
+        height: 100%;
+        width: 300px;
+        background: linear-gradient(30deg, #69fddf, #d9fffb);
+      }
+    }
+  }
 }
