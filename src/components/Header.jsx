@@ -20,7 +20,9 @@ const Header = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="headerContainer" id="basic-navbar-nav">
         <div className="header">
-          <Navbar.Brand className="headerLogo" as={Link} to="/" />
+          <Navbar.Brand className="headerLogo" as={Link} to="/">
+            <img src="/assets/img/logo.png" alt="Logo" className='logoImage'/>
+          </Navbar.Brand>
           THE ART OF ET
           <Nav className="ml-auto headerPage">
             <Nav.Link as={Link} to="/">
