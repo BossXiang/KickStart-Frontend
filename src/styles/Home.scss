@@ -43,5 +43,53 @@
         background: linear-gradient(30deg, #69fddf, #d9fffb);
       }
     }
+    .workContainer {
+      display: flex;
+      justify-content: space-between;
+      height: 300px;
+      gap: 20px;
+      .work {
+        height: 100%;
+        width: 500px;
+        background: linear-gradient(30deg, #69fddf, #55ff96);
+      }
+    }
+    .aboutUsTitle {
+      text-transform: capitalize;
+      height: 100px;
+      font-family: 'FuturaLT-italics';
+      text-align: center;
+      font-size: 35px;
+      line-height: 100px;
+    }
+    .aboutUsContainer {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'FuturaLT-italics';
+      margin-bottom: 30px;
+      .pictureLeft {
+        width: auto;
+        height: 300px;
+
+      }
+      .verticalContainer {
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        .description-left {
+          flex: 1;
+          text-align: left;
+        }
+        .description-right {
+          flex: 1;
+          text-align: right;
+        }
+      }
+      .pictureRight {
+        width: auto;
+        height: 300px;
+
+      }
+    }
   }
 }

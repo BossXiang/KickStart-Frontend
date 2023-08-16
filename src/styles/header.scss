@@ -29,8 +29,11 @@
     .headerLogo {
       width: 65px;
       height: 65px;
-      background: linear-gradient(to bottom, #00bfff, #a0e6ff);
       margin: 0 0 0 0;
+      .logoImage {
+        width: auto;
+        height: 100%;
+      }
     }
     .headerPage {
       display: flex;
