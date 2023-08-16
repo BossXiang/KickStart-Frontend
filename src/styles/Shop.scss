@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'FuturaLT-italics';
+  src: url('./fontStyle/Futura\ LT\ W01\ Light\ Oblique.ttf') format('truetype');
+}
+
+.shopContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
