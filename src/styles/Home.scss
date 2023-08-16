@@ -2,6 +2,15 @@
   font-family: 'FuturaLT-italics';
   src: url('./fontStyle/Futura\ LT\ W01\ Light\ Oblique.ttf') format('truetype');
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .homeContainer {
   display: flex;
   flex-direction: column;
@@ -9,6 +18,8 @@
   .homePage {
     display: flex;
     flex-direction: column;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
     .mainImg {
       height: 450px;
       width: 100%;

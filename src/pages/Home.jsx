@@ -9,7 +9,7 @@ const Home = () => {
       <Header />
       <div className="homePage">
         <div className='mainImg' />
-        <div className='homeTitle'>These are people's favorites</div>
+        <div className='homeTitle'>'These are people's favorites.'</div>
         <div className="trendingContainer">
           <div className="trendingProduct" />
           <div className="trendingProduct" />
