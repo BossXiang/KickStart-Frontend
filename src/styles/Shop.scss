@@ -7,5 +7,56 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  .title {
+    text-align: center;
+  }
+
+  .bestSellerContainer {
+    margin-bottom: 30px;
+    .productContainer {
+      display: flex;
+      justify-content: space-around;
+      height: 300px;
+      gap: 20px;
+      .product {
+        height: 100%;
+        width:300px;
+        background: linear-gradient(30deg, #69fddf, #d9fffb);
+        flex-shrink: 0;
+      }
+    }
+  }
+  
+  .newArrivalContainer {
+    margin-bottom: 30px;
+    .productContainer {
+      display: flex;
+      justify-content: space-around;
+      height: 300px;
+      gap: 20px;
+      .product {
+        height: 100%;
+        width:300px;
+        background: linear-gradient(30deg, #69fddf, #d9fffb);
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .allProductContainer {
+    margin-bottom: 30px;
+    .productContainer {
+      display: flex;
+      justify-content: space-around;
+      height: 300px;
+      gap: 20px;
+      .product {
+        height: 100%;
+        width:300px;
+        background: linear-gradient(30deg, #69fddf, #d9fffb);
+        flex-shrink: 0;
+      }
+    }
+  }
 
 }
