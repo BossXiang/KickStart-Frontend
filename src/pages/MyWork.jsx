@@ -7,7 +7,32 @@ const MyWork = () => {
   return (
     <div className='myWorkContainer'>
       <Header />
-      <h1>My work</h1>
+      <div className='container'>
+        <div className='imageRow'>
+          <img src="assets/samples/sample1.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample2.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample3.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample4.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample5.jpg" alt="demo work" className='demoImg'/>
+        </div>
+        <div className='imageRow evenImageRow'>
+          <img src="assets/samples/sample6.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample7.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample8.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample9.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample10.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample11.jpg" alt="demo work" className='demoImg'/>
+        </div>
+        <div className='imageRow'>
+          <img src="assets/samples/sample12.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample13.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample14.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample15.jpg" alt="demo work" className='demoImg'/>
+          <img src="assets/samples/sample16.jpg" alt="demo work" className='demoImg'/>
+        </div>
+      </div>
+
+
       <Footer />
     </div>
   )

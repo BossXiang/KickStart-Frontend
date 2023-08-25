@@ -2,4 +2,18 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  .container {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    .imageRow {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+      .demoImg {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  }
 }
