@@ -1,13 +1,30 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import '../styles/Contact.scss'
+import '../styles/AboutUs.scss'
 
 const Contact = () => {
   return (
     <div className='contactContainer'>
       <Header />
       <div className='container'>
+        
+        <div className='aboutUsTitle'>About us</div>
+        <div className='aboutUsContainer'>
+          <img src="/assets/img/elijah.jpg" alt="Elijah" className='pictureLeft'/>
+          <div className='verticalContainer'>
+            <div className='description-left'>
+              <p>Hi. I am Elijah</p>
+              <p>The Co-founder of Tailor Bliss</p>
+            </div>
+            <div className='description-right'>
+              <p>Hi. I am Tom</p>
+              <p>The Co-founder of Tailor Bliss</p>
+            </div>
+          </div>
+          <img src="/assets/img/tom.jpg" alt="Tom" className='pictureRight'/>
+        </div>
+        
         <div className='block1'>
           <img src="assets/img/tom.jpg" alt="A face"/>
           <div className='description'>

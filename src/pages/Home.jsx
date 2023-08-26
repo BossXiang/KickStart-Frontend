@@ -8,14 +8,14 @@ const Home = () => {
     <div className='homeContainer'>
       <Header />
       <div className="homePage">
-        <div className='mainImg' />
+        <img src="assets/img/background.png" alt="background" className='mainImg' />
         <div className='homeTitle'>'These are people's favorites.'</div>
         <div className="trendingContainer">
-          <div className="trendingProduct" />
-          <div className="trendingProduct" />
-          <div className="trendingProduct" />
-          <div className="trendingProduct" />
-          <div className="trendingProduct" />
+          <img src="assets/samples/sample1.jpg" alt="trending product" className="trendingProduct" />
+          <img src="assets/samples/sample2.jpg" alt="trending product" className="trendingProduct" />
+          <img src="assets/samples/sample3.jpg" alt="trending product" className="trendingProduct" />
+          <img src="assets/samples/sample4.jpg" alt="trending product" className="trendingProduct" />
+          <img src="assets/samples/sample5.jpg" alt="trending product" className="trendingProduct" />
         </div>
         <div className='homeTitle'>The bliss we once tailored</div>
         <div className="workContainer">
@@ -23,20 +23,20 @@ const Home = () => {
           <div className="mainWork" />
           <div className="work" />
         </div>
-        <div className='aboutUsTitle'>About us</div>
-        <div className='aboutUsContainer'>
-          <img src="/assets/img/elijah.jpg" alt="Elijah" className='pictureLeft'/>
-          <div className='verticalContainer'>
-            <div className='description-left'>
-              <p>Hi. I am Elijah</p>
-              <p>The Co-founder of Tailor Bliss</p>
-            </div>
-            <div className='description-right'>
-              <p>Hi. I am Tom</p>
-              <p>The Co-founder of Tailor Bliss</p>
-            </div>
+        <div className='subscriptionContainer'>
+          <div className='subscription'>
+            <p className='subscriptionTitle'>Subscribe for special discounts and first look at new artworks</p>
+            <p>Don't worry, we don't have time to send a lot of mails</p>
+            <label className='emailLabel'>Enter your email here *</label>
+            <input type="text" className='emailInput' />
+            <button className='signUp'>Sign up</button>
           </div>
-          <img src="/assets/img/tom.jpg" alt="Tom" className='pictureRight'/>
+        </div>
+        <div className='partnerContainer'>
+          <p className='partnerTitle'>Our Partners</p>
+          <div className='partnerList'>
+            <img src="assets/img/pixar.png" alt="pixar" className='pixar'/>
+          </div>
         </div>
       </div>
       <Footer />
