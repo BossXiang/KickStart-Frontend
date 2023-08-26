@@ -6,6 +6,7 @@ import MyWork from './pages/MyWork'
 import AboutUs from './pages/AboutUs'
 import Item from './pages/Item'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import ProductDetail from './pages/ProductDetail'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/mywork" element={<MyWork />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/item" element={<Item />} />
+        <Route path="/product/:productId" element={<ProductDetail />} /> 
       </Routes>
     </Router>
   )

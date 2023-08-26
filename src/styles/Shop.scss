@@ -49,6 +49,10 @@
         .productPrice {
           font-size: 18px;
         }
+        .input-group{
+          width: 330px;
+          margin-left: 10px;
+        }
         .btn,
         .btn-primary {
           height: 40px;
@@ -71,14 +75,6 @@
         .dropdownBtn,
         .buyBtn:hover {
           background-color: rgb(230, 188, 111);
-        }
-        .quantitySelector {
-          width: 330px;
-          margin-left: 10px;
-          #quantityBtn {
-            width: 40px;
-            margin: 0;
-          }
         }
         .buyBtn {
           width: 330px;

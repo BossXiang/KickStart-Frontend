@@ -3,7 +3,9 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Container, DropdownButton, Dropdown, Button } from 'react-bootstrap'
 import '../styles/Shop.scss'
+import '../styles/QuantitySelector.scss'
 import QuantitySelector from '../components/QuantitySelector'
+import { Link } from 'react-router-dom'
 
 const Product = ({ product }) => {
   const sizes = ['XS', 'S', 'M', 'L', 'XL']
@@ -14,7 +16,9 @@ const Product = ({ product }) => {
 
   return (
     <div className="product">
-      <img src={product.imgSrc.length > 0 ? product.imgSrc[0] : ''} alt="product" className="productImg" />
+      <Link to={`/product/${product.title}`}>
+        <img src={product.imgSrc.length > 0 ? product.imgSrc[0] : ''} alt="product" className="productImg" />
+      </Link>
       <div className="productName">{product.title}</div>
       <div className="productPrice">${product.price}</div>
       <DropdownButton id="size-dropdown" title={selectedSize}>

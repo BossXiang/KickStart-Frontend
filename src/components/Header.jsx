@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
 import '../styles/Header.scss'
-import './SearchModal'
 import { Navbar, Nav } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCartShopping,
-  faUser,
-  faMagnifyingGlass,
+  faUser
 } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import SearchModal from './SearchModal'
+import Cart from './Cart'
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false)
@@ -21,7 +19,7 @@ const Header = () => {
       <Navbar.Collapse className="headerContainer" id="basic-navbar-nav">
         <div className="header">
           <Navbar.Brand className="headerLogo" as={Link} to="/">
-            <img src="/assets/img/logo.png" alt="Logo" className='logoImage'/>
+            <img src="/assets/img/logo.png" alt="Logo" className="logoImage" />
           </Navbar.Brand>
           THE ART OF ET
           <Nav className="ml-auto headerPage">
@@ -41,15 +39,12 @@ const Header = () => {
         </div>
         <Nav className="ml-auto headerIcon">
           <Nav.Link>
-            <FontAwesomeIcon icon={faCartShopping} />
+            <FontAwesomeIcon icon={faCartShopping} onClick={handleShow} />
+            {showModal && <div className="overlay" onClick={handleClose} />}
+            <Cart show={showModal} handleClose={handleClose} />
           </Nav.Link>
           <Nav.Link as={Link} to="/login">
             <FontAwesomeIcon icon={faUser} />
-          </Nav.Link>
-          <Nav.Link>
-            <FontAwesomeIcon icon={faMagnifyingGlass} onClick={handleShow} />
-            {showModal && <div className="overlay" onClick={handleClose} />}
-            <SearchModal show={showModal} handleClose={handleClose} />
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
