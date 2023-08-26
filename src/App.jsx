@@ -7,6 +7,7 @@ import AboutUs from './pages/AboutUs'
 import Item from './pages/Item'
 import Checkout from './pages/Checkout'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import ProductDetail from './pages/ProductDetail'
 
 const App = () => {
   return (
@@ -18,7 +19,8 @@ const App = () => {
         <Route path="/mywork" element={<MyWork />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/item" element={<Item />} />
-        <Route path="/checkout" element={<Checkout />} />
+		<Route path="/checkout" element={<Checkout />} />
+		<Route path="/product/:productId" element={<ProductDetail />} /> 
       </Routes>
     </Router>
   )
