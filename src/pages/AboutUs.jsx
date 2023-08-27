@@ -1,64 +1,59 @@
-import React from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import '../styles/AboutUs.scss'
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../styles/AboutUs.scss";
 
 const Contact = () => {
   return (
-    <div className='contactContainer'>
+    <div>
       <Header />
-      <div className='container'>
-        
-        <div className='aboutUsTitle'>About us</div>
-        <div className='aboutUsContainer'>
-          <img src="/assets/img/elijah.jpg" alt="Elijah" className='pictureLeft'/>
-          <div className='verticalContainer'>
-            <div className='description-left'>
-              <p>Hi. I am Elijah</p>
-              <p>The Co-founder of Tailor Bliss</p>
-            </div>
-            <div className='description-right'>
-              <p>Hi. I am Tom</p>
-              <p>The Co-founder of Tailor Bliss</p>
-            </div>
+      <div className="aboutUsContainer">
+        <div className="about">
+          <div className="aboutContent">
+            <h2 className="aboutTitle">About Tailor Bliss</h2>
+            <p className="aboutWords">Step into TailorBliss, where limitless personalization brings your unique vision to life. This realm transforms your ideas into exclusive, personalized experiences. At TailorBliss, we're dedicated to turning your imaginative concepts into realities.<br/><br/>
+              Our journey is guided by a potent belief – every individual deserves products harmonizing with their identity. TailorBliss isn't just e-commerce; it's a dynamic canvas spotlighting your creativity.<br/><br/>
+              Discover a shopping era empowered by you. TailorBliss shapes tailored fashion and expressive home decor, making your story tangible. Our intuitive platform bridges concept and creation with excitement.<br/><br/>
+              Embrace personalization's essence with TailorBliss. Skilled artisans craft each detail, ensuring your unique perspective shines. Seek the perfect gift or embody your signature style with our curated customizable products.<br/><br/>
+              Join a community celebrating individuality and creativity. TailorBliss transcends a destination; it's your exultation. Thanks for choosing TailorBliss to embrace your distinctiveness and savor bespoke delight.<br/><br/>
+              Witness ordinary moments becoming extraordinary memories. Discover. Design. Delight. Welcome to the universe of TailorBliss.</p>
           </div>
-          <img src="/assets/img/tom.jpg" alt="Tom" className='pictureRight'/>
         </div>
-        
-        <div className='block1'>
-          <img src="assets/img/tom.jpg" alt="A face"/>
-          <div className='description'>
-            <h2>Contact me</h2>
-            <p>Tom</p>
-            <span className='line'>
+
+        <h2 className="contactUs">Contact Us</h2>
+
+        <div className="container">
+          <img src="assets/img/tom.jpg" alt="A face" />
+          <div className="description">
+            <p className="contactName">Tom</p>
+            <p>Co-founder of TailorBliss</p>
+            <span className="line">
               <p>Email:</p>
               <a href="mailto:tom@tailorbliss.com">tom@tailorbliss.com</a>
             </span>
-            <span className='line'>
+            <span className="line">
               <p>Phone:</p>
               <a href="tel:123-456-7890">123-456-7890</a>
             </span>
           </div>
-        </div>
-        <div className='block2'>
-          <div className='description'>
-            <h2>Contact me</h2>
-            <p>Elijah</p>
-            <span className='line'>
+          <div className="description">
+            <p className="contactName">Elijah</p>
+            <p>Co-founder of TailorBliss</p>
+            <span className="line">
               <p>Email:</p>
               <a href="mailto:haha@tailorbliss.com">haha@tailorbliss.com</a>
             </span>
-            <span className='line'>
+            <span className="line">
               <p>Phone:</p>
               <a href="tel:123-456-7890">123-456-7890</a>
             </span>
           </div>
-          <img src="assets/img/elijah.jpg" alt="A face"/>
+          <img src="assets/img/elijah.jpg" alt="A face" />
         </div>
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
