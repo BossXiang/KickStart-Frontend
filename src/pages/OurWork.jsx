@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import '../styles/MyWork.scss'
+import '../styles/OurWork.scss'
 
 const MyWork = () => {
   return (
