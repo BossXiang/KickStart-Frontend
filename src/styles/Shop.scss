@@ -27,14 +27,15 @@
     margin-bottom: 30px;
     .productContainer {
       display: flex;
-      justify-content: space-around;
-      height: 600px;
+      flex-wrap: wrap;
+      gap: calc((100% - 1050px)/2);
       font-family: 'FuturaLT-Light';
       .product {
         display: flex;
         gap: 10px;
         flex-direction: column;
         width: 350px;
+        margin-bottom: 20px;
         border: 2px solid #93e4fff2;
         flex-shrink: 0;
         .productImg {

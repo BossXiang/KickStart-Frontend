@@ -23,7 +23,6 @@ export function CartProvider({ children }) {
         }
         return cartItem
       })
-
       setCartItems(updatedCartItems)
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
     } else {
@@ -33,21 +32,21 @@ export function CartProvider({ children }) {
     }
   }
 
-  const removeFromCart = (itemId) => {
-    const updatedCartItems = cartItems.filter((item) => item.id !== itemId)
-    setCartItems(updatedCartItems)
+  const removeFromCart = (itemId, size) => {
+    const updatedCartItems = cartItems.filter(
+      (item) => item.id !== itemId || item.size !== size
+    )
 
+    setCartItems(updatedCartItems)
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
   }
-
-  const handleQuantityChange = (itemId, newQuantity) => {
+  const handleQuantityChange = (itemId, itemSize, newQuantity) => {
     const updatedCartItems = cartItems.map((item) => {
-      if (item.id === itemId) {
+      if (item.id === itemId && item.size == itemSize) {
         return { ...item, quantity: newQuantity }
       }
       return item
     })
-
     setCartItems(updatedCartItems)
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
   }

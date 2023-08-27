@@ -3,9 +3,24 @@ import '../styles/Cart.scss'
 import { Button, Modal } from 'react-bootstrap'
 import QuantitySelector from './QuantitySelector'
 import { useCart } from '../contexts/CartContext'
+import { useHistory, useNavigate } from 'react-router-dom'
 
 const Cart = ({ show, handleClose }) => {
   const { cartItems, removeFromCart, handleQuantityChange } = useCart()
+  const navigate = useNavigate()
+
+  const handleCheckout = () => {
+    if (cartItems.length === 0) {
+      window.alert('Your cart is empty. Please add items before checking out.')
+    } else {
+      navigate('/checkout')
+    }
+  }
+
+  const totalAmount = cartItems.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+
   return (
     <div className={`shopping-cart-modal ${show ? 'show' : ''}`}>
       <div className="modal-content">
@@ -17,7 +32,7 @@ const Cart = ({ show, handleClose }) => {
             <div className="item" key={index}>
               <Button
                 className="removeBtn"
-                onClick={() => removeFromCart(item.id)}>
+                onClick={() => removeFromCart(item.id, item.size)}>
                 -
               </Button>
               <div className="imgContainer">
@@ -30,20 +45,21 @@ const Cart = ({ show, handleClose }) => {
                   <div>{item.size}</div>
                 </div>
                 <QuantitySelector
-                  quantity={item.quantity}
+                  newQuantity={item.quantity}
                   onChange={(newQuantity) =>
-                    handleQuantityChange(item.id, newQuantity)
+                    handleQuantityChange(item.id, item.size, newQuantity)
                   }
                 />
               </div>
             </div>
           ))}
         </Modal.Body>
+        <div className="subtotal">Subtotal:<br/>${totalAmount.toFixed(2)}</div>
         <Modal.Footer className="cartFooter">
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button className="buyBtn" variant="primary">
+          <Button className="buyBtn" variant="primary" onClick={handleCheckout}>
             Checkout
           </Button>
         </Modal.Footer>

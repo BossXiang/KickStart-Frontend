@@ -23,6 +23,10 @@ const Product = ({ product }) => {
 
   const { addToCart } = useCart();
   const handleAddToCart = () => {
+    if (selectedSize === 'Size') {
+      window.alert('Please select a size before adding to cart.');
+      return;
+    }
     const cartItem = {
       id: product.id,
       title: product.title,
