@@ -1,113 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/Cart.scss'
 import { Button, Modal } from 'react-bootstrap'
 import QuantitySelector from './QuantitySelector'
+import { useCart } from '../contexts/CartContext'
 
 const Cart = ({ show, handleClose }) => {
+  const { cartItems, removeFromCart, handleQuantityChange } = useCart()
   return (
     <div className={`shopping-cart-modal ${show ? 'show' : ''}`}>
       <div className="modal-content">
-        <Modal.Header className='cartHeader'>
+        <Modal.Header className="cartHeader">
           <Modal.Title>Cart</Modal.Title>
         </Modal.Header>
-        <Modal.Body className='itemContainer'>
-          <div className="item">
-            <div className="imgContainer">
-              <img src="/assets/samples/sample1.jpg" alt="a cup" />
-            </div>
-            <div className="itemInfo">
-              <div className="name">A cup</div>
-              <div className="info">
-                <div>$50,0</div>
-                <div>xl</div>
+        <Modal.Body className="itemContainer">
+          {cartItems.map((item, index) => (
+            <div className="item" key={index}>
+              <Button
+                className="removeBtn"
+                onClick={() => removeFromCart(item.id)}>
+                -
+              </Button>
+              <div className="imgContainer">
+                <img src={item.imgSource} alt="Product" />
               </div>
-              <QuantitySelector />
-            </div>
-          </div>
-          <div className="item">
-            <div className="imgContainer">
-              <img src="/assets/samples/sample1.jpg" alt="a cup" />
-            </div>
-            <div className="itemInfo">
-              <div className="name">A cup</div>
-              <div className="info">
-                <div>$50,0</div>
-                <div>xl</div>
+              <div className="itemInfo">
+                <div className="name">{item.title}</div>
+                <div className="info">
+                  <div>${item.price}</div>
+                  <div>{item.size}</div>
+                </div>
+                <QuantitySelector
+                  quantity={item.quantity}
+                  onChange={(newQuantity) =>
+                    handleQuantityChange(item.id, newQuantity)
+                  }
+                />
               </div>
-              <QuantitySelector />
             </div>
-          </div>
-          <div className="item">
-            <div className="imgContainer">
-              <img src="/assets/samples/sample1.jpg" alt="a cup" />
-            </div>
-            <div className="itemInfo">
-              <div className="name">A cup</div>
-              <div className="info">
-                <div>$50,0</div>
-                <div>xl</div>
-              </div>
-              <QuantitySelector />
-            </div>
-          </div>
-          <div className="item">
-            <div className="imgContainer">
-              <img src="/assets/samples/sample1.jpg" alt="a cup" />
-            </div>
-            <div className="itemInfo">
-              <div className="name">A cup</div>
-              <div className="info">
-                <div>$50,0</div>
-                <div>xl</div>
-              </div>
-              <QuantitySelector />
-            </div>
-          </div>
-          <div className="item">
-            <div className="imgContainer">
-              <img src="/assets/samples/sample1.jpg" alt="a cup" />
-            </div>
-            <div className="itemInfo">
-              <div className="name">A cup</div>
-              <div className="info">
-                <div>$50,0</div>
-                <div>xl</div>
-              </div>
-              <QuantitySelector />
-            </div>
-          </div>
-          <div className="item">
-            <div className="imgContainer">
-              <img src="/assets/samples/sample1.jpg" alt="a cup" />
-            </div>
-            <div className="itemInfo">
-              <div className="name">A cup</div>
-              <div className="info">
-                <div>$50,0</div>
-                <div>xl</div>
-              </div>
-              <QuantitySelector />
-            </div>
-          </div>
-          <div className="item">
-            <div className="imgContainer">
-              <img src="/assets/samples/sample1.jpg" alt="a cup" />
-            </div>
-            <div className="itemInfo">
-              <div className="name">A cup</div>
-              <div className="info">
-                <div>$50,0</div>
-                <div>xl</div>
-              </div>
-              <QuantitySelector />
-            </div>
-          </div>
+          ))}
         </Modal.Body>
-        <Modal.Footer className='cartFooter'>
+        <Modal.Footer className="cartFooter">
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button className='buyBtn' variant="primary">Checkout</Button>
+          <Button className="buyBtn" variant="primary">
+            Checkout
+          </Button>
         </Modal.Footer>
       </div>
     </div>
