@@ -15,6 +15,7 @@ const apiService = async (
     },
   }
   try {
+    console.log(config)
     const response = await axios(config)
     return response.data
   } catch (error) {
