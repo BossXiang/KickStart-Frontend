@@ -33,6 +33,7 @@
       .logoImage {
         width: auto;
         height: 100%;
+        opacity: 80%;
       }
     }
     .headerPage {
@@ -59,8 +60,60 @@
     margin-left: 0;
     height: 35px;
   }
-  .headerIcon svg{
+  .headerIcon svg {
     height: 35px;
     width: 35px;
+  }
+  .cube-container {
+    perspective: 1000px;
+    margin-top: 10px;
+  }
+
+  .cube {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 6s infinite linear;
+  }
+
+  .face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(4, 4, 4, 0.2);
+    border: 1px solid #60e0dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .front {
+    transform: translateZ(50px);
+  }
+  .back {
+    transform: translateZ(-50px) rotateY(180deg);
+  }
+  .top {
+    transform: rotateX(90deg) translateZ(50px);
+  }
+  .bottom {
+    transform: rotateX(-90deg) translateZ(50px);
+  }
+  .left {
+    transform: rotateY(-90deg) translateZ(50px);
+  }
+  .right {
+    transform: rotateY(90deg) translateZ(50px);
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
   }
 }
