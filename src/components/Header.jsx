@@ -16,44 +16,44 @@ const Header = () => {
       <Navbar.Collapse className="headerContainer" id="basic-navbar-nav">
         <div className="header">
           <Navbar.Brand className="headerLogo" as={Link} to="/">
-            <div class="cube-container">
-              <div class="cube">
-                <div class="face front">
+            <div className="cube-container">
+              <div className="cube">
+                <div className="face front">
                   <img
                     src="/assets/img/logo.png"
                     alt="Logo"
                     className="logoImage"
                   />
                 </div>
-                <div class="face back">
+                <div className="face back">
                   <img
                     src="/assets/img/logo.png"
                     alt="Logo"
                     className="logoImage"
                   />
                 </div>
-                <div class="face top">
+                <div className="face top">
                   <img
                     src="/assets/img/logo.png"
                     alt="Logo"
                     className="logoImage"
                   />
                 </div>
-                <div class="face bottom">
+                <div className="face bottom">
                   <img
                     src="/assets/img/logo.png"
                     alt="Logo"
                     className="logoImage"
                   />
                 </div>
-                <div class="face left">
+                <div className="face left">
                   <img
                     src="/assets/img/logo.png"
                     alt="Logo"
                     className="logoImage"
                   />
                 </div>
-                <div class="face right">
+                <div className="face right">
                   <img
                     src="/assets/img/logo.png"
                     alt="Logo"

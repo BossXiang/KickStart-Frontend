@@ -15,7 +15,6 @@ const apiService = async (
     },
   }
   try {
-    console.log(config)
     const response = await axios(config)
     return response.data
   } catch (error) {
@@ -29,6 +28,10 @@ export const getHello = (data: any) => {
 
 export const getProducts = (data: any) => {
   return apiService('GET','/api/v1/product',data);
+};
+
+export const getProduct = (id: number) => {
+  return apiService('GET',`/api/v1/product/${id}`, {});
 };
 
 export const getTrendingProducts = (data: any) => {

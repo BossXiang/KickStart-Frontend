@@ -37,9 +37,10 @@ const Product = ({ product }) => {
     }
     addToCart(cartItem);
   }
+
   return (
     <div className="product">
-      <Link to={`/product/${product.title}`}>
+      <Link to={`/product/${product.id}`}>
         <img src={product.imgSource[0]} alt="product" className="productImg" />
       </Link>
       <div className="productName">{product.title}</div>
@@ -77,26 +78,26 @@ const Shop = () => {
   }, [])
 
   /* Dummy data (for testing purpose) */
-  const newArrivalProducts = [
-    {
-      title: 'Product A',
-      description: 'Description of product A',
-      imgSrc: ['assets/samples/sample1.jpg'],
-      price: 5.0,
-    },
-    {
-      title: 'Product B',
-      description: 'Description of product B',
-      imgSrc: ['assets/samples/sample2.jpg'],
-      price: 8.0,
-    },
-    {
-      title: 'Product C',
-      description: 'Description of product C',
-      imgSrc: ['assets/samples/sample3.jpg'],
-      price: 10.0,
-    },
-  ]
+  // const newArrivalProducts_dummy = [
+  //   {
+  //     title: 'Product A',
+  //     description: 'Description of product A',
+  //     imgSrc: ['assets/samples/sample1.jpg'],
+  //     price: 5.0,
+  //   },
+  //   {
+  //     title: 'Product B',
+  //     description: 'Description of product B',
+  //     imgSrc: ['assets/samples/sample2.jpg'],
+  //     price: 8.0,
+  //   },
+  //   {
+  //     title: 'Product C',
+  //     description: 'Description of product C',
+  //     imgSrc: ['assets/samples/sample3.jpg'],
+  //     price: 10.0,
+  //   },
+  // ]
 
   // const arrivalList = newArrivalProducts.map((product, idx) => (
   //   <Product key={idx} product={product} />
@@ -113,7 +114,7 @@ const Shop = () => {
         <Container className="my-5">
           <div className="newArrivalContainer">
             <h2 className="title">New Arrival</h2>
-            {/* <div className="productContainer">{arrivalList}</div> */}
+              {/* <div className="productContainer">{newArrivalProducts_dummy}</div>  */}
           </div>
           <div className="allProductContainer">
             <h2 className="title">Products</h2>

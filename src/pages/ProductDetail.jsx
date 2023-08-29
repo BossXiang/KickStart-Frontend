@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Button, Dropdown, DropdownButton } from 'react-bootstrap'
@@ -6,25 +6,65 @@ import QuantitySelector from '../components/QuantitySelector'
 import '../styles/ProductDetail.scss'
 import '../styles/Shop.scss'
 import { useParams } from 'react-router-dom'
+import { useCart } from '../contexts/CartContext';
+import { getProduct } from '../plugins/api/api_service.ts'
 
 const ProductDetail = () => {
   const { productId } = useParams();
   const sizes = ['XS', 'S', 'M', 'L', 'XL']
+  const [product, setProduct] = useState({})
   const [selectedSize, setSelectedSize] = useState('Size')
   const handleSizeSelect = (size) => {
     setSelectedSize(size)
   }
+  
+  const [quantity, setQuantity] = useState(1);
+  const handleQuantityChange = (newQuantity) => {
+    setQuantity(newQuantity);
+  };
+
+  // Load product
+  useEffect(() => {
+    const getProductById = async () => {
+      const data = await getProduct(productId)
+      setProduct(data)
+    }
+    try {
+      getProductById()
+    } catch (error) {
+      console.error('Error fetching Product data:', error)
+    }
+  }, [productId])
+
+  // Shopping cart
+  const { addToCart } = useCart();
+  const handleAddToCart = () => {
+    if (selectedSize === 'Size') {
+      window.alert('Please select a size before adding to cart.');
+      return;
+    }
+    const cartItem = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      size: selectedSize,
+      imgSource:product.imgSource[0],
+      quantity:quantity
+    }
+    addToCart(cartItem);
+  }
+
   return (
     <>
       <Header></Header>
       <div className="detailContainer">
         <div className="detailImg">
-          <img src="/assets/samples/sample1.jpg" alt={productId} />
+          <img src={product && product.imgSource && product.imgSource[0] ? product.imgSource[0] : ''} alt={`product-${productId}`} />
         </div>
         <div className="detailContent">
-          <div className="detailName">A delicate cup</div>
-          <div className="detailPrice">$50,0</div>
-          <div className="detailContent">This is an object that allows you to drink the water of life</div>
+          <div className="detailName">{product.title}</div>
+          <div className="detailPrice">${product.price}</div>
+          <div className="detailContent">{product.description}</div>
           <DropdownButton id="size-dropdown" title={selectedSize}>
             {sizes.map((size, index) => (
               <Dropdown.Item
@@ -35,8 +75,8 @@ const ProductDetail = () => {
               </Dropdown.Item>
             ))}
           </DropdownButton>
-          <QuantitySelector />
-          <Button className="buyBtn">Add to Cart</Button>
+          <QuantitySelector onChange={handleQuantityChange} />
+          <Button className="buyBtn" onClick={handleAddToCart}>Add to Cart</Button>
         </div>
       </div>
       <Footer></Footer>
