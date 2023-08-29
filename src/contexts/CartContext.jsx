@@ -42,7 +42,7 @@ export function CartProvider({ children }) {
   }
   const handleQuantityChange = (itemId, itemSize, newQuantity) => {
     const updatedCartItems = cartItems.map((item) => {
-      if (item.id === itemId && item.size == itemSize) {
+      if (item.id === itemId && item.size === itemSize) {
         return { ...item, quantity: newQuantity }
       }
       return item

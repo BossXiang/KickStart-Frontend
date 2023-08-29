@@ -15,7 +15,7 @@ const Home = () => {
       .catch(error => {
         console.error('Error fetching trendingProduct data:', error);
       });
-  }, []);
+  }, [trendingProducts]);
   return (
     <div className="homeContainer">
       <Header />
