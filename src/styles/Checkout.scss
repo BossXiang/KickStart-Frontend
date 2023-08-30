@@ -5,23 +5,29 @@
   margin-top: 60px;
   gap: 50px;
   .deliveryContainer {
-    width: 500px;
+    width: 550px;
     margin-bottom: 12px;
     display: inline-block;
     h2 {
-      font-size: 24px;
+      font-size: 30px;
       margin-bottom: 24px;
     }
     label {
+      font-size: 18px;
       width: 100%;
-      display:  block;
+      display: block;
     }
 
     input {
       width: 100%;
-      height: 40px;
-      display:  block;
+      height: 50px;
+      display: block;
       margin-bottom: 12px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid rgb(85, 85, 85);
+      font-size: 20px;
+      padding: 0 10px;
     }
     .continueBtn {
       width: 100%;
@@ -33,7 +39,7 @@
       border: none;
     }
     .steps {
-      font-size: 18px;
+      font-size: 24px;
       color: rgb(119, 119, 119);
     }
     .separator {
@@ -42,16 +48,79 @@
     }
   }
   .summaryContainer {
-    width: 300px;
-    height: 400px;
-    display: inline-block;
-    position: sticky;
-    top: 50px;
-    right: 100px;
-    background-color: rgb(224, 224, 224);
-    border-radius: 5px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .summary {
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 50px;
+      right: 100px;
+      background-color: rgb(241, 241, 241);
+      border-radius: 5px;
+      padding: 25px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      .summaryTitle {
+        font-size: 28px;
+        font-weight: bolder;
+        padding-bottom: 20px;
+        padding-top: 5px;
+        border-bottom: 1px solid rgba(162, 162, 162, 0.748);
+      }
+      .item {
+        display: flex;
+        height: 130px;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(162, 162, 162, 0.748);
+        .imgContainer {
+          margin-right: 20px;
+        }
+        .imgContainer img {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+        }
+
+        .itemInfo {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+          .name {
+            font-size: 20px;
+            font-weight: bold;
+          }
+          .info {
+            font-size: 18px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+          }
+        }
+        .price {
+          font-size: 20px;
+          margin-left: auto;
+        }
+      }
+      .paymentDetails {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 15px 0;
+        font-size: 22px;
+        border-bottom: 1px solid rgba(162, 162, 162, 0.748);
+      }
+      .paymentDetails div {
+        display: flex;
+        justify-content: space-between;
+      }
+      .total {
+        display: flex;
+        justify-content: space-between;
+        font-size: 25px;
+        padding-top: 15px;
+        font-weight: bold;
+      }
+    }
   }
 }

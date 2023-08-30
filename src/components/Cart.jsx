@@ -3,7 +3,7 @@ import '../styles/Cart.scss'
 import { Button, Modal } from 'react-bootstrap'
 import QuantitySelector from './QuantitySelector'
 import { useCart } from '../contexts/CartContext'
-import { useHistory, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = ({ show, handleClose }) => {
   const { cartItems, removeFromCart, handleQuantityChange } = useCart()
