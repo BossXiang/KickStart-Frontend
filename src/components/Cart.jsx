@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import '../styles/Cart.scss'
 import { Button, Modal } from 'react-bootstrap'
 import QuantitySelector from './QuantitySelector'
