@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 80%;
+  width: 67%;
   min-height: 100vh;
   animation: fadeIn 0.6s ease-in-out forwards;
   .title {
@@ -35,12 +35,14 @@
         gap: 10px;
         flex-direction: column;
         width: 350px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         border: 2px solid #93e4fff2;
         flex-shrink: 0;
         .productImg {
-          height: 350px;
-          background-color: #ffbbbbf2;
+          height: 330px;
+          width: 330px;
+          margin-left: 10px;
+          margin-top: 10px;
         }
         .productName,
         .productPrice {

@@ -42,7 +42,7 @@ const Checkout = () => {
         </div>
         <aside className="summaryContainer">
           <div className="summary">
-            <div className="summaryTitle">Order summary</div>
+            <div className="summaryTitle">Order Summary</div>
             {cartItems.map((item, index) => (
               <div className="item" key={index}>
                 <div className="imgContainer">

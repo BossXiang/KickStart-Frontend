@@ -1,9 +1,14 @@
+@font-face {
+  font-family: 'FuturaLT-Light'; /* 自定义字体名称 */
+  src: url('./fontStyle/FuturaLT-Light.ttf') format('truetype');
+}
 .checkoutContainer {
   display: flex;
   justify-content: center;
   margin: 0 auto;
   margin-top: 60px;
   gap: 50px;
+  font-family: 'FuturaLT-Light';
   .deliveryContainer {
     width: 550px;
     margin-bottom: 12px;
@@ -11,6 +16,7 @@
     h2 {
       font-size: 30px;
       margin-bottom: 24px;
+      font-weight: bold;
     }
     label {
       font-size: 18px;
