@@ -7,7 +7,7 @@ const RadioSelector = ({ setOption, selectedOption, options }) => {
   };
 
   return (
-    <div className="container">
+    <div className="radioContainer">
       {options.map((option, idx) => (
         <div key={idx}>
           <input
