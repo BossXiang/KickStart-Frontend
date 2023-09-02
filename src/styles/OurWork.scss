@@ -3,20 +3,30 @@
   flex-direction: column;
   min-height: 100vh;
   .container {
-    margin-top: 60px;
-    margin-bottom: 30px;
+    width: 100%;
+    margin: 0;
+    max-width: 1920px;
     .imageRow {
       display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 30px;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 20px;
       .demoImg {
-        width: 300px;
-        height: 300px;
+        width: calc((100% - 80px)/5);
+        height: calc((100% - 80px)/5);
+        position: relative;
+        overflow: hidden;
       }
-      .demoImg:hover {
-        filter: brightness(0.5);
+      .demoImg img{
+        max-width:100%;
+        max-width: 100%;
+        transition: transform 0.3s ease;
+        display: block;
         cursor: pointer;
+      }
+      .demoImg:hover img{
+        transform: scale(1.1);
       }
     }
   }

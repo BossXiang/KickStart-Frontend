@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'FuturaLT-Light'; /* 自定义字体名称 */
+  src: url('./fontStyle/FuturaLT-Light.ttf') format('truetype');
+}
 .detailContainer {
   width: 60%;
   justify-content: space-between;
@@ -5,11 +9,11 @@
   display: flex;
   min-height: calc(100vh - 350px);
   padding-top: 50px;
-
+  font-family: 'FuturaLT-Light';
   .detailImg {
     width: 50%;
   }
-  .detailImg img{
+  .detailImg img {
     width: 400px;
     height: 400px;
     object-fit: cover;
