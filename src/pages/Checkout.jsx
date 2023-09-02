@@ -1,44 +1,217 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import RadioSelector from '../components/RadioSelector'
 import { useCart } from '../contexts/CartContext'
 import '../styles/Checkout.scss'
+
+const DeliveryDetail = ({ submitHandle }) => {
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [country, setCountry] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [zip, setZip] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = {
+      email, firstName, lastName, phone, country, address, city, zip
+    };
+    submitHandle(formData); // Call the parent's onSubmit callback with the form data
+  };
+
+  return (
+    <div className='deliveryContainer'>
+      <h2>Delivery details</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Email for order confirmation*</label>
+        <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <label>First name*</label>
+        <input type="text" name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+        <label>Last name*</label>
+        <input type="text" name="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+        <label>Phone*</label>
+        <input type="text" name="phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+        <label>Country*</label>
+        <input type="text" name="country" value={country} onChange={(e) => setCountry(e.target.value)}/>
+        <label>Address*</label>
+        <input type="text" name="address" value={address} onChange={(e) => setAddress(e.target.value)}/>
+        <label>City*</label>
+        <input type="text" name="city" value={city} onChange={(e) => setCity(e.target.value)}/>
+        <label>Zip / Postal code*</label>
+        <input type="text" name="zip" value={zip} onChange={(e) => setZip(e.target.value)}/>
+        <button className="continueBtn" type="submit">Continue</button>
+      </form>
+    </div>
+  )
+}
+
+const DeliveryMethod = ({ submitHandle }) => {
+  const shippingOptions = ["Bulgaria", "European", "USA"]
+  const pickUpOptions = ["The Art of ET", "ET Museum"]
+  const [selectedDelivery, setSelectedDelivery] = useState(shippingOptions[0])
+  
+  return (
+    <div>
+      <h2>Delivery Method</h2>
+      <label>Shipping & delivery</label>
+      <RadioSelector setOption={setSelectedDelivery} selectedOption={selectedDelivery} options={shippingOptions}/>
+      <label>Pickup</label>
+      <RadioSelector setOption={setSelectedDelivery} selectedOption={selectedDelivery} options={pickUpOptions}/>
+      <button className="continueBtn" type="button" onClick={(e) => submitHandle(null)}>Continue</button>
+    </div>
+  )
+}
+
+const Payment = ({ submitHandle }) => {
+  const paymentOptions = ["Credit/Debit Cards", "PayPal", "Cash on Delivery"]
+  const [selectedPayment, setSelectedPayment] = useState("Credit/Debit Cards")
+
+  const CreditCard = () => {
+    return (
+      <div className='creditCardContainer'>
+        <form action="">
+          <label>Card number*</label>
+          <input type="text" placeholder="Enter card number" className="longInput" />
+          <label>Expiration date*</label>
+          <input type="text" placeholder="MM / YY" className="shortInput" />
+          <label>Security code (CVV)*</label>
+          <input type="text" placeholder="XXX" className="shortInput" />
+          <label>Cardholder name*</label>
+          <input type="text" className="longInput" />
+        </form>
+      </div>
+    )
+  }
+
+  const PayPal = () => {
+    return (
+      <div className='paypalContainer'>
+        <label>Once you click to proceed, you will be redirected to PayPal</label>
+      </div>
+    )
+  }
+
+  const Cash = () => {
+    return (
+      <div className='cashContainer'>
+        <label>Please pay on the delivery</label>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <h2>Payment</h2>
+      <RadioSelector setOption={setSelectedPayment} selectedOption={selectedPayment} options={paymentOptions}/>
+      { selectedPayment === "Credit/Debit Cards" ? <CreditCard /> : <div/> }
+      { selectedPayment === "PayPal" ? <PayPal /> : <div/> }
+      { selectedPayment === "Cash on Delivery" ? <Cash /> : <div/> }
+      <button className="continueBtn" type="button" onClick={(e) => submitHandle(null)}>Continue</button>
+    </div>
+  )
+}
+
+const Review = ({ submitHandle }) => {
+  return (
+    <div>
+      <h2>Review</h2>
+      <label>Review the order details above, and place your order when you’re ready.</label>
+      <div className='checkboxContainer'>
+        <input
+          type="checkbox"
+          name="terms"
+          id="TandC"
+        />
+        <label htmlFor="TandC">I agree to the Terms & Conditions</label>
+      </div>
+      <div className='checkboxContainer'>
+        <input
+          type="checkbox"
+          name="terms"
+          id="EandS"
+        />
+        <label htmlFor="EandS">I agree to receive marketing communications via email and/or SMS to any emails and phone numbers added above.</label>
+      </div>
+      <button className="continueBtn" type="button" onClick={(e) => submitHandle(null)}>Continue</button>
+    </div>
+  )
+}
 
 const Checkout = () => {
   const { cartItems } = useCart()
   const cartTotal = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity
   }, 0)
+  const [status, setStatus] = useState("DeliveryDetail")
+  const [editableProcedures, setEditableProcedures] = useState(["DeliveryDetail"])
+
+  function curatedProcedure(procedureTitle) {
+    if(!editableProcedures.includes(procedureTitle)) {
+      const updatedProcedures = [...editableProcedures, procedureTitle]
+      setEditableProcedures(updatedProcedures)
+    }
+  }
+
+  function setToStatus(newStatus) {
+    if(newStatus != null) {
+      setStatus(newStatus)
+      return
+    }
+    switch (status) {
+      case "DeliveryDetail":
+        setStatus("DeliveryMethod")
+        curatedProcedure("DeliveryMethod")
+        break
+      case "DeliveryMethod":
+        setStatus("Payment")
+        curatedProcedure("Payment")
+        break
+      case "Payment":
+        setStatus("Review")
+        curatedProcedure("Review")
+        break
+      case "Review":
+        alert("Placed the order!")
+        break
+      default:
+        break
+    }
+  }
+
+  function handleSubmit(formData) {
+    if(status === "DeliveryDetail") {
+      console.log('Form Data:', formData);
+    }
+    setToStatus(null)
+  }
+
+  const ProcedureTitle = ({title}) => {
+    const handleClick = setToStatus.bind(null, title);
+
+    return (
+      <div className='procedureTitle'>
+        <p className="title">{title}</p>
+        { editableProcedures.includes(title) ? <p className="edit" onClick={handleClick}>Edit</p> : <div/>}
+      </div>
+    )
+  }
+
   return (
     <div>
       <Header />
       <div className="checkoutContainer">
-        <div className="deliveryContainer">
-          <h2>Delivery details</h2>
-          <form action="">
-            <label>Email for order confirmation*</label>
-            <input type="text" />
-            <label>First name*</label>
-            <input type="text" />
-            <label>Last name*</label>
-            <input type="text" />
-            <label>Phone*</label>
-            <input type="text" />
-            <label>Country*</label>
-            <input type="text" />
-            <label>Address*</label>
-            <input type="text" />
-            <label>City*</label>
-            <input type="text" />
-            <label>Zip / Postal code*</label>
-            <input type="text" />
-            <button className="continueBtn">Continue</button>
-          </form>
-          <p className="steps">Delivery Method</p>
+        <div className="procedureContainer">
+          { status === "DeliveryDetail" ? <DeliveryDetail submitHandle={handleSubmit} /> : <ProcedureTitle title={"DeliveryDetail"} /> }
           <div className="separator"></div>
-          <p className="steps">Payment</p>
+          { status === "DeliveryMethod" ? <DeliveryMethod submitHandle={handleSubmit} /> : <ProcedureTitle title={"DeliveryMethod"} /> }
           <div className="separator"></div>
-          <p className="steps">Review & Place order</p>
+          { status === "Payment" ? <Payment submitHandle={handleSubmit} /> : <ProcedureTitle title={"Payment"} /> }
+          <div className="separator"></div>
+          { status === "Review" ? <Review submitHandle={handleSubmit} /> : <ProcedureTitle title={"Review"} /> }
         </div>
         <aside className="summaryContainer">
           <div className="summary">
