@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import Slider from '../components/Slider'
 import '../styles/Home.scss'
 import { getTrendingProducts } from '../plugins/api/api_service.ts'
 
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
+  const images=[
+    'assets/samples/sample1.jpg',
+    'assets/samples/sample2.jpg',
+    'assets/samples/sample3.jpg',
+    'assets/samples/sample4.jpg',
+    'assets/samples/sample5.jpg',
+  ]
   useEffect(() => {
     getTrendingProducts()
       .then(data => {
         setTrendingProducts(data);
-        console.log(trendingProducts);
       })
       .catch(error => {
         console.error('Error fetching trendingProduct data:', error);
       });
-  }, [trendingProducts]);
+  }, []);
   return (
     <div className="homeContainer">
       <Header />
@@ -27,31 +34,7 @@ const Home = () => {
         />
         <div className="homeTitle">'These are people's favorites.'</div>
         <div className="trendingContainer">
-          <img
-            src="assets/samples/sample1.jpg"
-            alt="trending product"
-            className="trendingProduct"
-          />
-          <img
-            src="assets/samples/sample2.jpg"
-            alt="trending product"
-            className="trendingProduct"
-          />
-          <img
-            src="assets/samples/sample3.jpg"
-            alt="trending product"
-            className="trendingProduct"
-          />
-          <img
-            src="assets/samples/sample4.jpg"
-            alt="trending product"
-            className="trendingProduct"
-          />
-          <img
-            src="assets/samples/sample5.jpg"
-            alt="trending product"
-            className="trendingProduct"
-          />
+          <Slider images={images} />
         </div>
         <div className="homeTitle">The bliss we once tailored</div>
         <div className="workContainer">
