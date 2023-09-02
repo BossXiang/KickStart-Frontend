@@ -6,8 +6,8 @@ import '../styles/Home.scss'
 import { getTrendingProducts } from '../plugins/api/api_service.ts'
 
 const Home = () => {
-  const [trendingProducts, setTrendingProducts] = useState([]);
-  const images=[
+  const [trendingProducts, setTrendingProducts] = useState([])
+  const images = [
     'assets/samples/sample1.jpg',
     'assets/samples/sample2.jpg',
     'assets/samples/sample3.jpg',
@@ -16,13 +16,13 @@ const Home = () => {
   ]
   useEffect(() => {
     getTrendingProducts()
-      .then(data => {
-        setTrendingProducts(data);
+      .then((data) => {
+        setTrendingProducts(data)
       })
-      .catch(error => {
-        console.error('Error fetching trendingProduct data:', error);
-      });
-  }, []);
+      .catch((error) => {
+        console.error('Error fetching trendingProduct data:', error)
+      })
+  }, [])
   return (
     <div className="homeContainer">
       <Header />
@@ -32,15 +32,18 @@ const Home = () => {
           alt="background"
           className="mainImg"
         />
+        <div className="homeTitle">The bliss we once tailored</div>
+        <div className="workContainer">
+          <div className="work">
+            <div className="pic">
+              <img src="assets/samples/sample1.jpg" alt="pic" />
+            </div>
+            <div className="paint"></div>
+          </div>
+        </div>
         <div className="homeTitle">'These are people's favorites.'</div>
         <div className="trendingContainer">
           <Slider images={images} />
-        </div>
-        <div className="homeTitle">The bliss we once tailored</div>
-        <div className="workContainer">
-          <div className="work" />
-          <div className="mainWork" />
-          <div className="work" />
         </div>
         <div className="subscriptionContainer">
           <div className="subscription">
@@ -50,9 +53,7 @@ const Home = () => {
             <p>Don't worry, we don't have time to send a lot of mails</p>
             <label className="emailLabel">Enter your email here *</label>
             <input type="text" className="emailInput" />
-            <button className="signUp">
-              Sign up
-            </button>
+            <button className="signUp">Sign up</button>
           </div>
         </div>
         <div className="partnerContainer">

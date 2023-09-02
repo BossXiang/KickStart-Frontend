@@ -112,23 +112,33 @@
       height: 80px;
       font-size: 25px;
       font-weight: bold;
-      padding-left:10px;
+      padding-left: 10px;
       margin-bottom: 10px;
     }
     .btn {
       border-radius: 0;
     }
     .buyBtn {
-      background-color: rgb(243, 201, 123);
-      border: 2px solid #cc8c32f2;
+      background-color: rgb(90, 230, 235);
+      border: none;
       transition: background-color 0.3s, color 0.3s;
     }
     .buyBtn:hover {
-      background-color: rgb(235, 191, 110);
+      animation: pay 1s ease-in-out 1 both;
+      background-color: rgb(77, 199, 203);
+      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0% 0%);
+    }
+    @keyframes pay {
+      0% {
+        clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 0 50%, 0% 0%);}
+      
+      100% {
+        clip-path: polygon(88% 0, 100% 50%, 89% 100%, 0% 100%, 10% 50%, 0% 0%);
+      }
+      
     }
     .buyBtn:active {
-      background-color: rgb(255, 188, 63);
-      border: 2px solid #cc8c32f2;
+      background-color: rgb(54, 150, 154);
     }
   }
   ::-webkit-scrollbar {

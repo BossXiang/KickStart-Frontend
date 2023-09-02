@@ -1,7 +1,7 @@
-import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import "../styles/AboutUs.scss";
+import React from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import '../styles/AboutUs.scss'
 
 const Contact = () => {
   return (
@@ -10,13 +10,49 @@ const Contact = () => {
       <div className="aboutUsContainer">
         <div className="about">
           <div className="aboutContent">
-            <h2 className="aboutTitle">About Tailor Bliss</h2>
-            <p className="aboutWords">Step into TailorBliss, where limitless personalization brings your unique vision to life. This realm transforms your ideas into exclusive, personalized experiences. At TailorBliss, we're dedicated to turning your imaginative concepts into realities.<br/><br/>
-              Our journey is guided by a potent belief – every individual deserves products harmonizing with their identity. TailorBliss isn't just e-commerce; it's a dynamic canvas spotlighting your creativity.<br/><br/>
-              Discover a shopping era empowered by you. TailorBliss shapes tailored fashion and expressive home decor, making your story tangible. Our intuitive platform bridges concept and creation with excitement.<br/><br/>
-              Embrace personalization's essence with TailorBliss. Skilled artisans craft each detail, ensuring your unique perspective shines. Seek the perfect gift or embody your signature style with our curated customizable products.<br/><br/>
-              Join a community celebrating individuality and creativity. TailorBliss transcends a destination; it's your exultation. Thanks for choosing TailorBliss to embrace your distinctiveness and savor bespoke delight.<br/><br/>
-              Witness ordinary moments becoming extraordinary memories. Discover. Design. Delight. Welcome to the universe of TailorBliss.</p>
+            <div>
+              <h2 className="aboutTitle">About Tailor Bliss</h2>
+              <p className="aboutWords">
+                Step into TailorBliss, where limitless personalization brings
+                your unique vision to life. This realm transforms your ideas
+                into exclusive, personalized experiences. At TailorBliss, we're
+                dedicated to turning your imaginative concepts into realities.
+                <br />
+                <br />
+                Our journey is guided by a potent belief – every individual
+                deserves products harmonizing with their identity. TailorBliss
+                isn't just e-commerce; it's a dynamic canvas spotlighting your
+                creativity.
+                <br />
+                <br />
+                Discover a shopping era empowered by you. TailorBliss shapes
+                tailored fashion and expressive home decor, making your story
+                tangible. Our intuitive platform bridges concept and creation
+                with excitement.
+                <br />
+                <br />
+                Embrace personalization's essence with TailorBliss. Skilled
+                artisans craft each detail, ensuring your unique perspective
+                shines. Seek the perfect gift or embody your signature style
+                with our curated customizable products.
+                <br />
+                <br />
+                Join a community celebrating individuality and creativity.
+                TailorBliss transcends a destination; it's your exultation.
+                Thanks for choosing TailorBliss to embrace your distinctiveness
+                and savor bespoke delight.
+                <br />
+                <br />
+                Witness ordinary moments becoming extraordinary memories.
+                Discover. Design. Delight. Welcome to the universe of
+                TailorBliss.
+              </p>
+            </div>
+            <img
+              src="assets/samples/sample12.jpg"
+              alt="face"
+              className="aboutImg"
+            />
           </div>
         </div>
 
@@ -53,7 +89,7 @@ const Contact = () => {
       </div>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

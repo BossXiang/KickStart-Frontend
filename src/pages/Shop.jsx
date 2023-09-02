@@ -41,11 +41,14 @@ const Product = ({ product }) => {
   return (
     <div className="product">
       <Link to={`/product/${product.id}`}>
-        <img src={product.imgSource[0]} alt="product" className="productImg" />
+        <div className="productImg">
+          <img src={product.imgSource[0]} alt="product" />
+        </div>
+        
       </Link>
       <div className="productName">{product.title}</div>
       <div className="productPrice">${product.price}</div>
-      <DropdownButton id="size-dropdown" title={selectedSize}>
+      {/* <DropdownButton id="size-dropdown" title={selectedSize}>
         {sizes.map((size, index) => (
           <Dropdown.Item
             key={index}
@@ -58,7 +61,7 @@ const Product = ({ product }) => {
       <QuantitySelector onChange={handleQuantityChange}/>
       <Button className="buyBtn" onClick={handleAddToCart}>
         Add to Cart
-      </Button>
+      </Button> */}
     </div>
   )
 }
@@ -112,12 +115,7 @@ const Shop = () => {
       <Header />
       <div className="shopContainer">
         <Container className="my-5">
-          <div className="newArrivalContainer">
-            <h2 className="title">New Arrival</h2>
-              {/* <div className="productContainer">{newArrivalProducts_dummy}</div>  */}
-          </div>
           <div className="allProductContainer">
-            <h2 className="title">Products</h2>
             <div className="productContainer">{productList}</div>
           </div>
         </Container>

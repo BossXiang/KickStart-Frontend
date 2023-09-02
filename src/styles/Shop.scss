@@ -21,38 +21,44 @@
   .title {
     text-align: center;
   }
-
-  .newArrivalContainer,
   .allProductContainer {
     margin-bottom: 30px;
     .productContainer {
       display: flex;
       flex-wrap: wrap;
-      gap: calc((100% - 1050px)/2);
+      gap: calc((100% - 1050px) / 2);
       font-family: 'FuturaLT-Light';
       .product {
         display: flex;
-        gap: 10px;
+        align-items: center;
+        gap: 5px;
         flex-direction: column;
         width: 350px;
         margin-bottom: 30px;
-        border: 2px solid #93e4fff2;
         flex-shrink: 0;
         .productImg {
-          height: 330px;
-          width: 330px;
           margin-left: 10px;
           margin-top: 10px;
+          overflow: hidden;
         }
-        .productName,
+        .productImg img {
+          height: 330px;
+          width: 330px;
+          transition: transform 0.3s ease-in-out;
+        }
+        .productImg:hover img {
+          transform: scale(1.1);
+        }
+        .productName {
+          padding-left: 10px;
+          font-size: 23px;
+          font-weight: bold;
+        }
         .productPrice {
           padding-left: 10px;
           font-size: 20px;
         }
-        .productPrice {
-          font-size: 18px;
-        }
-        .input-group{
+        .input-group {
           width: 330px;
           margin-left: 10px;
         }
