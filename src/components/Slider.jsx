@@ -3,15 +3,14 @@ import '../styles/Slider.scss';
 
 const ImageSlider = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const handleHover = (imageIndex) => {
+    setActiveIndex(imageIndex)
+  }
   useEffect(() => {
-    // 自动切换下一张图片的逻辑，每5秒切换一次
     const interval = setInterval(() => {
       const nextIndex = (activeIndex + 1) % images.length;
       setActiveIndex(nextIndex);
     }, 5000);
-
-    // 清除定时器以防止内存泄漏
     return () => clearInterval(interval);
   }, [activeIndex, images]);
 
@@ -21,6 +20,7 @@ const ImageSlider = ({ images }) => {
         <div
           key={imageIndex}
           className={`image-item ${activeIndex === imageIndex ? 'active' : ''}`}
+          onMouseOver={() => handleHover(imageIndex)}
         >
           <img src={image} alt={`Slide ${imageIndex + 1}`} />
         </div>
