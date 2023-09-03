@@ -49,7 +49,7 @@ const Contact = () => {
               </p>
             </div>
             <img
-              src="assets/samples/sample12.jpg"
+              src="assets/samples/sample12-rmbg.png"
               alt="face"
               className="aboutImg"
             />
@@ -59,9 +59,9 @@ const Contact = () => {
         <h2 className="contactUs">Contact Us</h2>
 
         <div className="container">
-          <img src="assets/img/tom.jpg" alt="A face" />
+          <a href="https://wenhsiangcheng.com"><img src="assets/img/tom.jpg" alt="A face" /></a>
           <div className="description">
-            <p className="contactName">Tom</p>
+            <a href="https://wenhsiangcheng.com" className="contactName">Tom</a>
             <p>Co-founder of TailorBliss</p>
             <span className="line">
               <p>Email:</p>
