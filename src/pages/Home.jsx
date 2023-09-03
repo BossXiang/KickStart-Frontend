@@ -14,6 +14,7 @@ const Home = () => {
     'assets/samples/sample4.jpg',
     'assets/samples/sample5.jpg',
   ]
+  
   useEffect(() => {
     getTrendingProducts()
       .then((data) => {
@@ -38,7 +39,21 @@ const Home = () => {
             <div className="pic">
               <img src="assets/samples/sample1.jpg" alt="pic" />
             </div>
-            <div className="paint"></div>
+            <div className="paintGroup">
+              <div className="paint"></div>
+              <div className="paint"></div>
+              <div className="paint"></div>
+            </div>
+          </div>
+          <div className="work">
+            <div className="paintGroup">
+              <div className="paint"></div>
+              <div className="paint"></div>
+              <div className="paint"></div>
+            </div>
+            <div className="pic">
+              <img src="assets/samples/sample2.jpg" alt="pic" />
+            </div>
           </div>
         </div>
         <div className="homeTitle">'These are people's favorites.'</div>
@@ -59,7 +74,7 @@ const Home = () => {
         <div className="partnerContainer">
           <p className="partnerTitle">Our Partners</p>
           <div className="partnerList">
-            <img src="assets/img/pixar.png" alt="pixar" className="pixar" />
+            {/* <img src="assets/img/pixar.png" alt="pixar" className="pixar" /> */}
           </div>
         </div>
       </div>
