@@ -2,47 +2,49 @@ import React, { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import RadioSelector from '../components/RadioSelector'
+import CreditCard from '../components/CreditCard'
 import { useCart } from '../contexts/CartContext'
 import '../styles/Checkout.scss'
+import {ValidateEmail} from '../utils/helper.js'
 
 const DeliveryDetail = ({ submitHandle }) => {
-  const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [country, setCountry] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [zip, setZip] = useState('');
+  const [email, setEmail] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [country, setCountry] = useState('')
+  const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [zip, setZip] = useState('')
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     const formData = {
       email, firstName, lastName, phone, country, address, city, zip
-    };
-    submitHandle(formData); // Call the parent's onSubmit callback with the form data
-  };
+    }
+    submitHandle(formData) // Call the parent's onSubmit callback with the form data
+  }
 
   return (
     <div className='deliveryContainer'>
       <h2>Delivery details</h2>
       <form onSubmit={handleSubmit}>
         <label>Email for order confirmation*</label>
-        <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input type="text" name="email" value={email} required onChange={(e) => setEmail(e.target.value)}/>
         <label>First name*</label>
-        <input type="text" name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+        <input type="text" name="firstName" value={firstName} required onChange={(e) => setFirstName(e.target.value)}/>
         <label>Last name*</label>
-        <input type="text" name="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+        <input type="text" name="lastName" value={lastName} required onChange={(e) => setLastName(e.target.value)}/>
         <label>Phone*</label>
-        <input type="text" name="phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+        <input type="text" name="phone" value={phone} required pattern="[0-9]{10}" onChange={(e) => setPhone(e.target.value)}/>
         <label>Country*</label>
-        <input type="text" name="country" value={country} onChange={(e) => setCountry(e.target.value)}/>
+        <input type="text" name="country" value={country} required onChange={(e) => setCountry(e.target.value)}/>
         <label>Address*</label>
-        <input type="text" name="address" value={address} onChange={(e) => setAddress(e.target.value)}/>
+        <input type="text" name="address" value={address} required onChange={(e) => setAddress(e.target.value)}/>
         <label>City*</label>
-        <input type="text" name="city" value={city} onChange={(e) => setCity(e.target.value)}/>
+        <input type="text" name="city" value={city} required onChange={(e) => setCity(e.target.value)}/>
         <label>Zip / Postal code*</label>
-        <input type="text" name="zip" value={zip} onChange={(e) => setZip(e.target.value)}/>
+        <input type="text" name="zip" value={zip} required onChange={(e) => setZip(e.target.value)}/>
         <button className="continueBtn" type="submit">Continue</button>
       </form>
     </div>
@@ -69,23 +71,6 @@ const DeliveryMethod = ({ submitHandle }) => {
 const Payment = ({ submitHandle }) => {
   const paymentOptions = ["Credit/Debit Cards", "PayPal", "Cash on Delivery"]
   const [selectedPayment, setSelectedPayment] = useState("Credit/Debit Cards")
-
-  const CreditCard = () => {
-    return (
-      <div className='creditCardContainer'>
-        <form action="">
-          <label>Card number*</label>
-          <input type="text" placeholder="Enter card number" className="longInput" />
-          <label>Expiration date*</label>
-          <input type="text" placeholder="MM / YY" className="shortInput" />
-          <label>Security code (CVV)*</label>
-          <input type="text" placeholder="XXX" className="shortInput" />
-          <label>Cardholder name*</label>
-          <input type="text" className="longInput" />
-        </form>
-      </div>
-    )
-  }
 
   const PayPal = () => {
     return (
@@ -146,7 +131,8 @@ const Checkout = () => {
   const cartTotal = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity
   }, 0)
-  const [status, setStatus] = useState("DeliveryDetail")
+  // const [status, setStatus] = useState("DeliveryDetail")
+  const [status, setStatus] = useState("Payment")
   const [editableProcedures, setEditableProcedures] = useState(["DeliveryDetail"])
 
   function curatedProcedure(procedureTitle) {
@@ -182,15 +168,20 @@ const Checkout = () => {
     }
   }
 
+  function validateFormData(formData) {
+    console.log(ValidateEmail(formData.email))
+  }
+
   function handleSubmit(formData) {
     if(status === "DeliveryDetail") {
-      console.log('Form Data:', formData);
+      console.log('Form Data:', formData)
+      validateFormData(formData)
     }
     setToStatus(null)
   }
 
   const ProcedureTitle = ({title}) => {
-    const handleClick = setToStatus.bind(null, title);
+    const handleClick = setToStatus.bind(null, title)
 
     return (
       <div className='procedureTitle'>
