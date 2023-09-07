@@ -56,7 +56,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="homeTitle">'These are people's favorites.'</div>
+        <div className="homeTitle">These are people's favorites</div>
         <div className="trendingContainer">
           <Slider images={images} />
         </div>

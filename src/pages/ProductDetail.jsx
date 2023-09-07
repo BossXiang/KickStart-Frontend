@@ -64,7 +64,7 @@ const ProductDetail = () => {
         <div className="detailContent">
           <div className="detailName">{product.title}</div>
           <div className="detailPrice">${product.price}</div>
-          <div className="detailContent">{product.description}</div>
+          <div className="detailInfo">{product.description}</div>
           <DropdownButton id="size-dropdown" title={selectedSize}>
             {sizes.map((size, index) => (
               <Dropdown.Item

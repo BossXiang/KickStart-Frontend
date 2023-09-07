@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'FuturaLT-italics';
-  src: url('./fontStyle/Futura\ LT\ W01\ Light\ Oblique.ttf') format('truetype');
+  font-family: 'Lucy';
+  src: url('./fontStyle/LucySaidOkPersonalUseItalic-OV9ee.ttf') format('truetype');
 }
 @keyframes fadeIn {
   0% {
@@ -29,11 +29,12 @@
     }
     .homeTitle {
       height: 100px;
-      font-family: 'FuturaLT-italics';
+      font-family: 'Lucy';
       text-align: center;
-      font-size: 35px;
+      font-size: 65px;
       line-height: 100px;
       animation: blink 5s infinite;
+      color: #f88888;
     }
     @keyframes blink {
       0%,
@@ -42,6 +43,7 @@
       }
       50% {
         opacity: 0.5;
+        color: #f598a6;
       }
     }
     .trendingContainer {

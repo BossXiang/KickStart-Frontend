@@ -1,15 +1,10 @@
-@font-face {
-  font-family: 'FuturaLT-Light'; /* 自定义字体名称 */
-  src: url('./fontStyle/FuturaLT-Light.ttf') format('truetype');
-}
 .detailContainer {
-  width: 60%;
   justify-content: space-between;
   margin: 0 auto;
   display: flex;
   min-height: calc(100vh - 350px);
-  padding-top: 50px;
-  font-family: 'FuturaLT-Light';
+  padding: 50px 500px 0 350px;
+  background-color: rgba(255, 238, 222, 255);
   .detailImg {
     width: 50%;
   }
@@ -17,46 +12,70 @@
     width: 400px;
     height: 400px;
     object-fit: cover;
+    border-radius: 5px;
   }
   .detailContent {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 40%;
     .detailName {
-      font-size: 40px;
+      font-size: 50px;
       font-weight: bolder;
     }
     .detailPrice {
       font-size: 30px;
+      color: rgba(0, 0, 0, 0.628);
     }
     .detailInfo {
       font-size: 25px;
+      color: rgba(0, 0, 0, 0.628);
     }
     .btn,
     .btn-primary {
-      height: 40px;
-      color: black;
-      border-radius: 0;
+      height: 45px;
+      color: whitesmoke;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 5px;
+      border: none;
     }
-
+    #quantityBtn {
+      background-color: #ff8066b3;
+      border: none;
+      color: whitesmoke;
+    }
+    #quantityBtn:hover {
+      background-color: #ff8066ca;
+    }
+    #quantityBtn:active {
+      background-color: #ff684aca;
+    }
     .dropdown-toggle::after {
       position: absolute;
       right: 20px;
-      top: 17px;
+      top: 20px;
     }
     #size-dropdown {
       width: 100%;
-      background-color: wheat;
+      background-color: #ff8066b3;
       text-align: left;
-      border: 2px solid #cc8c32f2;
+    }
+    #size-dropdown:hover {
+      background-color: #ff8066ca;
+    }
+    #size-dropdown:active {
+      background-color: #ff684aca;
     }
     .dropdownBtn,
     .buyBtn {
-      background-color: wheat;
-      border: 2px solid #cc8c32f2;
+      background-color: #ff8066b3;
     }
     .buyBtn:hover {
-      background-color: rgb(230, 188, 111);
+      background-color: #ff8066ca;
+    }
+    .buyBtn:active {
+      background-color: #ff684aca;
     }
     .dropdown-menu {
       width: 100%;

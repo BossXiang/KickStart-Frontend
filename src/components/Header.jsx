@@ -15,55 +15,9 @@ const Header = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="headerContainer" id="basic-navbar-nav">
         <div className="header">
-          <Navbar.Brand className="headerLogo" as={Link} to="/">
-            <div className="cube-container">
-              <div className="cube">
-                <div className="face front">
-                  <img
-                    src="/assets/img/logo.png"
-                    alt="Logo"
-                    className="logoImage"
-                  />
-                </div>
-                <div className="face back">
-                  <img
-                    src="/assets/img/logo.png"
-                    alt="Logo"
-                    className="logoImage"
-                  />
-                </div>
-                <div className="face top">
-                  <img
-                    src="/assets/img/logo.png"
-                    alt="Logo"
-                    className="logoImage"
-                  />
-                </div>
-                <div className="face bottom">
-                  <img
-                    src="/assets/img/logo.png"
-                    alt="Logo"
-                    className="logoImage"
-                  />
-                </div>
-                <div className="face left">
-                  <img
-                    src="/assets/img/logo.png"
-                    alt="Logo"
-                    className="logoImage"
-                  />
-                </div>
-                <div className="face right">
-                  <img
-                    src="/assets/img/logo.png"
-                    alt="Logo"
-                    className="logoImage"
-                  />
-                </div>
-              </div>
-            </div>
-          </Navbar.Brand>
-          THE ART OF ET
+          {/* <Navbar.Brand className="headerLogo" as={Link} to="/">
+          </Navbar.Brand> */}
+          TailorBliss
           <Nav className="ml-auto headerPage">
             <Nav.Link as={Link} to="/">
               home
