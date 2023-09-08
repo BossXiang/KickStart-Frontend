@@ -6,6 +6,18 @@
   font-family: 'PumpkinPie';
   src: url('./fontStyle/PumpkinPieLattesBold-WyGGz.ttf') format('truetype');
 }
+@keyframes jumpUp {
+  0% {
+    scale: 1;
+  }
+  50% {
+      scale: 1.1;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
 .clearPadding {
   padding: 0 !important;
 }
@@ -15,10 +27,11 @@
   justify-content: center;
   height: 250px;
   border-bottom: 1px solid rgba(0, 0, 0, 0);
-  background: #fff;
+  background: linear-gradient(to bottom, #ffa593b3 0%, #ffad9cbe 2%,#ffb7a9c0 5%,#ffc9beca 9%,#feccc1c0 15%, #e4e4e4 100%);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  z-index: 999999;
+  z-index: 999998;
   padding: 0;
+  border: none;
   .header {
     display: flex;
     flex-direction: column;
@@ -31,7 +44,6 @@
     font-weight: 600;
     font-family: 'MoodyadolescentRegular';
     white-space: nowrap;
-    margin: 10px 0 0 100px;
     .headerLogo {
       width: 95px;
       height: 95px;
@@ -68,66 +80,22 @@
       z-index: 999;
     }
   }
-  .headerIcon {
-    display: flex;
-    gap: 25px;
-    margin-left: 0;
-    height: 35px;
-  }
-  .headerIcon svg {
-    height: 35px;
-    width: 35px;
-  }
-  .cube-container {
-    perspective: 1000px;
-    margin-top: 10px;
-  }
-
-  .cube {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    transform-style: preserve-3d;
-    animation: rotate 6s infinite linear;
-  }
-
-  .face {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: rgba(4, 4, 4, 0.2);
-    border: 1px solid #60e0dc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-  }
-
-  .front {
-    transform: translateZ(50px);
-  }
-  .back {
-    transform: translateZ(-50px) rotateY(180deg);
-  }
-  .top {
-    transform: rotateX(90deg) translateZ(50px);
-  }
-  .bottom {
-    transform: rotateX(-90deg) translateZ(50px);
-  }
-  .left {
-    transform: rotateY(-90deg) translateZ(50px);
-  }
-  .right {
-    transform: rotateY(90deg) translateZ(50px);
-  }
-
-  @keyframes rotate {
-    from {
-      transform: rotateY(0deg);
-    }
-    to {
-      transform: rotateY(360deg);
-    }
-  }
+}
+.headerIcon {
+  position: absolute;
+  gap: 25px;
+  right: 350px;
+  bottom: 28px;
+  height: 45px;
+  z-index: 999999;
+}
+.headerIcon svg {
+  height: 37px;
+  width: 37px;
+  color: #c52b0073;
+  transition: transform 0.5s ease; 
+}
+.headerIcon svg :hover{
+  color: #e43303ba;
+  animation: jumpUp 0.5s ease;
 }

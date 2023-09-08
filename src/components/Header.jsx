@@ -33,17 +33,14 @@ const Header = () => {
             </Nav.Link>
           </Nav>
         </div>
-        <Nav className="ml-auto headerIcon">
+      </Navbar.Collapse>
+      <Nav className="ml-auto headerIcon">
           <Nav.Link>
             <FontAwesomeIcon icon={faCartShopping} onClick={handleShow} />
             {showModal && <div className="overlay" onClick={handleClose} />}
             <Cart show={showModal} handleClose={handleClose} />
           </Nav.Link>
-          <Nav.Link as={Link} to="/login">
-            <FontAwesomeIcon icon={faUser} />
-          </Nav.Link>
         </Nav>
-      </Navbar.Collapse>
     </Navbar>
   )
 }
