@@ -56,7 +56,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <h2 className="contactUs">Contact Us</h2>
+        {/* <h2 className="contactUs">Contact Us</h2>
 
         <div className="container">
           <a href="https://wenhsiangcheng.com"><img src="assets/img/tom.jpg" alt="A face" /></a>
@@ -85,7 +85,7 @@ const Contact = () => {
             </span>
           </div>
           <img src="assets/img/elijah.jpg" alt="A face" />
-        </div>
+        </div> */}
       </div>
       <Footer />
     </div>

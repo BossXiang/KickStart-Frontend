@@ -10,14 +10,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 700px;
   animation: fadeIn 0.6s ease-in-out forwards;
   .about {
     margin-top: 2px;
-    margin-bottom: 30px;
     width: 100%;
     height: 700px;
-    background-color: rgb(71, 71, 71);
+    background-color: rgba(74, 69, 67, 0.82);
+    color: whitesmoke;
     .aboutContent {
       display: flex;
       flex: 0 0 50%;
@@ -25,10 +25,10 @@
       width: 1200px;
       gap: 20px;
       .aboutTitle {
-        color: white;
+        
       }
       .aboutWords {
-        color: white;
+        
       }
     }
     .aboutImg {

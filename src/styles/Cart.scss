@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'PumpkinPie';
+  src: url('./fontStyle/PumpkinPieLattesBold-WyGGz.ttf') format('truetype');
+}
+@keyframes gradientLoad {
+  from {
+    background-position: -100% 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
 .overlay {
   position: fixed;
   top: 0;
@@ -14,25 +26,42 @@
   right: -400px;
   width: 400px;
   height: 100%;
-  background-color: white;
+  background-color: rgb(243, 252, 255);
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   transition: right 0.3s ease-in-out;
   .modal-content {
-    padding: 20px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     height: 100%;
     gap: 10px;
     .cartHeader {
       padding: 0 10px 0 150px;
+      font-family: 'PumpkinPie';
       height: 80px;
-      background-color: rgb(101, 101, 101);
-      color: whitesmoke;
-      margin-bottom: 10px;
-      box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
+      color: black;
+      margin-bottom: 30px;
+      .modal-title{
+        font-size: 70px;
+      }
       .btn-close {
         margin-bottom: 40px;
       }
+    }
+    .cartHeader::after {
+      content: '';
+      position: absolute;
+      margin-top: 100px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-image: repeating-linear-gradient(
+        to right,
+        transparent,
+        transparent 4px,
+        #ff7b60ce,
+        #ff8066b3
+      );
     }
     .cartFooter {
       display: flex;
@@ -47,30 +76,42 @@
       gap: 5px;
       .item {
         display: flex;
-        height: 100px;
+        height: 120px;
         padding: 5px;
         justify-content: flex-start;
+        padding-top: 15px;
         gap: 20px;
-        border: 1px solid rgba(162, 162, 162, 0.748);
+        border-radius: 5px;
+        background-color: #ffd4cc7e;
         .imgContainer {
-          width: 50%;
+          width: 45%;
+          margin-left: 5px;
         }
         .imgContainer img {
           width: 90px;
           height: 90px;
           object-fit: cover;
+          border-radius: 5px;
         }
         .removeBtn {
           position: absolute;
           right: 5px;
-          background: white;
-          border: 1px solid gray;
-          color: black;
+          background-color: #ff8066b3;
+          border: none;
+          color: whitesmoke;
           font-size: 20px;
           height: 35px;
+          width: 35px;
           display: flex;
           justify-content: center;
           align-items: center;
+          border-radius: 5px;
+        }
+        .removeBtn:hover{
+          background-color: #ff8066ca;
+        }
+        .removeBtn:active {
+          background-color: #ff684aca;
         }
         .itemInfo {
           display: flex;
@@ -95,9 +136,18 @@
               height: 30px;
             }
             #quantityBtn {
+              background-color: #ff8066b3;
               height: 30px;
-              width: 10px;
-              margin: 0;
+              border: none;
+              width: 30px;
+              color: whitesmoke;
+              border-radius: 5px;
+            }
+            #quantityBtn:hover {
+              background-color: #ff8066ca;
+            }
+            #quantityBtn:active {
+              background-color: #ff684aca;
             }
           }
         }
@@ -105,10 +155,11 @@
     }
     .subtotal {
       height: 80px;
-      font-size: 25px;
+      font-size: 45px;
       font-weight: bold;
       padding-left: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 40px;
+      font-family: 'PumpkinPie';
     }
     .btn {
       border-radius: 0;
