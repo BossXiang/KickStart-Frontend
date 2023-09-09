@@ -71,12 +71,6 @@ const Home = () => {
             <button className="signUp">Sign up</button>
           </div>
         </div>
-        <div className="partnerContainer">
-          <p className="partnerTitle">Our Partners</p>
-          <div className="partnerList">
-            {/* <img src="assets/img/pixar.png" alt="pixar" className="pixar" /> */}
-          </div>
-        </div>
       </div>
       <Footer />
     </div>

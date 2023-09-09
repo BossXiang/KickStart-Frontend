@@ -114,13 +114,13 @@
       border-radius: 0;
     }
     .buyBtn {
-      background-color: rgb(90, 230, 235);
+      background-color: #ff684aca;
       border: none;
       transition: background-color 0.3s, color 0.3s;
     }
     .buyBtn:hover {
-      animation: pay 1s ease-in-out 1 both;
-      background-color: rgb(77, 199, 203);
+      animation: pay 0.3s ease-in-out 1 both;
+      background-color: #fc6142ef;
       clip-path: polygon(100% 0, 100% 100%, 0 100%, 0% 0%);
     }
     @keyframes pay {
@@ -133,7 +133,7 @@
       }
     }
     .buyBtn:active {
-      background-color: rgb(54, 150, 154);
+      background-color: #d74022ef;
     }
   }
   ::-webkit-scrollbar {

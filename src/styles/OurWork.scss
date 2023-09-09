@@ -1,7 +1,13 @@
+@keyframes flip {
+  50% {
+    transform: rotateY(20deg);
+  }
+}
 .myWorkContainer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: rgba(255, 238, 222, 255);
   .container {
     width: 100%;
     margin: 0;
@@ -13,19 +19,22 @@
       width: 100%;
       gap: 20px;
       .demoImg {
-        width: calc((100% - 80px)/5);
-        height: calc((100% - 80px)/5);
+        width: calc((100% - 80px) / 5);
+        height: calc((100% - 80px) / 5);
         position: relative;
         overflow: hidden;
       }
-      .demoImg img{
-        max-width:100%;
+      .demoImg:hover {
+        animation: flip 0.3s;
+      }
+      .demoImg img {
+        max-width: 100%;
         max-width: 100%;
         transition: transform 0.3s ease;
         display: block;
         cursor: pointer;
       }
-      .demoImg:hover img{
+      .demoImg:hover img {
         transform: scale(1.1);
       }
     }
