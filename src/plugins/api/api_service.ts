@@ -53,3 +53,12 @@ export const updateOrder = (id: number, data: any) => {
 export const deleteOrder = (id: number) => {
   return apiService('DELETE',`/api/v1/order/${id}`,{});
 };
+
+// Stripe
+export const stripeConfig = () => {
+  return apiService('GET',`/api/v1/payment/config`,{});
+};
+
+export const stripeCreatePaymentIntent = (amount: number) => {
+  return apiService('POST',`/api/v1/payment/create-payment-intent`,{ amount: amount});
+};

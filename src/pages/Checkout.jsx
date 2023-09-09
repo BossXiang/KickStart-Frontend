@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import RadioSelector from '../components/RadioSelector'
-import CreditCard from '../components/CreditCard'
 import { useCart } from '../contexts/CartContext'
 import '../styles/Checkout.scss'
 import {ValidateEmail} from '../utils/helper.js'
+import Payment from '../components/Payment'
 
 const DeliveryDetail = ({ submitHandle }) => {
   const [email, setEmail] = useState('')
@@ -68,37 +68,36 @@ const DeliveryMethod = ({ submitHandle }) => {
   )
 }
 
-const Payment = ({ submitHandle }) => {
-  const paymentOptions = ["Credit/Debit Cards", "PayPal", "Cash on Delivery"]
-  const [selectedPayment, setSelectedPayment] = useState("Credit/Debit Cards")
+// const PaymentMethods = ({ submitHandle }) => {
+//   const paymentOptions = ["Credit/Debit Cards", "PayPal", "Cash on Delivery"]
+//   const [selectedPayment, setSelectedPayment] = useState("Credit/Debit Cards")
 
-  const PayPal = () => {
-    return (
-      <div className='paypalContainer'>
-        <label>Once you click to proceed, you will be redirected to PayPal</label>
-      </div>
-    )
-  }
+//   const PayPal = () => {
+//     return (
+//       <div className='paypalContainer'>
+//         <label>Once you click to proceed, you will be redirected to PayPal</label>
+//       </div>
+//     )
+//   }
 
-  const Cash = () => {
-    return (
-      <div className='cashContainer'>
-        <label>Please pay on the delivery</label>
-      </div>
-    )
-  }
-
-  return (
-    <div>
-      <h2>Payment</h2>
-      <RadioSelector setOption={setSelectedPayment} selectedOption={selectedPayment} options={paymentOptions}/>
-      { selectedPayment === "Credit/Debit Cards" ? <CreditCard /> : <div/> }
-      { selectedPayment === "PayPal" ? <PayPal /> : <div/> }
-      { selectedPayment === "Cash on Delivery" ? <Cash /> : <div/> }
-      <button className="continueBtn" type="button" onClick={(e) => submitHandle(null)}>Continue</button>
-    </div>
-  )
-}
+//   const Cash = () => {
+//     return (
+//       <div className='cashContainer'>
+//         <label>Please pay on the delivery</label>
+//       </div>
+//     )
+//   }
+//   return (
+//     <div>
+//       <h2>Payment</h2>
+//       <RadioSelector setOption={setSelectedPayment} selectedOption={selectedPayment} options={paymentOptions}/>
+//       { selectedPayment === "Credit/Debit Cards" ? <Payment /> : <div/> }
+//       { selectedPayment === "PayPal" ? <PayPal /> : <div/> }
+//       { selectedPayment === "Cash on Delivery" ? <Cash /> : <div/> }
+//       <button className="continueBtn" type="button" onClick={(e) => submitHandle(null)}>Continue</button>
+//     </div>
+//   )
+// }
 
 const Review = ({ submitHandle }) => {
   return (
@@ -131,8 +130,8 @@ const Checkout = () => {
   const cartTotal = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity
   }, 0)
-  // const [status, setStatus] = useState("DeliveryDetail")
-  const [status, setStatus] = useState("Payment")
+  // const [status, setStatus] = useState("Payment")
+  const [status, setStatus] = useState("DeliveryDetail")
   const [editableProcedures, setEditableProcedures] = useState(["DeliveryDetail"])
 
   function curatedProcedure(procedureTitle) {
@@ -200,7 +199,7 @@ const Checkout = () => {
           <div className="separator"></div>
           { status === "DeliveryMethod" ? <DeliveryMethod submitHandle={handleSubmit} /> : <ProcedureTitle title={"DeliveryMethod"} /> }
           <div className="separator"></div>
-          { status === "Payment" ? <Payment submitHandle={handleSubmit} /> : <ProcedureTitle title={"Payment"} /> }
+          { status === "Payment" ? <Payment submitHandle={handleSubmit} totalCost={cartTotal} /> : <ProcedureTitle title={"Payment"} /> }
           <div className="separator"></div>
           { status === "Review" ? <Review submitHandle={handleSubmit} /> : <ProcedureTitle title={"Review"} /> }
         </div>
