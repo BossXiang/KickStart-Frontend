@@ -130,7 +130,6 @@ const Checkout = () => {
   const cartTotal = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity
   }, 0)
-  // const [status, setStatus] = useState("Payment")
   const [status, setStatus] = useState("DeliveryDetail")
   const [editableProcedures, setEditableProcedures] = useState(["DeliveryDetail"])
 
