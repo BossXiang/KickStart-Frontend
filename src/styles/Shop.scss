@@ -10,51 +10,54 @@
 .shopContainer {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   min-height: 100vh;
-  animation: fadeIn 0.6s ease-in-out forwards;
-  background-color: rgba(255, 238, 222, 255);
-  .title {
-    text-align: center;
-  }
-  .allProductContainer {
-    margin-bottom: 30px;
-    .productContainer {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      color: #000000d1;
-      .product {
+  .shopContent {
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
+    background-color: rgba(255, 238, 222, 255);
+    .allProductContainer {
+      margin-bottom: 30px;
+      .productContainer {
         display: flex;
-        gap: 5px;
-        flex-direction: column;
-        width: 300px;
-        margin-bottom: 30px;
-        flex-shrink: 0;
-        border: solid 1px #ff806636;
-        border-radius: 5px;
-        overflow: hidden;
-        .productImg {
-          overflow: hidden;
-        }
-        .productImg img {
-          height: 300px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        color: #000000d1;
+        .product {
+          display: flex;
+          gap: 5px;
+          flex-direction: column;
           width: 300px;
-          transition: transform 0.3s ease-in-out;
-        }
-        .productImg:hover img {
-          transform: scale(1.1);
-        }
-        .productName {
-          padding-left: 20px;
-          font-size: 25px;
-          margin-top: 5px;
-          font-weight: bold;
-        }
-        .productPrice {
-          padding-left: 20px;
-          font-size: 20px;
-          margin-bottom: 10px;
+          margin-bottom: 30px;
+          flex-shrink: 0;
+          border: solid 1px #ff806636;
+          border-radius: 5px;
+          overflow: hidden;
+          .productImg {
+            overflow: hidden;
+          }
+          .productImg img {
+            height: 300px;
+            width: 300px;
+            transition: transform 0.3s ease-in-out;
+          }
+          .productImg:hover img {
+            transform: scale(1.1);
+          }
+          .productName {
+            padding-left: 20px;
+            font-size: 25px;
+            margin-top: 5px;
+            font-weight: bold;
+          }
+          .productPrice {
+            padding-left: 20px;
+            font-size: 20px;
+            margin-bottom: 10px;
+          }
         }
       }
     }

@@ -41,16 +41,15 @@
       font-size: 65px;
       line-height: 100px;
       animation: blink 5s infinite;
-      color: #f88888;
+      color: #fa8f61;
     }
     @keyframes blink {
       0%,
       100% {
-        opacity: 1;
+        color: #fa8f61;
       }
       50% {
-        opacity: 0.5;
-        color: #f598a6;
+        color: #f47969;
       }
     }
     .trendingContainer {
