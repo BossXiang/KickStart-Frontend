@@ -9,6 +9,7 @@ import Checkout from './pages/Checkout'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { CartProvider } from './contexts/CartContext'
 import ProductDetail from './pages/ProductDetail'
+import Completion from './pages/Completion'
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/item" element={<Item />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
+          <Route path="/completion/:orderId" element={<Completion />} />
         </Routes>
       </Router>
     </CartProvider>

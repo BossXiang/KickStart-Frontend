@@ -1,0 +1,10 @@
+
+.completionContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .transaction {
+    width: 600px;
+    margin: 30px auto;
+  }
+}
