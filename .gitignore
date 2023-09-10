@@ -24,3 +24,6 @@ yarn-error.log*
 
 # docker image file
 kickstart-frontend.tar
+
+# env file
+.env
