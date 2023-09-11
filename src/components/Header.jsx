@@ -3,11 +3,12 @@ import '../styles/Header.scss'
 import { Navbar, Nav } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Cart from './Cart'
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false)
+  const location = useLocation()
   const handleClose = () => setShowModal(false)
   const handleShow = () => setShowModal(true)
   return (
@@ -33,12 +34,14 @@ const Header = () => {
         </div>
       </Navbar.Collapse>
       <Nav className="ml-auto headerIcon">
-          <Nav.Link>
+        <Nav.Link>
+          {location.pathname !== '/checkout' && (
             <FontAwesomeIcon icon={faCartShopping} onClick={handleShow} />
-            {showModal && <div className="overlay" onClick={handleClose} />}
-            <Cart show={showModal} handleClose={handleClose} />
-          </Nav.Link>
-        </Nav>
+          )}
+          {showModal && <div className="overlay" onClick={handleClose} />}
+          <Cart show={showModal} handleClose={handleClose} />
+        </Nav.Link>
+      </Nav>
     </Navbar>
   )
 }
