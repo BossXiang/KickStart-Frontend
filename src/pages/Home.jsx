@@ -7,13 +7,13 @@ import { getTrendingProducts } from '../plugins/api/api_service.ts'
 
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([])
-  const images = [
-    'assets/samples/sample1.jpg',
-    'assets/samples/sample2.jpg',
-    'assets/samples/sample3.jpg',
-    'assets/samples/sample4.jpg',
-    'assets/samples/sample5.jpg',
-  ]
+  // const images = [
+  //   'assets/samples/sample1.jpg',
+  //   'assets/samples/sample2.jpg',
+  //   'assets/samples/sample3.jpg',
+  //   'assets/samples/sample4.jpg',
+  //   'assets/samples/sample5.jpg',
+  // ]
   const [isVisible1, setIsVisible1] = useState(false)
   const [isVisible2, setIsVisible2] = useState(false)
   const [isVisible3, setIsVisible3] = useState(false)
@@ -89,7 +89,7 @@ const Home = () => {
         </div>
         <div className="homeTitle">These are people's favorites</div>
         <div className="trendingContainer">
-          <Slider images={images} />
+          <Slider images={trendingProducts.map(i => i.imgSource[0])} />
         </div>
       </div>
       <Footer />

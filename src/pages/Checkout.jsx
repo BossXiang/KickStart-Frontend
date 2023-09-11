@@ -6,6 +6,8 @@ import { useCart } from '../contexts/CartContext'
 import '../styles/Checkout.scss'
 import {ValidateEmail} from '../utils/helper.js'
 import Payment from '../components/Payment'
+import { createOrder } from '../plugins/api/api_service.ts'
+import { useNavigate } from 'react-router-dom';
 
 const DeliveryDetail = ({ submitHandle }) => {
   const [email, setEmail] = useState('')
@@ -55,7 +57,6 @@ const DeliveryMethod = ({ submitHandle }) => {
   const shippingOptions = ["Bulgaria", "European", "USA"]
   const pickUpOptions = ["The Art of ET", "ET Museum"]
   const [selectedDelivery, setSelectedDelivery] = useState(shippingOptions[0])
-  
   return (
     <div>
       <h2>Delivery Method</h2>
@@ -63,47 +64,25 @@ const DeliveryMethod = ({ submitHandle }) => {
       <RadioSelector setOption={setSelectedDelivery} selectedOption={selectedDelivery} options={shippingOptions}/>
       <label>Pickup</label>
       <RadioSelector setOption={setSelectedDelivery} selectedOption={selectedDelivery} options={pickUpOptions}/>
-      <button className="continueBtn" type="button" onClick={(e) => submitHandle(null)}>Continue</button>
+      <button className="continueBtn" type="button" onClick={(e) => submitHandle(selectedDelivery)}>Continue</button>
     </div>
   )
 }
 
-// const PaymentMethods = ({ submitHandle }) => {
-//   const paymentOptions = ["Credit/Debit Cards", "PayPal", "Cash on Delivery"]
-//   const [selectedPayment, setSelectedPayment] = useState("Credit/Debit Cards")
-
-//   const PayPal = () => {
-//     return (
-//       <div className='paypalContainer'>
-//         <label>Once you click to proceed, you will be redirected to PayPal</label>
-//       </div>
-//     )
-//   }
-
-//   const Cash = () => {
-//     return (
-//       <div className='cashContainer'>
-//         <label>Please pay on the delivery</label>
-//       </div>
-//     )
-//   }
-//   return (
-//     <div>
-//       <h2>Payment</h2>
-//       <RadioSelector setOption={setSelectedPayment} selectedOption={selectedPayment} options={paymentOptions}/>
-//       { selectedPayment === "Credit/Debit Cards" ? <Payment /> : <div/> }
-//       { selectedPayment === "PayPal" ? <PayPal /> : <div/> }
-//       { selectedPayment === "Cash on Delivery" ? <Cash /> : <div/> }
-//       <button className="continueBtn" type="button" onClick={(e) => submitHandle(null)}>Continue</button>
-//     </div>
-//   )
-// }
-
-const Review = ({ submitHandle }) => {
+const Review = ({ formData, deliveryMethod, submitHandle }) => {
   return (
     <div>
       <h2>Review</h2>
       <label>Review the order details above, and place your order when you’re ready.</label>
+      <div className='review_deliveryContainer'>
+        <label className='review_deliveryTitle'>Delivery Details</label>
+        <div className="separator"></div>
+        <p>Email: {formData.email}</p>
+        <p>Name: {formData.firstName} {formData.lastName}</p>
+        <p>Phone: {formData.phone}</p>
+        <p>Address: {formData.address}, {formData.city}, ({formData.zip}), {formData.country}</p>
+        <p>Delivery Method: {deliveryMethod}</p>
+      </div>
       <div className='checkboxContainer'>
         <input
           type="checkbox"
@@ -126,18 +105,41 @@ const Review = ({ submitHandle }) => {
 }
 
 const Checkout = () => {
+  const navigate = useNavigate()
   const { cartItems } = useCart()
   const cartTotal = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity
   }, 0)
-  const [status, setStatus] = useState("DeliveryDetail")
+  const [status, setStatus] = useState("Review")
   const [editableProcedures, setEditableProcedures] = useState(["DeliveryDetail"])
+  const [deliveryInfo, setDeliveryInfo] = useState({})
+  const [deliveryMethod, setDeliveryMethod] = useState("")
 
   function curatedProcedure(procedureTitle) {
     if(!editableProcedures.includes(procedureTitle)) {
       const updatedProcedures = [...editableProcedures, procedureTitle]
       setEditableProcedures(updatedProcedures)
     }
+  }
+
+  async function sendOrder() {
+    console.log('Creating order...')
+    const orderData = {
+      payTime: new Date(),
+      transactionTime: new Date(),
+      comment: "None",
+      item: cartItems.map((e) => {
+        return {
+          product: e.id,
+          number: e.quantity,
+          comment: "Size " + e.size,
+        }
+      }),
+      deliveryinfo: deliveryInfo
+    }
+    const res = await createOrder(orderData)
+    // Redirect to completion page!
+    navigate(`/completion/${res.id}`)
   }
 
   function setToStatus(newStatus) {
@@ -151,15 +153,16 @@ const Checkout = () => {
         curatedProcedure("DeliveryMethod")
         break
       case "DeliveryMethod":
-        setStatus("Payment")
-        curatedProcedure("Payment")
-        break
-      case "Payment":
         setStatus("Review")
         curatedProcedure("Review")
         break
       case "Review":
-        alert("Placed the order!")
+        setStatus("Payment")
+        curatedProcedure("Payment")
+        break
+      case "Payment":
+        // Create order
+        sendOrder()
         break
       default:
         break
@@ -170,10 +173,13 @@ const Checkout = () => {
     console.log(ValidateEmail(formData.email))
   }
 
-  function handleSubmit(formData) {
+  function handleSubmit(data) {
     if(status === "DeliveryDetail") {
-      console.log('Form Data:', formData)
-      validateFormData(formData)
+      validateFormData(data)
+      setDeliveryInfo(data)
+    }
+    else if(status === "DeliveryMethod") {
+      setDeliveryMethod(data)
     }
     setToStatus(null)
   }
@@ -198,9 +204,9 @@ const Checkout = () => {
           <div className="separator"></div>
           { status === "DeliveryMethod" ? <DeliveryMethod submitHandle={handleSubmit} /> : <ProcedureTitle title={"DeliveryMethod"} /> }
           <div className="separator"></div>
-          { status === "Payment" ? <Payment submitHandle={handleSubmit} totalCost={cartTotal} /> : <ProcedureTitle title={"Payment"} /> }
+          { status === "Review" ? <Review formData={deliveryInfo} deliveryMethod={deliveryMethod} submitHandle={handleSubmit} /> : <ProcedureTitle title={"Review"} /> }
           <div className="separator"></div>
-          { status === "Review" ? <Review submitHandle={handleSubmit} /> : <ProcedureTitle title={"Review"} /> }
+          { status === "Payment" ? <Payment submitHandle={handleSubmit} totalCost={cartTotal} /> : <ProcedureTitle title={"Payment"} /> }
         </div>
         <aside className="summaryContainer">
           <div className="summary">

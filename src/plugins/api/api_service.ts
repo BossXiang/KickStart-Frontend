@@ -1,9 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios'
+
 const apiService = async (
   method: string,
   url: string,
   data: any,
-  baseURL: string = 'http://localhost:6001'
+  baseURL: string = process.env.API_URL ? process.env.API_URL : 'http://localhost:6001'
+  // baseURL: string = process.env.API_URL ? process.env.API_URL : 'https://api.tailorbliss.com'
 ): Promise<any> => {
   const config: AxiosRequestConfig = {
     method,
