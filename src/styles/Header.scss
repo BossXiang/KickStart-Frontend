@@ -29,7 +29,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0);
   background: linear-gradient(to bottom, #ffa593b3 0%, #ffad9cbe 2%,#ffb7a9c0 5%,#ffc9beca 9%,#feccc1c0 15%, #e4e4e4 100%);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  z-index: 999998;
+  z-index: 9995;
   padding: 0;
   border: none;
   .header {
@@ -77,25 +77,33 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
-      z-index: 999;
+      z-index: 9998;
     }
   }
 }
-.headerIcon {
+.headerCart {
   position: absolute;
-  gap: 25px;
+  width: 48px;
   right: 350px;
   bottom: 28px;
   height: 45px;
-  z-index: 999999;
+  z-index: 9996;
 }
-.headerIcon svg {
+.headerSearch{
+  position: absolute;
+  width: 48px;
+  right: 280px;
+  bottom: 28px;
+  height: 45px;
+  z-index: 9996;
+}
+.headerCart svg,.headerSearch svg {
   height: 37px;
   width: 37px;
   color: #c52b0073;
   transition: transform 0.5s ease; 
 }
-.headerIcon svg :hover{
+.headerCart :hover,.headerSearch :hover{
   color: #e43303ba;
   animation: jumpUp 0.5s ease;
 }

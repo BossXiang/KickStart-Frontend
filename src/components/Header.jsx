@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import '../styles/Header.scss'
 import { Navbar, Nav } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCartShopping,
+  faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons'
 import { Link, useLocation } from 'react-router-dom'
 import Cart from './Cart'
 
@@ -33,13 +36,18 @@ const Header = () => {
           </Nav>
         </div>
       </Navbar.Collapse>
-      <Nav className="ml-auto headerIcon">
+      <Nav className="ml-auto headerCart">
         <Nav.Link>
           {location.pathname !== '/checkout' && (
             <FontAwesomeIcon icon={faCartShopping} onClick={handleShow} />
           )}
-          {showModal && <div className="overlay" onClick={handleClose} />}
-          <Cart show={showModal} handleClose={handleClose} />
+        </Nav.Link>
+      </Nav>
+      {showModal && <div className="overlay" onClick={handleClose} />}
+      <Cart show={showModal} handleClose={handleClose} />
+      <Nav className="ml-auto headerSearch">
+        <Nav.Link as={Link} to="/searchOrder">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
         </Nav.Link>
       </Nav>
     </Navbar>

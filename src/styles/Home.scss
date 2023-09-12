@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Lucy';
-  src: url('./fontStyle/LucySaidOkPersonalUseItalic-OV9ee.ttf') format('truetype');
+  src: url('./fontStyle/LucySaidOkPersonalUseItalic-OV9ee.ttf')
+    format('truetype');
 }
 @keyframes fadeIn {
   0% {
@@ -74,7 +75,6 @@
           width: 350px;
           height: 350px;
           position: relative;
-          
         }
         .pic img {
           width: 350px;
@@ -87,12 +87,19 @@
         .paint {
           width: 300px;
           height: calc(300px / cos(30deg));
-          clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+          clip-path: polygon(
+            50% 0%,
+            100% 25%,
+            100% 75%,
+            50% 100%,
+            0% 75%,
+            0% 25%
+          );
           margin: 57.74px 0;
           background-color: #f88888;
           animation: import 1s ease-in-out alternate;
         }
-        
+
         .paintGroup {
           display: flex;
           height: 350px;
@@ -105,8 +112,8 @@
         justify-content: flex-end;
         margin-right: 120px;
         margin-left: 0;
-        .pic{
-          margin:0;
+        .pic {
+          margin: 0;
         }
         .pic:last-child {
           width: 350px;
@@ -171,4 +178,21 @@
       }
     }
   }
+}
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f8f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #b4b4b4e1, #4c4c4cf0);
+  border-radius: 7.5px;
+  border: 1px solid #e7e7e7e1;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4c4c4cfd;
 }
