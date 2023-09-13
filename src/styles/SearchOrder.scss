@@ -1,5 +1,71 @@
-.searchContainer{
-  .searchPage{
+@font-face {
+  font-family: 'PumpkinPie';
+  src: url('./fontStyle/PumpkinPieLattesBold-WyGGz.ttf') format('truetype');
+}
+.searchContainer {
+  .searchPage {
     min-height: 100vh;
+    background-color: rgba(255, 238, 222, 255);
+    .searchContent {
+      width: 60%;
+      display: flex;
+      
+      flex-direction: column;
+      margin: 0 auto;
+      padding-top: 80px;
+      .searchTitle {
+        font-family: 'PumpkinPie';
+        font-size: 70px;
+        margin-bottom: 40px;
+      }
+      .inputGroup {
+        display: flex;
+        justify-content: space-between;
+        padding: 40px 50px;
+        height: 250px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.502);
+        background-color: whitesmoke;
+        #searchInput{
+          width: calc(100% - 150px);
+          font-size: 25px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .form-control{
+            height: 80px;
+            font-size: 25px;
+          }
+          .form-control:focus{
+            box-shadow: 0 0 2px 2px #ff684aca;
+          }
+          .example{
+            font-size: 20px;
+            color: gray;
+          }
+        }
+      }
+    }
   }
+}
+.btn,
+.btn-primary {
+  height: 80px;
+  width: 120px;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 25px !important;
+  border-radius: 5px;
+  border: none;
+}
+#searchBtn {
+  background-color: #ff8066b3;
+  border: none;
+  color: whitesmoke;
+}
+#searchBtn:hover {
+  background-color: #ff8066ca;
+}
+#searchBtn:active {
+  background-color: #ff684aca;
 }
