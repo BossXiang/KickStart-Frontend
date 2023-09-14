@@ -18,7 +18,6 @@ const SearchOrder = () => {
     try {
       const result = await searchOrder(searchText)
       setSearchResult(result)
-      console.log(searchResult)
     } catch (error) {
       console.error('Error searching order:', error)
     }
@@ -29,7 +28,6 @@ const SearchOrder = () => {
       <div className="searchPage">
         <div className="searchContent">
           <div className="searchTitle">Order Query</div>
-
           <Form className="inputGroup">
             <div id="searchInput">
               <Form.Control
@@ -47,6 +45,14 @@ const SearchOrder = () => {
               Search
             </Button>
           </Form>
+          <div>
+            <p>Order id: {searchResult.comment}</p>
+            <p>Status: {searchResult.status}</p>
+            <p>Items</p>
+            <div>
+              <p>item list</p>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

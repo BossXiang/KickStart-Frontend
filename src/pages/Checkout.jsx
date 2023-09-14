@@ -110,7 +110,7 @@ const Checkout = () => {
   const cartTotal = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity
   }, 0)
-  const [status, setStatus] = useState("Review")
+  const [status, setStatus] = useState("DeliveryDetail")
   const [editableProcedures, setEditableProcedures] = useState(["DeliveryDetail"])
   const [deliveryInfo, setDeliveryInfo] = useState({})
   const [deliveryMethod, setDeliveryMethod] = useState("")

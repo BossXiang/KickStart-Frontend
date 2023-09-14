@@ -40,8 +40,9 @@ export const getTrendingProducts = (data: any) => {
   return apiService('GET','/api/v1/product/trending',data);
 };
 
-export const searchOrder = (id: number) => {
-  return apiService('GET',`/api/v1/order/${id}`,{});
+export const searchOrder = (id: string) => {
+  const data = { id }
+  return apiService('GET',`/api/v1/order`,data);
 };
 
 export const createOrder = (data: any) => {
