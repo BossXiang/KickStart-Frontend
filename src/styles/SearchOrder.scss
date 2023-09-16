@@ -19,10 +19,11 @@
         margin-bottom: 40px;
       }
       .inputGroup {
+        transition: transform 1s ease; 
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         padding: 40px 50px;
-        height: 250px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.502);
         background-color: whitesmoke;
@@ -40,9 +41,14 @@
             box-shadow: 0 0 2px 2px #ff684aca;
           }
           .example{
-            font-size: 20px;
+            font-size: 22px;
             color: gray;
+            margin-top: 25px;
           }
+        }
+        .orderDetail{
+          margin-top:25px;
+          font-size: 22px;
         }
       }
     }
@@ -59,13 +65,13 @@
   border: none;
 }
 #searchBtn {
-  background-color: #ff8066b3;
+  background-color: #ff8066e1;
   border: none;
   color: whitesmoke;
 }
 #searchBtn:hover {
-  background-color: #ff8066ca;
+  background-color: #ff694be1;
 }
 #searchBtn:active {
-  background-color: #ff684aca;
+  background-color: #ff5331e6;
 }
