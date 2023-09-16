@@ -12,14 +12,14 @@ const SearchOrder = () => {
     setSearchText(event.target.value)
   }
 
-  const [searchResult, setSearchResult] = useState(null)
+  const [searchResult, setSearchResult] = useState({})
 
   const handleSearchClick = async () => {
     try {
-      console.log(searchText)
-      const result = await searchOrder(searchText)
+      const data = {id: searchText}
+      const result = await searchOrder(data)
+      console.log(data)
       setSearchResult(result)
-      // console.log(result)
     } catch (error) {
       console.error('Error searching order:', error)
     }
