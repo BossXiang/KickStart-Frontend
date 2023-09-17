@@ -9,7 +9,7 @@
     .searchContent {
       width: 60%;
       display: flex;
-      
+
       flex-direction: column;
       margin: 0 auto;
       padding-top: 80px;
@@ -18,8 +18,9 @@
         font-size: 70px;
         margin-bottom: 40px;
       }
-      .inputGroup,.outputGroup {
-        transition: transform 1s ease; 
+      .inputGroup,
+      .expanded,
+      .outputGroup {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -28,29 +29,89 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.502);
         background-color: whitesmoke;
-        #searchInput{
+        #searchInput {
           width: calc(100% - 150px);
           font-size: 25px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          .form-control{
+          .form-control {
             height: 80px;
             font-size: 25px;
           }
-          .form-control:focus{
+          .form-control:focus {
             box-shadow: 0 0 2px 2px #ff684aca;
           }
-          .example{
+          .example {
             font-size: 22px;
             color: gray;
             margin-top: 25px;
           }
         }
-        .orderDetail{
-          margin-top:25px;
+        .orderDetail {
+          margin-top: 25px;
           font-size: 22px;
         }
+        .product {
+          width: 80%;
+          height: 120px;
+          display: flex;
+          border: 1px solid rgb(0, 0, 0);
+          padding: 10px;
+          .infoDetail {
+            width: calc(100% - 80px);
+            display: flex;
+            flex-direction: column;
+          }
+          .productInfo {
+            display: flex;
+
+            justify-content: space-between;
+            .productTitle,
+            .productPrice {
+              font-weight: bolder;
+              font-size: 20px;
+            }
+            .itemComment,
+            .itemNumber {
+              color: gray;
+              font-size: 18px;
+            }
+          }
+          .total {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 25px;
+            font-weight: bolder;
+          }
+          .productImg {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+          }
+          .productImg img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+      .outputGroup {
+        opacity: 0;
+        overflow: hidden;
+        transition: opacity 0.2s ease-out;
+      }
+      .expanded {
+        opacity: 1 !important;
+      }
+      .notFound{
+        display: flex;
+        justify-content: center;
+        font-family: 'PumpkinPie';
+        font-size: 70px;
+        color:rgb(172, 72, 60);
+        margin-top: 50px;
       }
     }
   }

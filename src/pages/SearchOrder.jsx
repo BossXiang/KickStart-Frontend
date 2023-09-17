@@ -1,27 +1,69 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../styles/SearchOrder.scss'
 import { Form, Button } from 'react-bootstrap'
 import { searchOrder } from '../plugins/api/api_service.ts'
+import StepBar from '../components/StepBar'
 
+const Items = ({ item }) => {
+  return (
+    <div className="product">
+      <div className="productImg">
+        <img src={item.product.imgSource} alt="pic" />
+      </div>
+      <div className="infoDetail">
+        <div className="productInfo">
+          <div className="productTitle">{item.product.title}</div>
+          <div className="productPrice">${item.product.price}</div>
+        </div>
+        <div className="productInfo">
+          <div className="itemComment">{item.comment}</div>
+          <div className="itemNumber">x{item.number}</div>
+        </div>
+        <div className="total">${item.number * item.product.price}</div>
+      </div>
+    </div>
+  )
+}
 const SearchOrder = () => {
   const [searchText, setSearchText] = useState('')
-
+  const [itemList, setItemList] = useState([])
   const handleSearchChange = (event) => {
     setSearchText(event.target.value)
   }
-
   const [searchResult, setSearchResult] = useState({})
-
-  const handleSearchClick = async () => {
+  const handleSearchClick = async (id) => {
     try {
-const result = await searchOrder(searchText)
+      const result = await searchOrder(id ? id : searchText)
       setSearchResult(result)
     } catch (error) {
+      setSearchResult({statusCode:404})
       console.error('Error searching order:', error)
     }
   }
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const id = urlParams.get('id')
+    if (id) {
+      setSearchText(id)
+      handleSearchClick(id)
+    }
+  }, [])
+  useEffect(() => {
+    if (searchResult.item) {
+      const items = searchResult.item.map((item, idx) => (
+        <Items key={idx} item={item} />
+      ))
+      setItemList(items)
+    }
+  }, [searchResult])
+
+  const stepData = [
+    { title: 'Paid', completed: true, time: '2023-09-16' },
+    { title: 'In Transit', completed: true, time: '2023-09-18' },
+    { title: 'Received', completed: false },
+  ]
   return (
     <div className="searchContainer">
       <Header />
@@ -44,44 +86,36 @@ const result = await searchOrder(searchText)
               onClick={handleSearchClick}>
               Search
             </Button>
-<<<<<<< HEAD
-=======
+          </Form>
+          {searchResult.statusCode === 404 && (
+            <div className="notFound">The order number was not found</div>
+          )}
+          <div className={`outputGroup ${searchResult.id ? 'expanded' : ''}`}>
             <div className="orderDetail">
-              <p>Order Id: {searchResult.id}</p>
-              <p>Status: {searchResult.status}</p>
+              <p>
+                <b>Order Id:</b> {searchResult.id}
+              </p>
+              <p>
+                <b>Status:</b> {searchResult.status}
+              </p>
+              <p>
+                <b>PayTime:</b> {searchResult.payTime}
+              </p>
+              <p>
+                <b>DeliveryTime:</b> {searchResult.deliveryTime}
+              </p>
+              <p>
+                <b>TransactionTime:</b> {searchResult.transactionTime}
+              </p>
+              <p>
+                <b>Comment:</b> {searchResult.comment}
+              </p>
               <p>Items</p>
               <div>
-                <p>item list</p>
+                <p>{itemList}</p>
               </div>
             </div>
->>>>>>> 7ea2f79216fda2a7d08283b92eacd37296dc534a
-          </Form>
-          <div className="outputGroup">
-              <div className="orderDetail">
-                <p>
-                  <b>Order Id:</b> {searchResult.id}
-                </p>
-                <p>
-                  <b>Status:</b> {searchResult.status}
-                </p>
-                <p>
-                  <b>PayTime:</b> {searchResult.payTime}
-                </p>
-                <p>
-                  <b>DeliveryTime:</b> {searchResult.deliveryTime}
-                </p>
-                <p>
-                  <b>TransactionTime:</b> {searchResult.transactionTime}
-                </p>
-                <p>
-                  <b>Comment:</b> {searchResult.comment}
-                </p>
-                <p>Items</p>
-                <div>
-                  <p>item list</p>
-                </div>
-              </div>
-            </div>
+          </div>
         </div>
       </div>
       <Footer />

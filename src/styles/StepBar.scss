@@ -1,0 +1,32 @@
+.vertical-step-bar {
+  width: 250px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.step-row {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.step-row:hover {
+  background-color: #e0e0e0;
+}
+
+.step-number {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.step-description {
+  margin-left: 10px;
+}
+
+.completed {
+  background-color: #4caf50;
+  color: #fff;
+}
