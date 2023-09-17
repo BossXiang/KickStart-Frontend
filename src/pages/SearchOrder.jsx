@@ -51,6 +51,12 @@ const SearchOrder = () => {
       console.error('Error searching order:', error)
     }
   }
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      handleSearchClick()
+    }
+  };
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
     const id = urlParams.get('id')
@@ -86,13 +92,15 @@ const SearchOrder = () => {
                 placeholder="Enter order number"
                 value={searchText}
                 onChange={handleSearchChange}
+                onKeyDown={handleKeyPress}
               />
               <div className="example">For example: 123456789</div>
             </div>
             <Button
               id="searchBtn"
               variant="primary"
-              onClick={handleSearchClick}>
+              onClick={handleSearchClick}
+              >
               Search
             </Button>
           </Form>
