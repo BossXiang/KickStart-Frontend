@@ -16,7 +16,7 @@ const SearchOrder = () => {
 
   const handleSearchClick = async () => {
     try {
-      const data = {id: searchText}
+      const data = { id: searchText }
       const result = await searchOrder(data)
       console.log(data)
       setSearchResult(result)
@@ -46,15 +46,33 @@ const SearchOrder = () => {
               onClick={handleSearchClick}>
               Search
             </Button>
-            {/* <div className="orderDetail">
-              <p>Order Id: </p>
-              <p>Status: </p>
-              <p>Items</p>
-              <div>
-                <p>item list</p>
-              </div>
-            </div> */}
           </Form>
+          <div className="outputGroup">
+              <div className="orderDetail">
+                <p>
+                  <b>Order Id:</b> {searchResult.id}
+                </p>
+                <p>
+                  <b>Status:</b> {searchResult.status}
+                </p>
+                <p>
+                  <b>PayTime:</b> {searchResult.payTime}
+                </p>
+                <p>
+                  <b>DeliveryTime:</b> {searchResult.deliveryTime}
+                </p>
+                <p>
+                  <b>TransactionTime:</b> {searchResult.transactionTime}
+                </p>
+                <p>
+                  <b>Comment:</b> {searchResult.comment}
+                </p>
+                <p>Items</p>
+                <div>
+                  <p>item list</p>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
       <Footer />

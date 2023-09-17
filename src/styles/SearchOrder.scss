@@ -18,12 +18,13 @@
         font-size: 70px;
         margin-bottom: 40px;
       }
-      .inputGroup {
+      .inputGroup,.outputGroup {
         transition: transform 1s ease; 
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         padding: 40px 50px;
+        margin-bottom: 30px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.502);
         background-color: whitesmoke;

@@ -194,5 +194,8 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4c4c4cfd;
+  background: #414141fd;
+}
+::-webkit-scrollbar-thumb:active {
+  background: rgba(48, 48, 48, 0.992);
 }
