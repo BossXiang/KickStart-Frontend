@@ -16,8 +16,7 @@ const SearchOrder = () => {
 
   const handleSearchClick = async () => {
     try {
-      const searchData = { id: searchText }
-      const result = await searchOrder(searchData)
+      const result = await searchOrder(searchText)
       setSearchResult(result)
     } catch (error) {
       console.error('Error searching order:', error)
@@ -45,15 +44,15 @@ const SearchOrder = () => {
               onClick={handleSearchClick}>
               Search
             </Button>
-          </Form>
-          <div>
-            <p>Order id: {searchResult.id}</p>
-            <p>Status: {searchResult.status}</p>
-            <p>Items</p>
-            <div>
-              <p>item list</p>
+            <div className="orderDetail">
+              <p>Order Id: {searchResult.id}</p>
+              <p>Status: {searchResult.status}</p>
+              <p>Items</p>
+              <div>
+                <p>item list</p>
+              </div>
             </div>
-          </div>
+          </Form>
         </div>
       </div>
       <Footer />
