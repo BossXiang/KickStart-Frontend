@@ -49,15 +49,21 @@
           }
         }
         .orderDetail {
-          margin-top: 25px;
-          font-size: 22px;
+          font-size: 20px;
+        }
+        .itemList{
+          flex-grow: 0.9;
+          max-height: 620px;
+          overflow-y: auto;
         }
         .product {
-          width: 80%;
           height: 120px;
           display: flex;
-          border: 1px solid rgb(0, 0, 0);
+          border: 2px solid #ffd6d0dc;
+          border-radius: 5px;
           padding: 10px;
+          background-color: #ffe4d95d;
+          margin-bottom: 5px;
           .infoDetail {
             width: calc(100% - 80px);
             display: flex;
@@ -70,31 +76,34 @@
             .productTitle,
             .productPrice {
               font-weight: bolder;
-              font-size: 20px;
+              font-size: 18px;
             }
             .itemComment,
             .itemNumber {
               color: gray;
-              font-size: 18px;
+              font-size: 15px;
             }
           }
           .total {
             width: 100%;
             display: flex;
             justify-content: flex-end;
-            font-size: 25px;
+            font-size: 24px;
             font-weight: bolder;
           }
           .productImg {
-            width: 80px;
-            height: 80px;
+            width: 96px;
+            height: 96px;
             margin-right: 20px;
           }
           .productImg img {
             object-fit: cover;
             height: 100%;
-            width: 100%;
+            border-radius: 5px;
           }
+        }
+        .product:last-child{
+          margin-bottom: 0;
         }
       }
       .outputGroup {
@@ -114,6 +123,26 @@
         margin-top: 50px;
       }
     }
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f8f8f8;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #ff8870e6;
+    border-radius: 2.5px;
+    border: 1px solid #e7e7e7e1;
+    box-shadow: none;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff775ce6;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: #c06350e6;
   }
 }
 .btn,
@@ -136,4 +165,8 @@
 }
 #searchBtn:active {
   background-color: #ff5331e6;
+}
+
+.searchContainer p{
+  margin-bottom: 0;
 }

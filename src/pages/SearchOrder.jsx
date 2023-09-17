@@ -33,12 +33,21 @@ const SearchOrder = () => {
     setSearchText(event.target.value)
   }
   const [searchResult, setSearchResult] = useState({})
-  const handleSearchClick = async (id) => {
+  const handleSearchClick = async () => {
     try {
-      const result = await searchOrder(id ? id : searchText)
+      const result = await searchOrder(searchText)
       setSearchResult(result)
     } catch (error) {
-      setSearchResult({statusCode:404})
+      setSearchResult({ statusCode: 404 })
+      console.error('Error searching order:', error)
+    }
+  }
+  const handleSearch = async (id) => {
+    try {
+      const result = await searchOrder(id)
+      setSearchResult(result)
+    } catch (error) {
+      setSearchResult({ statusCode: 404 })
       console.error('Error searching order:', error)
     }
   }
@@ -47,7 +56,7 @@ const SearchOrder = () => {
     const id = urlParams.get('id')
     if (id) {
       setSearchText(id)
-      handleSearchClick(id)
+      handleSearch(id)
     }
   }, [])
   useEffect(() => {
@@ -90,6 +99,7 @@ const SearchOrder = () => {
           {searchResult.statusCode === 404 && (
             <div className="notFound">The order number was not found</div>
           )}
+          {searchResult.id && 
           <div className={`outputGroup ${searchResult.id ? 'expanded' : ''}`}>
             <div className="orderDetail">
               <p>
@@ -110,12 +120,26 @@ const SearchOrder = () => {
               <p>
                 <b>Comment:</b> {searchResult.comment}
               </p>
-              <p>Items</p>
-              <div>
-                <p>{itemList}</p>
-              </div>
+              <p>
+                <b>FirstName:</b> {searchResult.deliveryinfo.firstName}
+              </p>
+              <p>
+                <b>LastName:</b> {searchResult.deliveryinfo.lastName}
+              </p>
+              <p>
+                <b>Email:</b> {searchResult.deliveryinfo.email}
+              </p>
+              <p>
+                <b>Address:</b> {searchResult.deliveryinfo.address}
+              </p>
+              <p>
+                <b>Country:</b> {searchResult.deliveryinfo.country}
+              </p>
             </div>
-          </div>
+            <div className="itemList">
+              <p>{itemList}</p>
+            </div>
+          </div>}
         </div>
       </div>
       <Footer />
