@@ -12,11 +12,12 @@ const SearchOrder = () => {
     setSearchText(event.target.value)
   }
 
-  const [searchResult, setSearchResult] = useState(null)
+  const [searchResult, setSearchResult] = useState({})
 
   const handleSearchClick = async () => {
     try {
-      const result = await searchOrder(searchText)
+      const searchData = { id: searchText }
+      const result = await searchOrder(searchData)
       setSearchResult(result)
     } catch (error) {
       console.error('Error searching order:', error)
@@ -46,7 +47,7 @@ const SearchOrder = () => {
             </Button>
           </Form>
           <div>
-            <p>Order id: {searchResult.comment}</p>
+            <p>Order id: {searchResult.id}</p>
             <p>Status: {searchResult.status}</p>
             <p>Items</p>
             <div>

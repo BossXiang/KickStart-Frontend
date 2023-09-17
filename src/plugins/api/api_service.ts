@@ -4,8 +4,8 @@ const apiService = async (
   method: string,
   url: string,
   data: any,
-  // baseURL: string = process.env.API_URL ? process.env.API_URL : 'http://localhost:6001'
-  baseURL: string = process.env.API_URL ? process.env.API_URL : 'https://api.tailorbliss.com'
+  baseURL: string = process.env.API_URL ? process.env.API_URL : 'http://localhost:6001'
+  // baseURL: string = process.env.API_URL ? process.env.API_URL : 'https://api.tailorbliss.com'
 ): Promise<any> => {
   const config: AxiosRequestConfig = {
     method,
@@ -40,9 +40,8 @@ export const getTrendingProducts = (data: any) => {
   return apiService('GET','/api/v1/product/trending',data);
 };
 
-export const searchOrder = (id: string) => {
-  const data = { id }
-  return apiService('GET',`/api/v1/order`,data);
+export const searchOrder = (data: any) => {
+  return apiService('GET','/api/v1/order', data);
 };
 
 export const createOrder = (data: any) => {
