@@ -94,7 +94,7 @@ const SearchOrder = () => {
                 onChange={handleSearchChange}
                 onKeyDown={handleKeyPress}
               />
-              <div className="example">For example: 123456789</div>
+              <div className="example">For example: 3a2c50ff-cca7-425c-8e1e-a95a47a2e461</div>
             </div>
             <Button
               id="searchBtn"
