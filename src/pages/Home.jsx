@@ -7,13 +7,12 @@ import { getTrendingProducts } from '../plugins/api/api_service.ts'
 
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([])
-  // const images = [
-  //   'assets/samples/sample1.jpg',
-  //   'assets/samples/sample2.jpg',
-  //   'assets/samples/sample3.jpg',
-  //   'assets/samples/sample4.jpg',
-  //   'assets/samples/sample5.jpg',
-  // ]
+  const images = [
+    'assets/img/hot1.png',
+    'assets/img/hot2.png',
+    'assets/img/hot3.png',
+    'assets/img/hot4.png'
+  ]
   const [isVisible1, setIsVisible1] = useState(false)
   const [isVisible2, setIsVisible2] = useState(false)
   const [isVisible3, setIsVisible3] = useState(false)
@@ -46,15 +45,15 @@ const Home = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-  useEffect(() => {
-    getTrendingProducts()
-      .then((data) => {
-        setTrendingProducts(data)
-      })
-      .catch((error) => {
-        console.error('Error fetching trendingProduct data:', error)
-      })
-  }, [])
+  // useEffect(() => {
+  //   getTrendingProducts()
+  //     .then((data) => {
+  //       setTrendingProducts(data)
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching trendingProduct data:', error)
+  //     })
+  // }, [])
   return (
     <div className="homeContainer">
       <Header />
@@ -68,28 +67,28 @@ const Home = () => {
         <div className="workContainer">
           <div className="work">
             <div className="pic">
-              <img src="assets/samples/sample1.jpg" alt="pic" />
+              <img src="assets/img/blonde.png" alt="pic" />
             </div>
             <div className="paintGroup">
-              {isVisible1 && <div className="paint"></div>}
-              {isVisible2 && <div className="paint"></div>}
-              {isVisible3 && <div className="paint"></div>}
+              {isVisible1 && <div className="paint"><img src="assets/img/blonde1.png" alt="pic" /></div>}
+              {isVisible2 && <div className="paint"><img src="assets/img/blonde2.png" alt="pic" /></div>}
+              {isVisible3 && <div className="paint"><img src="assets/img/blonde3.png" alt="pic" /></div>}
             </div>
           </div>
           <div className="work">
             <div className="paintGroup">
-              {isVisible6 && <div className="paint"></div>}
-              {isVisible5 && <div className="paint"></div>}
-              {isVisible4 && <div className="paint"></div>}
+              {isVisible6 && <div className="paint"><img src="assets/img/dog1.jpg" alt="pic" /></div>}
+              {isVisible5 && <div className="paint"><img src="assets/img/dog2.jpg" alt="pic" /></div>}
+              {isVisible4 && <div className="paint"><img src="assets/img/dog3.jpg" alt="pic" /></div>}
             </div>
             <div className="pic">
-              <img src="assets/samples/sample2.jpg" alt="pic" />
+              <img src="assets/img/dog.png" alt="pic" />
             </div>
           </div>
         </div>
         <div className="homeTitle">These are people's favorites</div>
         <div className="trendingContainer">
-          <Slider images={trendingProducts.map(i => i.imgSource[0])} />
+          <Slider images={images} />
         </div>
       </div>
       <Footer />

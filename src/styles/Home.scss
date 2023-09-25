@@ -31,7 +31,6 @@
     background-color: rgba(255, 238, 222, 255);
     animation: fadeIn 0.6s ease-in-out forwards;
     .mainImg {
-      height: 450px;
       width: 100%;
       margin-top: 4px;
     }
@@ -66,60 +65,69 @@
       gap: 100px;
       margin-bottom: 50px;
       .work {
-        padding: 0 100px;
+        width: 90%;
         display: flex;
-        margin-left: 120px;
+        margin: 0 auto;
         align-items: center;
-        margin-top: 50px;
+        margin-top: 20px;
         .pic {
-          width: 350px;
-          height: 350px;
+          width: 390px;
+          height: 390px;
           position: relative;
         }
         .pic img {
-          width: 350px;
-          height: 350px;
+          width: 390px;
+          height: 390px;
           object-fit: cover;
           position: absolute;
-          top: 0;
+          top: -20px;
           left: 0;
         }
         .paint {
-          width: 300px;
-          height: calc(300px / cos(30deg));
-          clip-path: polygon(
-            50% 0%,
-            100% 25%,
-            100% 75%,
-            50% 100%,
-            0% 75%,
-            0% 25%
-          );
-          margin: 57.74px 0;
+          width: 310px;
           background-color: #f88888;
           animation: import 1s ease-in-out alternate;
+          position: relative;
+          border-radius: 50% / 25%;
+          overflow: hidden;
+          margin-right: 30px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.646);
         }
-
+        
+        .paint img {
+          width: 310px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          
+        }
         .paintGroup {
           display: flex;
-          height: 350px;
+          height: 400px;
           align-items: center;
           max-width: 1100px;
-          margin: 0 auto;
+          margin-left: 60px;
+          justify-content: center;
         }
       }
       .work:last-child {
+        margin-top: 0;
+        margin-bottom: 20px;
         justify-content: flex-end;
-        margin-right: 120px;
-        margin-left: 0;
         .pic {
           margin: 0;
         }
         .pic:last-child {
-          width: 350px;
-          height: 350px;
+          width: 390px;
+          height: 390px;
           position: relative;
           overflow: hidden;
+        }
+        .paint{
+          margin-right: 0;
+          margin-left: 30px;
+        }
+        .paintGroup {
+          margin-left: 0;
+          margin-right: 70px;
         }
       }
     }
