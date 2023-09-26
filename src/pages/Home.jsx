@@ -64,6 +64,7 @@ const Home = () => {
           className="mainImg"
         />
         <div className="homeTitle">The bliss we once tailored</div>
+        <div className="homeDescription">Elevate your photo into a captivating fantasy world,<br/>offering a plethora of sophisticated stylistic choices!</div>
         <div className="workContainer">
           <div className="work">
             <div className="pic">
