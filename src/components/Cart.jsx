@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/Cart.scss'
 import { Button, Modal } from 'react-bootstrap'
 import QuantitySelector from './QuantitySelector'
+import { Link } from 'react-router-dom'
 import { useCart } from '../contexts/CartContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -35,9 +36,11 @@ const Cart = ({ show, handleClose }) => {
                 onClick={() => removeFromCart(item.id, item.size)}>
                 -
               </Button>
-              <div className="imgContainer">
-                <img src={item.imgSource} alt="Product" />
-              </div>
+              <Link to={`/product/${item.id}`}>
+                <div className="imgContainer" >
+                  <img src={item.imgSource} alt="Product" />
+                </div>
+              </Link>
               <div className="itemInfo">
                 <div className="name">{item.title}</div>
                 <div className="info">
