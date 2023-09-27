@@ -50,6 +50,17 @@
       color: #fa8f61;
       margin: 20px 0;
     }
+    .homeText {
+      text-align: center;
+      font-size: 36px;
+      color: #f87138;
+      margin: 20px 0;
+      background-color: #EADBC8;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     @keyframes blink {
       0%,
       100% {

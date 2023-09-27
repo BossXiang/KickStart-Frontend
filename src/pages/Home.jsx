@@ -91,6 +91,7 @@ const Home = () => {
         <div className="trendingContainer">
           <Slider images={images} />
         </div>
+        <div className="homeText">Saying something</div>
         <div className="bottomPic">
           <img src="assets/img/bottom.png" alt="bottom" />
         </div>

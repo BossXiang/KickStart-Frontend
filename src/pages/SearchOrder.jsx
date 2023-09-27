@@ -35,7 +35,7 @@ const SearchOrder = () => {
   const [searchResult, setSearchResult] = useState({})
   const handleSearchClick = async () => {
     try {
-      const result = await searchOrder(searchText)
+      const result = await searchOrder(searchText.trimStart().trimEnd())
       setSearchResult(result)
     } catch (error) {
       setSearchResult({ statusCode: 404 })
