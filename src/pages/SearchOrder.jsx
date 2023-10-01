@@ -56,7 +56,7 @@ const SearchOrder = () => {
       event.preventDefault()
       handleSearchClick()
     }
-  };
+  }
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
     const id = urlParams.get('id')
@@ -94,62 +94,68 @@ const SearchOrder = () => {
                 onChange={handleSearchChange}
                 onKeyDown={handleKeyPress}
               />
-              <div className="example">For example: 3a2c50ff-cca7-425c-8e1e-a95a47a2e461</div>
+              <div className="example">
+                For example: 3a2c50ff-cca7-425c-8e1e-a95a47a2e461
+              </div>
             </div>
             <Button
               id="searchBtn"
               variant="primary"
-              onClick={handleSearchClick}
-              >
+              onClick={handleSearchClick}>
               Search
             </Button>
           </Form>
           {searchResult.statusCode === 404 && (
             <div className="notFound">The order number was not found</div>
           )}
-          {searchResult.id && 
-          <div className={`outputGroup ${searchResult.id ? 'expanded' : ''}`}>
-            <div className="orderDetail">
-              <p>
-                <b>Order Id:</b> {searchResult.id}
-              </p>
-              <p>
-                <b>Status:</b> {searchResult.status}
-              </p>
-              <p>
-                <b>PayTime:</b> {searchResult.payTime}
-              </p>
-              <p>
-                <b>DeliveryTime:</b> {searchResult.deliveryTime}
-              </p>
-              <p>
-                <b>TransactionTime:</b> {searchResult.transactionTime}
-              </p>
-              <p>
-                <b>Comment:</b> {searchResult.comment}
-              </p>
-              <p>
-                <b>FirstName:</b> {searchResult.deliveryinfo.firstName}
-              </p>
-              <p>
-                <b>LastName:</b> {searchResult.deliveryinfo.lastName}
-              </p>
-              <p>
-                <b>Email:</b> {searchResult.deliveryinfo.email}
-              </p>
-              <p>
-                <b>Address:</b> {searchResult.deliveryinfo.address}
-              </p>
-              <p>
-                <b>Country:</b> {searchResult.deliveryinfo.country}
-              </p>
+          {searchResult.id && (
+            <div className={`outputGroup ${searchResult.id ? 'expanded' : ''}`}>
+              <div className="barContainer"><StepBar></StepBar></div>
+              <div className="textContainer">
+                <div className="orderDetail">
+                  <p>
+                    <b>Order Id:</b> {searchResult.id}
+                  </p>
+                  <p>
+                    <b>Status:</b> {searchResult.status}
+                  </p>
+                  <p>
+                    <b>PayTime:</b> {searchResult.payTime}
+                  </p>
+                  <p>
+                    <b>DeliveryTime:</b> {searchResult.deliveryTime}
+                  </p>
+                  <p>
+                    <b>TransactionTime:</b> {searchResult.transactionTime}
+                  </p>
+                  <p>
+                    <b>Comment:</b> {searchResult.comment}
+                  </p>
+                  <p>
+                    <b>FirstName:</b> {searchResult.deliveryinfo.firstName}
+                  </p>
+                  <p>
+                    <b>LastName:</b> {searchResult.deliveryinfo.lastName}
+                  </p>
+                  <p>
+                    <b>Email:</b> {searchResult.deliveryinfo.email}
+                  </p>
+                  <p>
+                    <b>Address:</b> {searchResult.deliveryinfo.address}
+                  </p>
+                  <p>
+                    <b>Country:</b> {searchResult.deliveryinfo.country}
+                  </p>
+                </div>
+                <div className="itemList">
+                  <p>{itemList}</p>
+                </div>
+              </div>
             </div>
-            <div className="itemList">
-              <p>{itemList}</p>
-            </div>
-          </div>}
+          )}
         </div>
       </div>
+
       <Footer />
     </div>
   )

@@ -25,10 +25,19 @@
         flex-wrap: wrap;
         justify-content: space-between;
         padding: 40px 50px;
-        margin-bottom: 30px;
+        margin-bottom: 60px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.502);
         background-color: whitesmoke;
+        .textContainer{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+        .barContainer{
+          width: 100%;
+          margin-bottom: 30px;
+        }
         #searchInput {
           width: calc(100% - 150px);
           font-size: 25px;
@@ -110,6 +119,7 @@
         opacity: 0;
         overflow: hidden;
         transition: opacity 0.2s ease-out;
+
       }
       .expanded {
         opacity: 1 !important;
