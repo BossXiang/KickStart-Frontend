@@ -1,0 +1,41 @@
+.gallery-ui-topleft {
+  left: 30px;
+  top: 20px;
+  position: absolute;
+  z-index: 100;
+  .goBack {
+    width: 160px;
+    height: 40px;
+    background-color: bisque;
+    border-radius: 6px;
+    border-style: none;
+    font-size: 18px;
+  }
+}
+
+.gallery-ui-bottomleft {
+  left: 40px;
+  bottom: 40px;
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  .keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .letter {
+      width: 60px;
+      height: 60px;
+      opacity: 0.7;
+    }
+    .full-opacity {
+      opacity: 1;
+    }
+  }
+}
+
+.aframeContainer {
+  width: 100%; /* Occupy the entire width of the container */
+  height: 60px;
+}

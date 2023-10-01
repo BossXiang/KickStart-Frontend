@@ -21,6 +21,10 @@
     margin: 0;
     max-width: 1920px;
     animation: fadeIn 0.6s ease-in-out forwards;
+    .takeATour {
+      font-size: 36px;
+      text-decoration: none;
+    }
     .imageRow {
       display: flex;
       justify-content: space-around;

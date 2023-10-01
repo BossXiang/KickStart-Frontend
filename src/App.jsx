@@ -11,6 +11,7 @@ import { CartProvider } from './contexts/CartContext'
 import ProductDetail from './pages/ProductDetail'
 import Completion from './pages/Completion'
 import SearchOrder from './pages/SearchOrder'
+import Gallery from './pages/Gallery'
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/completion/:orderId" element={<Completion />} />
           <Route path="/searchOrder" element={<SearchOrder />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
       </Router>
     </CartProvider>

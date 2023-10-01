@@ -8,6 +8,7 @@ const MyWork = () => {
     <div className='myWorkContainer'>
       <Header />
       <div className='container'>
+        <a href="/gallery" className='takeATour'>Take a tour!</a>
         <div className='imageRow'>
           <div className='demoImg'><img src="assets/samples/sample1.jpg" alt="demo work"/></div>
           <div className='demoImg'><img src="assets/samples/sample2.jpg" alt="demo work"/></div>
