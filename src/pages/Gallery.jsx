@@ -35,7 +35,8 @@ const Gallery = () => {
   }, []);
 
   const gotoOurWork = () => {
-    navigate('/ourwork')
+    // navigate('/ourwork')
+    window.location.href = '/ourwork';
     // Reset scroll behavior to default
     document.documentElement.style.overflow = 'auto';
     document.body.style.overflow = 'auto';
