@@ -49,7 +49,7 @@ const Contact = () => {
               </p>
             </div>
             <img
-              src="assets/samples/sample12-rmbg.png"
+              src="assets/img/painter-rmbg.png"
               alt="face"
               className="aboutImg"
             />
