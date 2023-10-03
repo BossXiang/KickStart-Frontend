@@ -41,11 +41,8 @@
       height: 80px;
       color: black;
       margin-bottom: 30px;
-      .modal-title{
+      .modal-title {
         font-size: 70px;
-      }
-      .btn-close {
-        margin-bottom: 40px;
       }
     }
     .cartHeader::after {
@@ -107,11 +104,15 @@
           align-items: center;
           border-radius: 5px;
         }
-        .removeBtn:hover{
+        .removeBtn:hover {
           background-color: #ff8066ca;
         }
         .removeBtn:active {
           background-color: #ff684aca;
+          box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
+            -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+            inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+            inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
         }
         .itemInfo {
           display: flex;
@@ -168,28 +169,75 @@
       font-size: 18px !important;
     }
     .buyBtn {
-      background-color: #ff684aca;
       border: none;
-      transition: background-color 0.3s, color 0.3s;
+      color: whitesmoke;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: #ff5736b6;
+    }
+    .buyBtn:after {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 100%;
+      top: 0;
+      left: 0;
+      direction: rtl;
+      z-index: -1;
+      box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+        7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+      transition: all 0.3s ease;
     }
     .buyBtn:hover {
-      animation: pay 0.3s ease-in-out 1 both;
-      background-color: #fc6142ef;
-      clip-path: polygon(100% 0, 100% 100%, 0 100%, 0% 0%);
+      background-color: #ff421cb3;
     }
-    @keyframes pay {
-      0% {
-        clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 0 50%, 0% 0%);
-      }
-
-      100% {
-        clip-path: polygon(88% 0, 100% 50%, 89% 100%, 0% 100%, 10% 50%, 0% 0%);
-      }
+    .buyBtn:hover:after {
+      left: auto;
+      right: 0;
+      width: 100%;
     }
     .buyBtn:active {
-      background-color: #d74022ef;
+      top: 2px;
+      background-color: #ff330ab3;
+    }
+    .closeBtn {
+      border: none;
+      color: whitesmoke;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: #7c7c7cb3;
+    }
+    .closeBtn:after {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 100%;
+      top: 0;
+      left: 0;
+      direction: rtl;
+      z-index: -1;
+      box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+        7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+      transition: all 0.3s ease;
+    }
+    .closeBtn:hover {
+      background-color: #676767b3;
+    }
+    .closeBtn:hover:after {
+      left: auto;
+      right: 0;
+      width: 100%;
+    }
+    .closeBtn:active {
+      top: 2px;
+      background-color: #565656b3;
     }
   }
+
   ::-webkit-scrollbar {
     width: 3px;
   }

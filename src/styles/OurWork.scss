@@ -56,21 +56,109 @@
       margin-top: 20px;
       width: 100%;
       height: 200px;
-      background-color: #D5C7B2;
+      background-color: #d5c7b2;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       font-size: 48px;
       font-family: 'PumpkinPie';
-      .takeATour {
-        text-decoration: none;
-        .galleryIcon {
-          margin-right: 6px;
-          width: 42px;
-          height: 42px;
-        }
-      }
     }
+  }
+  .tourBtn {
+    background: radial-gradient(circle, #7fb2f0 0%, #5aa2fa 100%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    width: 250px;
+    height: 90px;
+    border-radius: 10px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.356);
+  }
+  .tourBtn img {
+    margin-right: 6px;
+    width: 42px;
+    height: 42px;
+    transition: transform 0.4s ease;
+  }
+  .tourBtn a {
+    color: whitesmoke;
+    transition: transform 0.4s ease;
+  }
+  .tourBtn span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .tourBtn:before,
+  .tourBtn:after {
+    position: absolute;
+    content: '';
+    height: 0%;
+    width: 1px;
+    box-shadow: -1px -1px 20px 0px rgba(255, 255, 255, 1),
+      -4px -4px 5px 0px rgba(255, 255, 255, 1),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.4), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  }
+  .tourBtn:before {
+    right: 0;
+    top: 0;
+    transition: all 500ms ease;
+  }
+  .tourBtn:after {
+    left: 0;
+    bottom: 0;
+    transition: all 500ms ease;
+  }
+  .tourBtn:hover {
+    background: transparent;
+    box-shadow: none;
+  }
+  .tourBtn:hover img {
+    transform: scale(1.13);
+  }
+  .tourBtn:hover a {
+    color: #0e7aff;
+    transform: scale(1.13);
+    font-weight: bolder;
+  }
+  .tourBtn:hover:before {
+    transition: all 500ms ease;
+    height: 100%;
+  }
+  .tourBtn:hover:after {
+    transition: all 500ms ease;
+    height: 100%;
+  }
+  .tourBtn span:before,
+  .tourBtn span:after {
+    position: absolute;
+    content: '';
+    box-shadow: -1px -1px 20px 0px rgba(255, 255, 255, 1),
+      -4px -4px 5px 0px rgba(255, 255, 255, 1),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.4), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  }
+  .tourBtn span:before {
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 0.5px;
+    transition: all 500ms ease;
+  }
+  .tourBtn span:after {
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 0.5px;
+    transition: all 500ms ease;
+  }
+  .tourBtn span:hover:before {
+    width: 100%;
+  }
+  .tourBtn span:hover:after {
+    width: 100%;
   }
 }

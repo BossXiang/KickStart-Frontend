@@ -59,7 +59,7 @@ const Cart = ({ show, handleClose }) => {
         </Modal.Body>
         <div className="subtotal">Subtotal:<br/>${totalAmount.toFixed(2)}</div>
         <Modal.Footer className="cartFooter">
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className="closeBtn" variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button className="buyBtn" variant="primary" onClick={handleCheckout}>

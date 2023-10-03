@@ -6,7 +6,7 @@
     opacity: 1;
   }
 }
-.detailBackground{
+.detailBackground {
   background-color: rgba(255, 238, 222, 255);
   padding: 80px 0;
   min-height: calc(100vh - 350px);
@@ -48,6 +48,8 @@
     }
     .btn,
     .btn-primary {
+      display: flex;
+      align-items: center;
       height: 45px;
       width: 100%;
       color: whitesmoke;
@@ -61,12 +63,6 @@
       border: none;
       color: whitesmoke;
     }
-    #quantityBtn:hover {
-      background-color: #ff8066ca;
-    }
-    #quantityBtn:active {
-      background-color: #ff684aca;
-    }
     .dropdown-toggle::after {
       position: absolute;
       right: 20px;
@@ -77,26 +73,78 @@
       background-color: #ff8066b3;
       text-align: left;
     }
-    .dropdown-item:active{
+    .dropdown-item:active {
       background-color: #ffc4abbc;
       color: black;
+      box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
+        -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+        inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+        inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
     }
     #size-dropdown:hover {
       background-color: #ff8066ca;
     }
     #size-dropdown:active {
       background-color: #ff684aca;
+      box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
+        -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+        inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+        inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
     }
     .dropdownBtn,
     .buyBtn {
-      background-color: #ff8066b3;
+      border: none;
+      background: #ff8066b3;
+      background: linear-gradient(
+        0deg,
+        #f58872b3 0%,
+        #ff6648b3 100%
+      );
+      color: #fff;
+      overflow: hidden;
+      position: relative;
     }
     .buyBtn:hover {
-      background-color: #ff8066ca;
+      text-decoration: none;
+      color: #fff;
+    }
+    .buyBtn:before {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      top: -180px;
+      left: 0;
+      width: 30px;
+      height: 100%;
+      background-color: #fff;
+      animation: shiny-btn1 3s ease-in-out infinite;
+    }
+    .buyBtn:hover {
+      opacity: 0.8;
     }
     .buyBtn:active {
       background-color: #ff684aca;
+      top: 2px;
     }
+    @keyframes shiny-btn1 {
+      0% {
+        -webkit-transform: scale(0) rotate(45deg);
+        opacity: 0;
+      }
+      80% {
+        -webkit-transform: scale(0) rotate(45deg);
+        opacity: 0.5;
+      }
+      81% {
+        -webkit-transform: scale(4) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        -webkit-transform: scale(50) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
     .dropdown-menu {
       width: 100%;
     }
