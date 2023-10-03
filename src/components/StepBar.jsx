@@ -7,21 +7,21 @@ const StepBar = ({ stepData }) => {
       <div className="progress">
         <div className="progress_inner">
           <div className="progress_inner__step">
-            <label htmlFor="step-1">Start order</label>
+            <label htmlFor="step-1">Already paid</label>
           </div>
           <div className="progress_inner__step">
-            <label htmlFor="step-2">Prepare gift</label>
+            <label htmlFor="step-2">Bliss tailoring</label>
           </div>
           <div className="progress_inner__step">
-            <label htmlFor="step-3">Pack gift</label>
+            <label htmlFor="step-3">Shipped</label>
           </div>
           <div className="progress_inner__step">
-            <label htmlFor="step-4">Decorate box</label>
+            <label htmlFor="step-4">On the way</label>
           </div>
           <div className="progress_inner__step">
-            <label htmlFor="step-5">Send gift</label>
+            <label htmlFor="step-5">Bliss received</label>
           </div>
-          <input type="radio" name="step" id="step-1" checked />
+          <input type="radio" name="step" id="step-1"/>
           <input type="radio" name="step" id="step-2" />
           <input type="radio" name="step" id="step-3" />
           <input type="radio" name="step" id="step-4" />
