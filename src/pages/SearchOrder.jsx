@@ -29,10 +29,15 @@ const Items = ({ item }) => {
 const SearchOrder = () => {
   const [searchText, setSearchText] = useState('')
   const [itemList, setItemList] = useState([])
+  const [stepData, setStepData] = useState([
+      { title: 'Paid', time: undefined },
+      { title: 'Delivery', time: undefined },
+      { title: 'Received', time: undefined },
+    ])
+  const [searchResult, setSearchResult] = useState({})
   const handleSearchChange = (event) => {
     setSearchText(event.target.value)
   }
-  const [searchResult, setSearchResult] = useState({})
   const handleSearchClick = async () => {
     try {
       const result = await searchOrder(searchText.trimStart().trimEnd())
@@ -71,14 +76,14 @@ const SearchOrder = () => {
         <Items key={idx} item={item} />
       ))
       setItemList(items)
+      setStepData([
+        { title: 'Paid', time: searchResult.payTime },
+        { title: 'Delivery', time: searchResult.deliveryTime },
+        { title: 'Received', time: searchResult.receiveTime },
+      ])
     }
   }, [searchResult])
 
-  const stepData = [
-    { title: 'Paid', completed: true, time: '2023-09-16' },
-    { title: 'In Transit', completed: true, time: '2023-09-18' },
-    { title: 'Received', completed: false },
-  ]
   return (
     <div className="searchContainer">
       <Header />
@@ -110,23 +115,11 @@ const SearchOrder = () => {
           )}
           {searchResult.id && (
             <div className={`outputGroup ${searchResult.id ? 'expanded' : ''}`}>
-              <div className="barContainer"><StepBar></StepBar></div>
+              <div className="barContainer"><StepBar stepData={stepData}></StepBar></div>
               <div className="textContainer">
                 <div className="orderDetail">
                   <p>
                     <b>Order Id:</b> {searchResult.id}
-                  </p>
-                  <p>
-                    <b>Status:</b> {searchResult.status}
-                  </p>
-                  <p>
-                    <b>PayTime:</b> {searchResult.payTime}
-                  </p>
-                  <p>
-                    <b>DeliveryTime:</b> {searchResult.deliveryTime}
-                  </p>
-                  <p>
-                    <b>TransactionTime:</b> {searchResult.transactionTime}
                   </p>
                   <p>
                     <b>Comment:</b> {searchResult.comment}
@@ -148,7 +141,7 @@ const SearchOrder = () => {
                   </p>
                 </div>
                 <div className="itemList">
-                  <p>{itemList}</p>
+                  {itemList}
                 </div>
               </div>
             </div>
