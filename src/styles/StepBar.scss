@@ -6,20 +6,20 @@ $color-dark: darken($scheme-base, 40);
 
 $steps: 5; // Change in html
 $step-width: 100% / $steps;
-$step-point-width: 30px;
+$step-point-width: 50px;
 $step-point-height: $step-point-width;
 $step-point-color: $color-mid;
 $step-point-bg: white;
-$step-font-size: 14px;
+$step-font-size: 20px;
 $step-padding: 10px;
 $step-gap: 50px;
 
 $tab-spacing: 80px;
 
-$form-width: 700;
+$form-width: 900;
 
 $counter-spacing: 3px;
-$counter-font-size: 12px;
+$counter-font-size: 18px;
 
 $bar-transition-speed: 800ms;
 $bar-bg: repeating-linear-gradient(
@@ -31,7 +31,7 @@ $bar-bg: repeating-linear-gradient(
 );
 $bar-height: 6px;
 
-$status-width: 40px;
+$status-width: 55px;
 
 $box-color: #986c5d;
 
@@ -204,7 +204,7 @@ $bow-color: darken($ribbon-color, 10);
 }
 
 .stepBar {
-  width: 700px;
+  width: 900px;
   height: 180px;
   font-family: $font;
   background: transparent;
@@ -215,12 +215,14 @@ $bow-color: darken($ribbon-color, 10);
   position: relative;
   .progress {
     background-color: transparent;
+    display: flex;
+    justify-content: center;
     &_inner {
       @include traverse($steps);
       @extend %center;
       height: 200px;
       width: $form-width + px;
-
+      max-width: 100%;
       @for $i from 1 through $steps {
         &__step:nth-of-type(#{$i}) {
           &:before {
