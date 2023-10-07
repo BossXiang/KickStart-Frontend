@@ -180,7 +180,7 @@ $bow-color: darken($ribbon-color, 10);
   float: left;
   text-align: center;
   position: relative;
-
+  
   label {
     padding-top: $step-gap;
     top: -20px;
@@ -194,8 +194,7 @@ $bow-color: darken($ribbon-color, 10);
   }
 
   &:hover {
-    color: rgb(255, 138, 88);
-
+    color: #1d82b8;
     &:before {
       color: white;
       background: #1ea4ec;
@@ -225,6 +224,9 @@ $bow-color: darken($ribbon-color, 10);
       max-width: 100%;
       @for $i from 1 through $steps {
         &__step:nth-of-type(#{$i}) {
+          .dateData{
+            color: #ff7937;
+          }
           &:before {
             content: '#{$i}';
           }
@@ -357,9 +359,6 @@ $bow-color: darken($ribbon-color, 10);
             transform: rotate(-45deg);
           }
         }
-
-        // Refactor
-
         & .box_tag {
           @extend %center;
           width: 20px;
@@ -379,8 +378,6 @@ $bow-color: darken($ribbon-color, 10);
           z-index: 4;
           transform: rotate(-39deg) translateX(-22px) translateY(-12px);
         }
-
-        //
       }
 
       input[type='radio'] {

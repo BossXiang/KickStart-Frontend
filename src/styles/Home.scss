@@ -44,6 +44,7 @@
       color: #fa8f61;
       margin: 20px 0;
     }
+    
     .homeText {
       text-align: center;
       position: relative;
@@ -52,6 +53,7 @@
       margin: 40px 0;
       font-weight: 100;
       background-color: #511f00f9;
+      overflow: hidden;
       height: 500px;
       .textContent {
         top: 50%;
@@ -61,92 +63,7 @@
         position: absolute;
         white-space: nowrap;
       }
-      .star {
-        position: absolute;
-        background-color: #fff;
-        animation: starBlink 2s infinite alternate;
-        clip-path: polygon(
-          42% 36%,
-          50% 0,
-          59% 36%,
-          80% 46.5%,
-          59% 57%,
-          50.5% 100%,
-          42% 57%,
-          20% 46.5%
-        );
-      }
-      .star1 {
-        width: 16px;
-        height: 16px;
-        top: 40px;
-        left: 80px;
-      }
-      .star2 {
-        width: 19px;
-        height: 23px;
-        top: 50px;
-        left: 100px;
-        animation-delay: 0.5s;
-      }
-      .star3 {
-        width: 18px;
-        height: 25px;
-        bottom: 45px;
-        left: 120px;
-        animation-delay: 0.1s;
-      }
-      .star4 {
-        width: 14px;
-        height: 20px;
-        top: 70px;
-        right: 140px;
-        animation-delay: 0.9s;
-      }
-      .star5 {
-        width: 18px;
-        height: 18px;
-        bottom: 64px;
-        right: 110px;
-        animation-delay: 0.6s;
-      }
-      .star6 {
-        width: 24px;
-        height: 19px;
-        right: 80px;
-        top: 110px;
-        animation-delay: 1.3s;
-      }
-      .star7 {
-        width: 24px;
-        height: 20px;
-        left: 290px;
-        top: 150px;
-        animation-delay: 1.8s;
-      }
-      .star8 {
-        width: 21px;
-        height: 30px;
-        right: 90px;
-        bottom: 50px;
-        animation-delay: 0.2s;
-      }
-      .star9 {
-        width: 24px;
-        height: 27px;
-        right: 550px;
-        bottom: 130px;
-        animation-delay: 1s;
-      }
-    }
-
-    @keyframes starBlink {
-      0% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
+      
     }
     @keyframes blink {
       0%,
@@ -249,13 +166,14 @@
     }
     .bottomPic {
       width: 100%;
-      height: 300px;
+      height: 350px;
       overflow: hidden;
       margin-bottom: 4px;
     }
     .bottomPic img {
       width: 100%;
-      height: 300px;
+      height: 350px;
+      opacity: 0.8;
     }
     .subscriptionContainer {
       width: 100%;

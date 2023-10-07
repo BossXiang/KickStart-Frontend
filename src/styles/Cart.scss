@@ -177,6 +177,7 @@
       position: relative;
       background-color: #ff5736b6;
       overflow: hidden;
+      border-radius: 5px;
     }
     .buyBtn:hover {
       text-decoration: none;
@@ -221,6 +222,7 @@
 
     .closeBtn {
       border: none;
+      border-radius: 5px;
       color: whitesmoke;
       display: flex;
       justify-content: center;
