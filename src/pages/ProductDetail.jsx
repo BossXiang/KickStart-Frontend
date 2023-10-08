@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { Button, Dropdown, DropdownButton } from 'react-bootstrap'
+import { Button, Dropdown, DropdownButton, Form } from 'react-bootstrap'
 import QuantitySelector from '../components/QuantitySelector'
 import '../styles/ProductDetail.scss'
 import '../styles/Shop.scss'
@@ -14,6 +14,15 @@ const ProductDetail = () => {
   const sizes = ['XS', 'S', 'M', 'L', 'XL']
   const [product, setProduct] = useState({})
   const [selectedSize, setSelectedSize] = useState('Size')
+  const [isFocused, setIsFocused] = useState(false)
+
+  const handleFocus = () => {
+    setIsFocused(true)
+  }
+
+  const handleBlur = () => {
+    setIsFocused(false)
+  }
   const handleSizeSelect = (size) => {
     setSelectedSize(size)
   }
@@ -68,6 +77,32 @@ const ProductDetail = () => {
               }
               alt={`product-${productId}`}
             />
+            <div className="sideImg">
+              <img
+                src={
+                  product && product.imgSource && product.imgSource[0]
+                    ? product.imgSource[0]
+                    : ''
+                }
+                alt="sidePic"
+              />
+              <img
+                src={
+                  product && product.imgSource && product.imgSource[0]
+                    ? product.imgSource[0]
+                    : ''
+                }
+                alt="sidePic"
+              />
+              <img
+                src={
+                  product && product.imgSource && product.imgSource[0]
+                    ? product.imgSource[0]
+                    : ''
+                }
+                alt="sidePic"
+              />
+            </div>
           </div>
           <div className="detailContent">
             <div className="detailName">{product.title}</div>
@@ -84,6 +119,17 @@ const ProductDetail = () => {
               ))}
             </DropdownButton>
             <QuantitySelector onChange={handleQuantityChange} />
+            <Form>
+              <Form.Group className={`${isFocused ? 'promptCard' : 'promptCardWithoutAnimation'}`}>
+                <Form.Control
+                  type="text"
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  placeholder="Your Prompt"
+                />
+              </Form.Group>
+            </Form>
+            {/* <Input className="promptCart"></Input> */}
             <Button className="buyBtn" onClick={handleAddToCart}>
               Add to Cart
             </Button>
