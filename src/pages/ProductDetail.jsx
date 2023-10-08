@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from 'react'
+import { Button, Dropdown, DropdownButton, Form } from 'react-bootstrap'
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { Button, Dropdown, DropdownButton, Form } from 'react-bootstrap'
 import QuantitySelector from '../components/QuantitySelector'
+import ImageUploader from '../components/ImageUploader'
+
 import '../styles/ProductDetail.scss'
 import '../styles/Shop.scss'
+
 import { useParams } from 'react-router-dom'
 import { useCart } from '../contexts/CartContext'
 import { getProduct } from '../plugins/api/api_service.ts'
 
 const ProductDetail = () => {
   const { productId } = useParams()
+  const [rows, setRows] = useState(1)
+  const [inputValue, setInputValue] = useState('')
   const sizes = ['XS', 'S', 'M', 'L', 'XL']
   const [product, setProduct] = useState({})
   const [selectedSize, setSelectedSize] = useState('Size')
   const [isFocused, setIsFocused] = useState(false)
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
 
   const handleFocus = () => {
     setIsFocused(true)
@@ -23,6 +34,18 @@ const ProductDetail = () => {
   const handleBlur = () => {
     setIsFocused(false)
   }
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value)
+    const newlineCount = (value.match(/\n/g) || []).length;
+    const minRows = 1;
+    const maxRows = 3;
+    const calculatedRows = Math.min(Math.max(newlineCount + 1, minRows), maxRows);
+    e.target.rows = calculatedRows;
+
+  }
+
   const handleSizeSelect = (size) => {
     setSelectedSize(size)
   }
@@ -57,12 +80,12 @@ const ProductDetail = () => {
       title: product.title,
       price: product.price,
       size: selectedSize,
-      content: "Content",
-      prompt: "Prompt",
+      content: 'Content',
+      prompt: 'Prompt',
       images: [],
       image: product.images[0],
       quantity: quantity,
-      comment: "Comment",
+      comment: 'Comment',
     }
     addToCart(cartItem)
   }
@@ -84,24 +107,24 @@ const ProductDetail = () => {
             <div className="sideImg">
               <img
                 src={
-                  product && product.imgSource && product.imgSource[0]
-                    ? product.imgSource[0]
+                  product && product.images && product.images[0]
+                    ? product.images[0]
                     : ''
                 }
                 alt="sidePic"
               />
               <img
                 src={
-                  product && product.imgSource && product.imgSource[0]
-                    ? product.imgSource[0]
+                  product && product.images && product.images[0]
+                    ? product.images[0]
                     : ''
                 }
                 alt="sidePic"
               />
               <img
                 src={
-                  product && product.imgSource && product.imgSource[0]
-                    ? product.imgSource[0]
+                  product && product.images && product.images[0]
+                    ? product.images[0]
                     : ''
                 }
                 alt="sidePic"
@@ -123,17 +146,23 @@ const ProductDetail = () => {
               ))}
             </DropdownButton>
             <QuantitySelector onChange={handleQuantityChange} />
-            <Form>
-              <Form.Group className={`${isFocused ? 'promptCard' : 'promptCardWithoutAnimation'}`}>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group
+                className={`${
+                  isFocused ? 'promptCard' : 'promptCardWithoutAnimation'
+                }`}>
                 <Form.Control
-                  type="text"
+                  as="textarea"
+                  rows={1}
                   onFocus={handleFocus}
                   onBlur={handleBlur}
+                  value={inputValue}
+                  onChange={handleInputChange}
                   placeholder="Your Prompt"
                 />
               </Form.Group>
             </Form>
-            {/* <Input className="promptCart"></Input> */}
+            <ImageUploader></ImageUploader>
             <Button className="buyBtn" onClick={handleAddToCart}>
               Add to Cart
             </Button>
