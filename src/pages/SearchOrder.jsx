@@ -15,13 +15,13 @@ const Items = ({ item }) => {
       <div className="infoDetail">
         <div className="productInfo">
           <div className="productTitle">{item.product.title}</div>
-          <div className="productPrice">${item.product.price}</div>
+          <div className="productPrice">${item.product.price.toFixed(2)}</div>
         </div>
         <div className="productInfo">
           <div className="itemComment">{item.content}</div>
           <div className="itemNumber">x{item.number}</div>
         </div>
-        <div className="total">${item.number * item.product.price}</div>
+        <div className="total">${(item.number * item.product.price).toFixed(2)}</div>
       </div>
     </div>
   )
