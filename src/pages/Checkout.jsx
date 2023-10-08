@@ -38,7 +38,7 @@ const DeliveryDetail = ({ submitHandle }) => {
         <label>Last name*</label>
         <input type="text" name="lastName" value={lastName} required onChange={(e) => setLastName(e.target.value)}/>
         <label>Phone*</label>
-        <input type="text" name="phone" value={phone} required pattern="[0-9]{10}" onChange={(e) => setPhone(e.target.value)}/>
+        <input type="text" name="phone" value={phone} required onChange={(e) => setPhone(e.target.value)}/>
         <label>Country*</label>
         <input type="text" name="country" value={country} required onChange={(e) => setCountry(e.target.value)}/>
         <label>Address*</label>
@@ -54,22 +54,28 @@ const DeliveryDetail = ({ submitHandle }) => {
 }
 
 const DeliveryMethod = ({ submitHandle }) => {
-  const shippingOptions = ["Bulgaria", "European", "USA"]
-  const pickUpOptions = ["The Art of ET", "ET Museum"]
+  const shippingOptions = ["Home delivery"]
+  // const shippingOptions = ["Bulgaria", "European", "USA"]
+  // const pickUpOptions = ["The Art of ET", "ET Museum"]
   const [selectedDelivery, setSelectedDelivery] = useState(shippingOptions[0])
   return (
     <div>
       <h2>Delivery Method</h2>
       <label>Shipping & delivery</label>
       <RadioSelector setOption={setSelectedDelivery} selectedOption={selectedDelivery} options={shippingOptions}/>
-      <label>Pickup</label>
-      <RadioSelector setOption={setSelectedDelivery} selectedOption={selectedDelivery} options={pickUpOptions}/>
+      {/* <label>Pickup</label>
+      <RadioSelector setOption={setSelectedDelivery} selectedOption={selectedDelivery} options={pickUpOptions}/> */}
       <button className="continueBtn" type="button" onClick={(e) => submitHandle(selectedDelivery)}>Continue</button>
     </div>
   )
 }
 
 const Review = ({ formData, deliveryMethod, submitHandle }) => {
+  const [isTCChecked, setIsTCChecked] = useState(false)
+  const handleTCCheckboxChange = (event) => {
+    setIsTCChecked(event.target.checked);
+  };
+
   return (
     <div>
       <h2>Review</h2>
@@ -88,6 +94,8 @@ const Review = ({ formData, deliveryMethod, submitHandle }) => {
           type="checkbox"
           name="terms"
           id="TandC"
+          checked={isTCChecked}
+          onChange={handleTCCheckboxChange}
         />
         <label htmlFor="TandC">I agree to the Terms & Conditions</label>
       </div>
@@ -99,14 +107,14 @@ const Review = ({ formData, deliveryMethod, submitHandle }) => {
         />
         <label htmlFor="EandS">I agree to receive marketing communications via email and/or SMS to any emails and phone numbers added above.</label>
       </div>
-      <button className="continueBtn" type="button" onClick={(e) => submitHandle(null)}>Continue</button>
+      <button className="continueBtn" type="button" onClick={(e) => { if(isTCChecked) { submitHandle(null) } else { alert('Please read and check the terms and conditions') } }}>Continue</button>
     </div>
   )
 }
 
 const Checkout = () => {
   const navigate = useNavigate()
-  const { cartItems } = useCart()
+  const { cartItems, clearCart } = useCart()
   const cartTotal = cartItems.reduce((total, item) => {
     return total + item.price * item.quantity
   }, 0)
@@ -132,13 +140,17 @@ const Checkout = () => {
         return {
           product: e.id,
           number: e.quantity,
-          comment: "Size " + e.size,
+          content: e.content,
+          prompt: e.prompt,
+          images: e.images,
+          comment: e.comment,
         }
       }),
       deliveryinfo: deliveryInfo
     }
     const res = await createOrder(orderData)
     // Redirect to completion page!
+    clearCart()
     navigate(`/completion/${res.id}`)
   }
 
@@ -214,7 +226,7 @@ const Checkout = () => {
             {cartItems.map((item, index) => (
               <div className="item" key={index}>
                 <div className="imgContainer">
-                  <img src={item.imgSource} alt="Product" />
+                  <img src={item.image} alt="Product" />
                 </div>
                 <div className="itemInfo">
                   <div className="name">{item.title}</div>
@@ -224,14 +236,14 @@ const Checkout = () => {
                   </div>
                 </div>
                 <div className="price">
-                  <div>Price:${item.quantity * item.price}</div>
+                  <div>Price:${(item.quantity * item.price).toFixed(2)}</div>
                 </div>
               </div>
             ))}
             <div className="paymentDetails">
               <div>
                 <div>Items</div>
-                <div>${cartTotal}</div>
+                <div>${(cartTotal).toFixed(2)}</div>
               </div>
               <div>
                 <div>Delivery</div>
@@ -244,7 +256,7 @@ const Checkout = () => {
             </div>
             <div className="total">
               <div>Total</div>
-              <div>${cartTotal}</div>
+              <div>${(cartTotal).toFixed(2)}</div>
             </div>
           </div>
         </aside>

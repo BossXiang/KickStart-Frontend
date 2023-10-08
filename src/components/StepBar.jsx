@@ -26,11 +26,11 @@ const StepBar = ({ stepData }) => {
   const transDate = (timeStamp) => {
     const myDate = new Date(timeStamp)
     const year = myDate.getFullYear()
-    const month = myDate.getMonth() + 1
-    const day = myDate.getDate()
-    const hours = myDate.getHours()
-    const minutes = myDate.getMinutes()
-    const seconds = myDate.getSeconds()
+    const month = (myDate.getMonth() + 1).toString().padStart(2, '0')
+    const day = (myDate.getDate()).toString().padStart(2, '0')
+    const hours = (myDate.getHours()).toString().padStart(2, '0')
+    const minutes = (myDate.getMinutes()).toString().padStart(2, '0')
+    const seconds = (myDate.getSeconds()).toString().padStart(2, '0')
     const normalDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
     return normalDate
   }

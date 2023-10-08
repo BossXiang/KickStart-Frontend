@@ -57,8 +57,12 @@ const ProductDetail = () => {
       title: product.title,
       price: product.price,
       size: selectedSize,
-      imgSource: product.imgSource[0],
+      content: "Content",
+      prompt: "Prompt",
+      images: [],
+      image: product.images[0],
       quantity: quantity,
+      comment: "Comment",
     }
     addToCart(cartItem)
   }
@@ -71,8 +75,8 @@ const ProductDetail = () => {
           <div className="detailImg">
             <img
               src={
-                product && product.imgSource && product.imgSource[0]
-                  ? product.imgSource[0]
+                product && product.images && product.images[0]
+                  ? product.images[0]
                   : ''
               }
               alt={`product-${productId}`}
