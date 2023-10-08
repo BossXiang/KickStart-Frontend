@@ -12,7 +12,7 @@ const Product = ({ product }) => {
     <div className="product">
       <Link to={`/product/${product.id}`}>
         <div className="productImg">
-          <img src={product.imgSource[0]} alt="product" />
+          <img src={product.images[0]} alt="product" />
         </div>
         
       </Link>

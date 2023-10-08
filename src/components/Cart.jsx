@@ -38,7 +38,7 @@ const Cart = ({ show, handleClose }) => {
               </Button>
               <Link to={`/product/${item.id}`}>
                 <div className="imgContainer" >
-                  <img src={item.imgSource} alt="Product" />
+                  <img src={item.image} alt="Product" />
                 </div>
               </Link>
               <div className="itemInfo">
