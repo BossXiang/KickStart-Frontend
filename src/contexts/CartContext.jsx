@@ -36,10 +36,16 @@ export function CartProvider({ children }) {
     const updatedCartItems = cartItems.filter(
       (item) => item.id !== itemId || item.size !== size
     )
-
     setCartItems(updatedCartItems)
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
   }
+
+  const clearCart = () => {
+    const updatedCartItems = []
+    setCartItems(updatedCartItems)
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
+  }
+
   const handleQuantityChange = (itemId, itemSize, newQuantity) => {
     const updatedCartItems = cartItems.map((item) => {
       if (item.id === itemId && item.size === itemSize) {
@@ -53,7 +59,7 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, handleQuantityChange }}>
+      value={{ cartItems, addToCart, removeFromCart, clearCart, handleQuantityChange }}>
       {children}
     </CartContext.Provider>
   )

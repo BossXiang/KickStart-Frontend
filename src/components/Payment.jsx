@@ -68,7 +68,7 @@ const Payment = ({ submitHandle, totalCost = 0 }) => {
   };
 
   async function getPaymentIntent(cost) {
-    const data = await stripeCreatePaymentIntent(cost)
+    const data = await stripeCreatePaymentIntent(cost.toFixed(2))
     const { clientSecret } = data
     setClientSecret(clientSecret)
   };

@@ -48,8 +48,12 @@ const ProductDetail = () => {
       title: product.title,
       price: product.price,
       size: selectedSize,
+      content: "Content",
+      prompt: "Prompt",
+      images: [],
       image: product.images[0],
       quantity: quantity,
+      comment: "Comment",
     }
     addToCart(cartItem)
   }

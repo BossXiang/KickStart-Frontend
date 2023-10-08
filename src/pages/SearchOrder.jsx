@@ -10,7 +10,7 @@ const Items = ({ item }) => {
   return (
     <div className="product">
       <div className="productImg">
-        <img src={item.product.imgSource} alt="pic" />
+        <img src={item.product.images[0]} alt="pic" />
       </div>
       <div className="infoDetail">
         <div className="productInfo">
@@ -18,7 +18,7 @@ const Items = ({ item }) => {
           <div className="productPrice">${item.product.price}</div>
         </div>
         <div className="productInfo">
-          <div className="itemComment">{item.comment}</div>
+          <div className="itemComment">{item.content}</div>
           <div className="itemNumber">x{item.number}</div>
         </div>
         <div className="total">${item.number * item.product.price}</div>
@@ -26,6 +26,7 @@ const Items = ({ item }) => {
     </div>
   )
 }
+
 const SearchOrder = () => {
   const [searchText, setSearchText] = useState('')
   const [itemList, setItemList] = useState([])
@@ -77,7 +78,7 @@ const SearchOrder = () => {
       ))
       setItemList(items)
       setStepData([
-        { title: 'Paid', time: searchResult.payTime },
+        { title: 'Paid', time: searchResult.transactionTime },
         { title: 'Delivery', time: searchResult.deliveryTime },
         { title: 'Received', time: searchResult.receiveTime },
       ])
@@ -100,7 +101,7 @@ const SearchOrder = () => {
                 onKeyDown={handleKeyPress}
               />
               <div className="example">
-                For example: 3a2c50ff-cca7-425c-8e1e-a95a47a2e461
+                For example: d2b36939-696c-469b-ae12-37278a342802
               </div>
             </div>
             <Button
