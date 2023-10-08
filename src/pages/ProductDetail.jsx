@@ -15,7 +15,6 @@ import { getProduct } from '../plugins/api/api_service.ts'
 
 const ProductDetail = () => {
   const { productId } = useParams()
-  const [rows, setRows] = useState(1)
   const [inputValue, setInputValue] = useState('')
   const sizes = ['XS', 'S', 'M', 'L', 'XL']
   const [product, setProduct] = useState({})
@@ -80,8 +79,8 @@ const ProductDetail = () => {
       title: product.title,
       price: product.price,
       size: selectedSize,
-      content: 'Content',
-      prompt: 'Prompt',
+      content: `Size:${selectedSize}`,
+      prompt: inputValue,
       images: [],
       image: product.images[0],
       quantity: quantity,

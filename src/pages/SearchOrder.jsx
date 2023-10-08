@@ -101,7 +101,7 @@ const SearchOrder = () => {
                 onKeyDown={handleKeyPress}
               />
               <div className="example">
-                For example: d2b36939-696c-469b-ae12-37278a342802
+                For example: ec164a8c-d04a-431f-8047-87d8d052b1ed
               </div>
             </div>
             <Button
