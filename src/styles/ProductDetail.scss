@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,900');
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -20,6 +21,7 @@
   max-width: 60%;
   justify-content: center;
   gap: 100px;
+  font-family: 'Nunito', sans-serif;
   .detailImg {
     display: flex;
     flex-wrap: wrap;
@@ -50,28 +52,31 @@
     width: 40%;
     .detailName {
       font-size: 50px;
+      line-height: 50px;
       font-weight: bolder;
     }
     .detailPrice {
       font-size: 30px;
+      line-height: 30px;
       color: rgba(0, 0, 0, 0.628);
     }
     .detailInfo {
       font-size: 25px;
+      line-height: 25px;
       color: rgba(0, 0, 0, 0.628);
     }
-    .promptCard,.promptCardWithoutAnimation {
+    .promptCard,
+    .promptCardWithoutAnimation {
       --borderWidth: 4px;
       position: relative;
       border-radius: var(--borderWidth);
       width: 100%;
-      height: 60px;
       background-color: white;
       .form-control {
         width: 100%;
-        height: 60px;
         padding: 10px;
-        font-size: 25px;
+        font-size: 20px;
+        resize: none;
         border: none;
       }
       .form-control:focus {
@@ -79,7 +84,8 @@
         box-shadow: none;
       }
     }
-    .promptCard:after,.promptCardWithoutAnimation::after {
+    .promptCard:after,
+    .promptCardWithoutAnimation::after {
       content: '';
       position: absolute;
       top: calc(-1 * var(--borderWidth));
@@ -88,16 +94,18 @@
       width: calc(100% + var(--borderWidth) * 2);
       background: linear-gradient(
         60deg,
-        #ffc184,
+        #ff5a39b5,
         #ff8066b3,
-        #ff5d3dde,
-        #ff4f4fd9
+        #ffc78f,
+        #ffbbbbe9,
+        #ff7d7dd2,
+        #ff3954a7
       );
       border-radius: calc(2 * var(--borderWidth));
       z-index: -1;
       background-size: 300% 300%;
     }
-    .promptCard:after{
+    .promptCard:after {
       -webkit-animation: animatedgradient 3s ease alternate infinite;
       animation: animatedgradient 3s ease alternate infinite;
     }

@@ -69,6 +69,7 @@
         .itemList{
           flex-grow: 0.9;
           max-height: 620px;
+          overflow-x: hidden;
           overflow-y: auto;
         }
         .product {
