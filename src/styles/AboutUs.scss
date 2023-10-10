@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,900');
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -11,6 +13,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 550px;
+  font-family: 'Nunito', sans-serif;
   animation: fadeIn 0.6s ease-in-out forwards;
   .about {
     margin-top: 2px;

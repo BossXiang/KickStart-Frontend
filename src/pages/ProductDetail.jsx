@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import QuantitySelector from '../components/QuantitySelector'
 import ImageUploader from '../components/ImageUploader'
+import ColorSelector from '../components/ColorSelector'
 
 import '../styles/ProductDetail.scss'
 import '../styles/Shop.scss'
@@ -20,10 +21,10 @@ const ProductDetail = () => {
   const [product, setProduct] = useState({})
   const [selectedSize, setSelectedSize] = useState('Size')
   const [isFocused, setIsFocused] = useState(false)
-
+  const [selectedColor, setSelectedColor] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
   }
 
   const handleFocus = () => {
@@ -35,14 +36,16 @@ const ProductDetail = () => {
   }
 
   const handleInputChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value
     setInputValue(value)
-    const newlineCount = (value.match(/\n/g) || []).length;
-    const minRows = 1;
-    const maxRows = 3;
-    const calculatedRows = Math.min(Math.max(newlineCount + 1, minRows), maxRows);
-    e.target.rows = calculatedRows;
-
+    const newlineCount = (value.match(/\n/g) || []).length
+    const minRows = 1
+    const maxRows = 3
+    const calculatedRows = Math.min(
+      Math.max(newlineCount + 1, minRows),
+      maxRows
+    )
+    e.target.rows = calculatedRows
   }
 
   const handleSizeSelect = (size) => {
@@ -70,8 +73,26 @@ const ProductDetail = () => {
   // Shopping cart
   const { addToCart } = useCart()
   const handleAddToCart = () => {
-    if (selectedSize === 'Size') {
+    if (
+      selectedSize === 'Size' &&
+      product.spec &&
+      product.spec.includes('size')
+    ) {
       window.alert('Please select a size before adding to cart.')
+      return
+    }
+    if (
+      selectedColor === '' &&
+      product.spec &&
+      product.spec.includes('color')
+    ) {
+      window.alert('Please select a color before adding to cart.')
+      return
+    }
+    if (
+      inputValue === ''
+    ) {
+      window.alert('Please input the prompt of your bliss before adding to cart.')
       return
     }
     const cartItem = {
@@ -79,7 +100,7 @@ const ProductDetail = () => {
       title: product.title,
       price: product.price,
       size: selectedSize,
-      content: `Size:${selectedSize}`,
+      color: selectedColor,
       prompt: inputValue,
       images: [],
       image: product.images[0],
@@ -134,16 +155,24 @@ const ProductDetail = () => {
             <div className="detailName">{product.title}</div>
             <div className="detailPrice">${product.price}</div>
             <div className="detailInfo">{product.description}</div>
-            <DropdownButton id="size-dropdown" title={selectedSize}>
-              {sizes.map((size, index) => (
-                <Dropdown.Item
-                  key={index}
-                  eventKey={size}
-                  onClick={() => handleSizeSelect(size)}>
-                  {size}
-                </Dropdown.Item>
-              ))}
-            </DropdownButton>
+            {product.spec && product.spec.includes('color') && (
+              <ColorSelector
+                selectedColor={selectedColor}
+                onColorChange={setSelectedColor}
+              />
+            )}
+            {product.spec && product.spec.includes('size') && (
+              <DropdownButton id="size-dropdown" title={selectedSize}>
+                {sizes.map((size, index) => (
+                  <Dropdown.Item
+                    key={index}
+                    eventKey={size}
+                    onClick={() => handleSizeSelect(size)}>
+                    {size}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
+            )}
             <QuantitySelector onChange={handleQuantityChange} />
             <Form onSubmit={handleSubmit}>
               <Form.Group

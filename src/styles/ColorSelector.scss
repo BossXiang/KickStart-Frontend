@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,900');
+
+$colors: (
+  Black: #1c1c1c,
+  Burgundy: #6c0000,
+  Olive: #8c9362,
+  Cerulean: #a9e2ff,
+  Gray: #dfdfdf,
+  White: #ffffff,
+);
+
+.colorContainer {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  color: #1c1c1c;
+  & p {
+    margin: 0;
+  }
+  .colorSelector {
+    display: flex;
+    padding: 15px;
+    border-radius: 5px;
+    background: linear-gradient(-30deg, #ff5a3985, #ff806677, #ffc78fbb);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 25px;
+    input[type='radio'] {
+      display: none;
+    }
+    @each $color, $value in $colors {
+      .colorLable--#{$color},
+      .colorChecked--#{$color} {
+        z-index: 5;
+        position: relative;
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        background-color: $value;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        box-shadow: inset -1px 2px 1px rgba(28, 0, 0, 0.251);
+      }
+      .colorLable--#{$color}:hover {
+        scale: 1.05;
+      }
+      .colorLable--#{$color}:active {
+        scale: 0.95;
+      }
+      .colorLable--#{$color}:after,
+      .colorChecked--#{$color}:after {
+        content: '';
+        opacity: 0.9;
+        color: $value;
+        position: absolute;
+        z-index: -1 !important;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        border: 3px solid;
+        border-radius: 50%;
+        transition: padding 250ms;
+      }
+      .colorChecked--#{$color}:after {
+        padding: 20px;
+      }
+    }
+  }
+}
