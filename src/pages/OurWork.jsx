@@ -10,49 +10,49 @@ const MyWork = () => {
       <div className="container">
         <div className="imageRow">
           <div className="demoImg">
-            <img src="assets/examples/style1-1.png" alt="demo work" />
+            <img src="assets/our_works/sample1.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style1-2.png" alt="demo work" />
+            <img src="assets/our_works/sample2.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style1-3.png" alt="demo work" />
+            <img src="assets/our_works/sample3.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style1-4.png" alt="demo work" />
+            <img src="assets/our_works/sample4.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style1-5.png" alt="demo work" />
+            <img src="assets/our_works/sample11.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style2-1.png" alt="demo work" />
+            <img src="assets/our_works/sample6.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style2-2.png" alt="demo work" />
+            <img src="assets/our_works/sample7.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style2-3.png" alt="demo work" />
+            <img src="assets/our_works/sample8.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style2-4.png" alt="demo work" />
+            <img src="assets/our_works/sample9.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style2-5.png" alt="demo work" />
+            <img src="assets/our_works/sample17.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style3-1.png" alt="demo work" />
+            <img src="assets/our_works/sample5.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style3-2.png" alt="demo work" />
+            <img src="assets/our_works/sample12.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style3-3.png" alt="demo work" />
+            <img src="assets/our_works/sample13.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style3-4.png" alt="demo work" />
+            <img src="assets/our_works/sample14.png" alt="demo work" />
           </div>
           <div className="demoImg">
-            <img src="assets/examples/style3-5.png" alt="demo work" />
+            <img src="assets/our_works/sample16.png" alt="demo work" />
           </div>
         </div>
         <div className="gallery">
