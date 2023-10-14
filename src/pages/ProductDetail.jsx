@@ -22,8 +22,11 @@ const ProductDetail = () => {
   const sizes = ['XS', 'S', 'M', 'L', 'XL']
   const [product, setProduct] = useState({})
   const [selectedSize, setSelectedSize] = useState('Size')
-  const [isFocused, setIsFocused] = useState(false)
   const [selectedColor, setSelectedColor] = useState('')
+  const [selectedNumPage, setSelectedNumPage] = useState(0)
+  const [isFocused, setIsFocused] = useState(false)
+
+  const numPageOptions = [ 6, 8, 14, 25 ]
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -52,6 +55,10 @@ const ProductDetail = () => {
 
   const handleSizeSelect = (size) => {
     setSelectedSize(size)
+  }
+  
+  const handleNumPageChange = (event) => {
+    setSelectedNumPage(event.target.value)
   }
 
   const [quantity, setQuantity] = useState(1)
@@ -91,6 +98,14 @@ const ProductDetail = () => {
       window.alert('Please select a color before adding to cart.')
       return
     }
+    if (
+      selectedNumPage === 0 &&
+      product.spec &&
+      product.spec.includes('#pages')
+    ) {
+      window.alert('Please select the number of pages.')
+      return
+    }
     if (inputValue === '') {
       window.alert(
         'Please input the prompt of your bliss before adding to cart.'
@@ -103,6 +118,7 @@ const ProductDetail = () => {
       price: product.price,
       size: selectedSize,
       color: selectedColor,
+      numPages: selectedNumPage,
       prompt: inputValue,
       images: [],
       image: product.images[0],
@@ -177,6 +193,16 @@ const ProductDetail = () => {
                     </Dropdown.Item>
                   ))}
                 </DropdownButton>
+              )}
+              {product.spec && product.spec.includes('#pages') && (
+                <div className='numPageContainer'> 
+                  {numPageOptions.map((numPage, index) => (
+                    <label key={index} className='numPageItem'>
+                      {numPage} Pages
+                      <input type="radio" value={numPage} checked={selectedNumPage === numPage} onChange={handleNumPageChange} className='numPageRadio'/>
+                    </label>
+                  ))}
+                </div>
               )}
               <QuantitySelector onChange={handleQuantityChange} />
               <Form onSubmit={handleSubmit}>
