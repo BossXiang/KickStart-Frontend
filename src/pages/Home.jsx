@@ -8,12 +8,12 @@ import { getTrendingProducts } from '../plugins/api/api_service.ts'
 
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([])
-  const images = [
-    'assets/img/hot1.png',
-    'assets/img/hot2.png',
-    'assets/img/hot3.png',
-    'assets/img/hot4.png',
-  ]
+  // const images = [
+  //   'assets/img/hot1.png',
+  //   'assets/img/hot2.png',
+  //   'assets/img/hot3.png',
+  //   'assets/img/hot4.png',
+  // ]
   const [isVisible1, setIsVisible1] = useState(false)
   const [isVisible2, setIsVisible2] = useState(false)
   const [isVisible3, setIsVisible3] = useState(false)
@@ -46,15 +46,15 @@ const Home = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-  // useEffect(() => {
-  //   getTrendingProducts()
-  //     .then((data) => {
-  //       setTrendingProducts(data)
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching trendingProduct data:', error)
-  //     })
-  // }, [])
+  useEffect(() => {
+    getTrendingProducts({'limit': 5})
+      .then((data) => {
+        setTrendingProducts(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching trendingProduct data:', error)
+      })
+  }, [])
   return (
     <div className="homeContainer">
       <Header />
@@ -122,7 +122,7 @@ const Home = () => {
 
         <div className="homeTitle">These are people's favorites</div>
         <div className="trendingContainer">
-          <Slider images={images} />
+          <Slider images={trendingProducts.map(e => e.images[0])} />
         </div>
         <div className="bottomPic">
           <img src="assets/img/bottom.png" alt="bottom" />

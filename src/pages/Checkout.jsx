@@ -9,15 +9,15 @@ import Payment from '../components/Payment'
 import { createOrder } from '../plugins/api/api_service.ts'
 import { useNavigate } from 'react-router-dom';
 
-const DeliveryDetail = ({ submitHandle }) => {
-  const [email, setEmail] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [country, setCountry] = useState('')
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [zip, setZip] = useState('')
+const DeliveryDetail = ({ submitHandle, deliveryInfo }) => {
+  const [email, setEmail] = useState(deliveryInfo.email || '')
+  const [firstName, setFirstName] = useState(deliveryInfo.firstName || '')
+  const [lastName, setLastName] = useState(deliveryInfo.lastName || '')
+  const [phone, setPhone] = useState(deliveryInfo.phone || '')
+  const [country, setCountry] = useState(deliveryInfo.country || '')
+  const [address, setAddress] = useState(deliveryInfo.address || '')
+  const [city, setCity] = useState(deliveryInfo.city || '')
+  const [zip, setZip] = useState(deliveryInfo.zip || '')
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -53,11 +53,11 @@ const DeliveryDetail = ({ submitHandle }) => {
   )
 }
 
-const DeliveryMethod = ({ submitHandle }) => {
+const DeliveryMethod = ({ submitHandle, deliveryMethod }) => {
   const shippingOptions = ["Home delivery"]
   // const shippingOptions = ["Bulgaria", "European", "USA"]
   // const pickUpOptions = ["The Art of ET", "ET Museum"]
-  const [selectedDelivery, setSelectedDelivery] = useState(shippingOptions[0])
+  const [selectedDelivery, setSelectedDelivery] = useState(deliveryMethod || shippingOptions[0])
   return (
     <div>
       <h2>Delivery Method</h2>
@@ -70,10 +70,14 @@ const DeliveryMethod = ({ submitHandle }) => {
   )
 }
 
-const Review = ({ formData, deliveryMethod, submitHandle }) => {
-  const [isTCChecked, setIsTCChecked] = useState(false)
+const Review = ({ formData, deliveryMethod, reviewChecks, submitHandle }) => {
+  const [isTCChecked, setIsTCChecked] = useState(reviewChecks.isTCChecked || false)
+  const [isESChecked, setIsESChecked] = useState(reviewChecks.isESChecked || false)
   const handleTCCheckboxChange = (event) => {
     setIsTCChecked(event.target.checked);
+  }; 
+  const handleESCheckboxChange = (event) => {
+    setIsESChecked(event.target.checked);
   };
 
   return (
@@ -104,10 +108,12 @@ const Review = ({ formData, deliveryMethod, submitHandle }) => {
           type="checkbox"
           name="terms"
           id="EandS"
+          checked={isESChecked}
+          onChange={handleESCheckboxChange}
         />
         <label htmlFor="EandS">I agree to receive marketing communications via email and/or SMS to any emails and phone numbers added above.</label>
       </div>
-      <button className="continueBtn" type="button" onClick={(e) => { if(isTCChecked) { submitHandle(null) } else { alert('Please read and check the terms and conditions') } }}>Continue</button>
+      <button className="continueBtn" type="button" onClick={(e) => { if(isTCChecked) { submitHandle({ isTCChecked, isESChecked }) } else { alert('Please read and check the terms and conditions') } }}>Continue</button>
     </div>
   )
 }
@@ -121,7 +127,8 @@ const Checkout = () => {
   const [status, setStatus] = useState("DeliveryDetail")
   const [editableProcedures, setEditableProcedures] = useState(["DeliveryDetail"])
   const [deliveryInfo, setDeliveryInfo] = useState({})
-  const [deliveryMethod, setDeliveryMethod] = useState("")
+  const [deliveryMethod, setDeliveryMethod] = useState("Home delivery")
+  const [reviewChecks, setReviewChecks] = useState({})
 
   function curatedProcedure(procedureTitle) {
     if(!editableProcedures.includes(procedureTitle)) {
@@ -193,6 +200,9 @@ const Checkout = () => {
     else if(status === "DeliveryMethod") {
       setDeliveryMethod(data)
     }
+    else if(status === "Review") {
+      setReviewChecks(data)
+    }
     setToStatus(null)
   }
 
@@ -212,11 +222,11 @@ const Checkout = () => {
       <Header />
       <div className="checkoutContainer">
         <div className="procedureContainer">
-          { status === "DeliveryDetail" ? <DeliveryDetail submitHandle={handleSubmit} /> : <ProcedureTitle title={"DeliveryDetail"} /> }
+          { status === "DeliveryDetail" ? <DeliveryDetail submitHandle={handleSubmit} deliveryInfo={deliveryInfo}/> : <ProcedureTitle title={"DeliveryDetail"} /> }
           <div className="separator"></div>
           { status === "DeliveryMethod" ? <DeliveryMethod submitHandle={handleSubmit} /> : <ProcedureTitle title={"DeliveryMethod"} /> }
           <div className="separator"></div>
-          { status === "Review" ? <Review formData={deliveryInfo} deliveryMethod={deliveryMethod} submitHandle={handleSubmit} /> : <ProcedureTitle title={"Review"} /> }
+          { status === "Review" ? <Review formData={deliveryInfo} deliveryMethod={deliveryMethod} reviewChecks={reviewChecks} submitHandle={handleSubmit} /> : <ProcedureTitle title={"Review"} /> }
           <div className="separator"></div>
           { status === "Payment" ? <Payment submitHandle={handleSubmit} totalCost={cartTotal} /> : <ProcedureTitle title={"Payment"} /> }
         </div>
