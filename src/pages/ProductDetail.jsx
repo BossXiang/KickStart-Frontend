@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import QuantitySelector from '../components/QuantitySelector'
 import ImageUploader from '../components/ImageUploader'
 import ColorSelector from '../components/ColorSelector'
+import Loading from '../components/Loading'
 
 import '../styles/ProductDetail.scss'
 import '../styles/Shop.scss'
@@ -16,6 +17,7 @@ import { getProduct } from '../plugins/api/api_service.ts'
 
 const ProductDetail = () => {
   const { productId } = useParams()
+  const [loaded, setLoaded] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const sizes = ['XS', 'S', 'M', 'L', 'XL']
   const [product, setProduct] = useState({})
@@ -57,11 +59,11 @@ const ProductDetail = () => {
     setQuantity(newQuantity)
   }
 
-  // Load product
   useEffect(() => {
     const getProductById = async () => {
       const data = await getProduct(productId)
       setProduct(data)
+      setLoaded(true)
     }
     try {
       getProductById()
@@ -89,10 +91,10 @@ const ProductDetail = () => {
       window.alert('Please select a color before adding to cart.')
       return
     }
-    if (
-      inputValue === ''
-    ) {
-      window.alert('Please input the prompt of your bliss before adding to cart.')
+    if (inputValue === '') {
+      window.alert(
+        'Please input the prompt of your bliss before adding to cart.'
+      )
       return
     }
     const cartItem = {
@@ -113,90 +115,94 @@ const ProductDetail = () => {
   return (
     <>
       <Header></Header>
-      <div className="detailBackground">
-        <div className="detailContainer">
-          <div className="detailImg">
-            <img
-              src={
-                product && product.images && product.images[0]
-                  ? product.images[0]
-                  : ''
-              }
-              alt={`product-${productId}`}
-            />
-            <div className="sideImg">
+      {!loaded ? (
+        <Loading />
+      ) : (
+        <div className="detailBackground">
+          <div className="detailContainer">
+            <div className="detailImg">
               <img
                 src={
                   product && product.images && product.images[0]
                     ? product.images[0]
                     : ''
                 }
-                alt="sidePic"
+                alt={`product-${productId}`}
               />
-              <img
-                src={
-                  product && product.images && product.images[0]
-                    ? product.images[0]
-                    : ''
-                }
-                alt="sidePic"
-              />
-              <img
-                src={
-                  product && product.images && product.images[0]
-                    ? product.images[0]
-                    : ''
-                }
-                alt="sidePic"
-              />
+              <div className="sideImg">
+                <img
+                  src={
+                    product && product.images && product.images[0]
+                      ? product.images[0]
+                      : ''
+                  }
+                  alt="sidePic"
+                />
+                <img
+                  src={
+                    product && product.images && product.images[0]
+                      ? product.images[0]
+                      : ''
+                  }
+                  alt="sidePic"
+                />
+                <img
+                  src={
+                    product && product.images && product.images[0]
+                      ? product.images[0]
+                      : ''
+                  }
+                  alt="sidePic"
+                />
+              </div>
+            </div>
+            <div className="detailContent">
+              <div className="detailName">{product.title}</div>
+              <div className="detailPrice">${product.price}</div>
+              <div className="detailInfo">{product.description}</div>
+              {product.spec && product.spec.includes('color') && (
+                <ColorSelector
+                  selectedColor={selectedColor}
+                  onColorChange={setSelectedColor}
+                />
+              )}
+              {product.spec && product.spec.includes('size') && (
+                <DropdownButton id="size-dropdown" title={selectedSize}>
+                  {sizes.map((size, index) => (
+                    <Dropdown.Item
+                      key={index}
+                      eventKey={size}
+                      onClick={() => handleSizeSelect(size)}>
+                      {size}
+                    </Dropdown.Item>
+                  ))}
+                </DropdownButton>
+              )}
+              <QuantitySelector onChange={handleQuantityChange} />
+              <Form onSubmit={handleSubmit}>
+                <Form.Group
+                  className={`${
+                    isFocused ? 'promptCard' : 'promptCardWithoutAnimation'
+                  }`}>
+                  <Form.Control
+                    as="textarea"
+                    rows={1}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    placeholder="Your Prompt"
+                  />
+                </Form.Group>
+              </Form>
+              <ImageUploader></ImageUploader>
+              <Button className="buyBtn" onClick={handleAddToCart}>
+                Add to Cart
+              </Button>
             </div>
           </div>
-          <div className="detailContent">
-            <div className="detailName">{product.title}</div>
-            <div className="detailPrice">${product.price}</div>
-            <div className="detailInfo">{product.description}</div>
-            {product.spec && product.spec.includes('color') && (
-              <ColorSelector
-                selectedColor={selectedColor}
-                onColorChange={setSelectedColor}
-              />
-            )}
-            {product.spec && product.spec.includes('size') && (
-              <DropdownButton id="size-dropdown" title={selectedSize}>
-                {sizes.map((size, index) => (
-                  <Dropdown.Item
-                    key={index}
-                    eventKey={size}
-                    onClick={() => handleSizeSelect(size)}>
-                    {size}
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>
-            )}
-            <QuantitySelector onChange={handleQuantityChange} />
-            <Form onSubmit={handleSubmit}>
-              <Form.Group
-                className={`${
-                  isFocused ? 'promptCard' : 'promptCardWithoutAnimation'
-                }`}>
-                <Form.Control
-                  as="textarea"
-                  rows={1}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  value={inputValue}
-                  onChange={handleInputChange}
-                  placeholder="Your Prompt"
-                />
-              </Form.Group>
-            </Form>
-            <ImageUploader></ImageUploader>
-            <Button className="buyBtn" onClick={handleAddToCart}>
-              Add to Cart
-            </Button>
-          </div>
         </div>
-      </div>
+      )}
 
       <Footer></Footer>
     </>

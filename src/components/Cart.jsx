@@ -33,9 +33,7 @@ const Cart = ({ show, handleClose }) => {
             <div className="item" key={index}>
               <Button
                 className="removeBtn"
-                onClick={() =>
-                  removeFromCart(item.id, item.size, item.color, item.prompt)
-                }>
+                onClick={() => removeFromCart(item.id, item.size,item.color,item.prompt)}>
                 -
               </Button>
               <Link to={`/product/${item.id}`}>

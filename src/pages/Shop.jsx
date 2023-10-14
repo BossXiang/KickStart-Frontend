@@ -6,6 +6,7 @@ import '../styles/Shop.scss'
 import '../styles/QuantitySelector.scss'
 import { Link } from 'react-router-dom'
 import { getProducts } from '../plugins/api/api_service.ts'
+import Loading from '../components/Loading'
 
 const Product = ({ product }) => {
   return (
@@ -14,7 +15,6 @@ const Product = ({ product }) => {
         <div className="productImg">
           <img src={product.images[0]} alt="product" />
         </div>
-        
       </Link>
       <div className="productName">{product.title}</div>
       <div className="productPrice">${product.price}</div>
@@ -23,12 +23,15 @@ const Product = ({ product }) => {
 }
 
 const Shop = () => {
+  const [loaded, setLoaded] = useState(false)
   const [products, setProducts] = useState([])
-  const getProductList = async () => {
-    const data = await getProducts()
-    setProducts(data)
-  }
+
   useEffect(() => {
+    const getProductList = async () => {
+      const data = await getProducts()
+      setProducts(data)
+      setLoaded(true)
+    }
     try {
       getProductList()
     } catch (error) {
@@ -40,17 +43,23 @@ const Shop = () => {
   ))
 
   return (
-    <div className="shopContainer">
-      <Header />
-      <div className="shopContent">
-        <Container className="my-5">
-          <div className="allProductContainer">
-            <div className="productContainer">{productList}</div>
+    <>
+      <div className="shopContainer">
+        <Header />
+        {!loaded ? (
+          <Loading />
+        ) : (
+          <div className="shopContent">
+            <Container className="my-5">
+              <div className="allProductContainer">
+                <div className="productContainer">{productList}</div>
+              </div>
+            </Container>
           </div>
-        </Container>
+        )}
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   )
 }
 
