@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,900');
+
+.numPageContainer {
+  .numPageSelector {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    color: white;
+
+    .numPageItem {
+      cursor: pointer;
+      width: 90px;
+      text-align: center;
+      background-color: #ff684aca;
+      padding: 8px;
+      border-radius: 6px;
+    }
+    .numPageItem:hover {
+      color: #ff684aca;
+      background-color: rgba(255, 255, 255, 0.792);
+    }
+
+    .numPageRadio {
+      display: none;
+    }
+  }
+}

@@ -65,25 +65,6 @@
       line-height: 20px;
       color: rgba(0, 0, 0, 0.628);
     }
-    .numPageContainer {
-      display: flex;
-      justify-content: space-between;
-      
-      .numPageItem {
-        cursor: pointer;
-        width: 90px;
-        text-align: center;
-        background-color: rgb(255, 187, 97);
-        padding: 5px;
-        border-radius: 6px;
-      }
-      .numPageItem:hover {
-        background-color: rgb(250, 228, 179);
-      }
-      .numPageRadio {
-        display: none;
-      }
-    }
     .promptCard,
     .promptCardWithoutAnimation {
       --borderWidth: 4px;

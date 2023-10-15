@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import QuantitySelector from '../components/QuantitySelector'
 import ImageUploader from '../components/ImageUploader'
 import ColorSelector from '../components/ColorSelector'
+import NumPageSelector from '../components/NumPageSelector'
 import Loading from '../components/Loading'
 
 import '../styles/ProductDetail.scss'
@@ -26,7 +27,6 @@ const ProductDetail = () => {
   const [selectedNumPage, setSelectedNumPage] = useState(0)
   const [isFocused, setIsFocused] = useState(false)
 
-  const numPageOptions = [ 6, 8, 14, 25 ]
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -57,10 +57,6 @@ const ProductDetail = () => {
     setSelectedSize(size)
   }
   
-  const handleNumPageChange = (event) => {
-    setSelectedNumPage(event.target.value)
-  }
-
   const [quantity, setQuantity] = useState(1)
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity)
@@ -195,14 +191,10 @@ const ProductDetail = () => {
                 </DropdownButton>
               )}
               {product.spec && product.spec.includes('#pages') && (
-                <div className='numPageContainer'> 
-                  {numPageOptions.map((numPage, index) => (
-                    <label key={index} className='numPageItem'>
-                      {numPage} Pages
-                      <input type="radio" value={numPage} checked={selectedNumPage === numPage} onChange={handleNumPageChange} className='numPageRadio'/>
-                    </label>
-                  ))}
-                </div>
+                <NumPageSelector 
+                  selectedNumPage={selectedNumPage}
+                  onNumPageChange={setSelectedNumPage}
+                />
               )}
               <QuantitySelector onChange={handleQuantityChange} />
               <Form onSubmit={handleSubmit}>
